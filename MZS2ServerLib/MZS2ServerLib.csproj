@@ -56,11 +56,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationManager.cs" />
     <Compile Include="craft_blueprints.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="craft_components.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\ConfigurationFile.cs" />
+    <Compile Include="MZS2Context.cs" />
+    <Compile Include="MZS2DataModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MZS2DataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Repositories\LoginHistoryRepository.cs" />
     <Compile Include="Repositories\PlayerCharacterRepository.cs" />
@@ -106,10 +114,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="MZS2DataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MZS2DataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>MZS2DataModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="MZS2DataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

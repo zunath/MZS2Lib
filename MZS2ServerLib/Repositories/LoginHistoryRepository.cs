@@ -16,7 +16,7 @@ namespace MZS2ServerLib
                 Timestamp = DateTime.Now
             };
 
-            using (MZS2Context context = new MZS2Context())
+            using (MZS2Context context = new MZS2Context(ConfigurationManager.ConnectionString))
             {
                 context.LoginHistories.Add(history);
                 context.SaveChanges();
@@ -25,13 +25,16 @@ namespace MZS2ServerLib
             return "TRUE";
         }
 
-        public static string GetLoginHistory(int playerID)
+        public static string GetLoginHistoryByID(string sLoginHistoryID)
         {
+            int iLoginHistoryID = Convert.ToInt32(sLoginHistoryID);
             string result = string.Empty;
 
-            using (MZS2Context context = new MZS2Context())
+            System.IO.File.WriteAllText("C:\\getloginhistorytest.txt", "iLoginHistoryID = " + iLoginHistoryID); // DEBUG
+
+            using (MZS2Context context = new MZS2Context(ConfigurationManager.ConnectionString))
             {
-                LoginHistory history = context.LoginHistories.SingleOrDefault(x => x.PlayerCharacterID == playerID);
+                LoginHistory history = context.LoginHistories.SingleOrDefault(x => x.LoginHistoryID == iLoginHistoryID);
 
                 if (history != null)
                 {
