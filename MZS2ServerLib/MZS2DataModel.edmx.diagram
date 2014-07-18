@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="38f2f8421d2d48ac8a96ea0b15269420" Name="Diagram1" ZoomLevel="17">
+        <EntityTypeShape EntityType="MZS2DataModel.craft_blueprints" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MZS2DataModel.craft_components" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MZS2DataModel.dm_log" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MZS2DataModel.pc_corpse" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MZS2DataModel.pwdata" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MZS2DataModel.pwobjdata" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MZS2DataModel.zst_storage" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MZS2DataModel.zsttemplate" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MZS2DataModel.PlayerCharacter" Width="1.5" PointX="8.625" PointY="1.75" />
+        <EntityTypeShape EntityType="MZS2DataModel.LoginHistory" Width="1.5" PointX="11.75" PointY="3" />
+        <AssociationConnector Association="MZS2DataModel.LoginHistoryPlayerCharacter" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
