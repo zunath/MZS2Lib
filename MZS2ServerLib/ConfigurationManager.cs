@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.EntityClient;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -31,7 +32,15 @@ namespace MZS2ServerLib
                     sqlSb.Password = settings.DatabasePassword;
                     sqlSb.DataSource = settings.DatabaseIPAddress;
 
-                    _connectionString = sqlSb.ToString();
+                    EntityConnectionStringBuilder esb = new EntityConnectionStringBuilder();
+                    esb.Provider = "MySql.Data.MySqlClient";
+                    esb.ProviderConnectionString = sqlSb.ToString();
+                    esb.Metadata = @"res://*/MZS2DataModel.csdl|
+								res://*/MZS2DataModel.ssdl|
+								res://*/MZS2DataModel.msl";
+                    
+
+                    _connectionString = esb.ToString();
                 }
 
                 return _connectionString;

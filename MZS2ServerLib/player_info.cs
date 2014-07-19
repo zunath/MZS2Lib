@@ -12,13 +12,12 @@ namespace MZS2ServerLib
     using System;
     using System.Collections.Generic;
     
-    public partial class loginhistory
+    public partial class player_info
     {
-        public int LoginHistoryID { get; set; }
-        public int PlayerCharacterID { get; set; }
-        public string IPAddress { get; set; }
+        public string Account { get; set; }
+        public string IP_Address { get; set; }
+        public string CDKey { get; set; }
+        public string CharName { get; set; }
         public System.DateTime Timestamp { get; set; }
-    
-        public virtual playercharacter playercharacter { get; set; }
     }
 }

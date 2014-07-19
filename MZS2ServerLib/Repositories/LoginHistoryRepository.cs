@@ -9,7 +9,7 @@ namespace MZS2ServerLib
     {
         public static string AddLoginHistory(int playerID, string ipAddress)
         {
-            LoginHistory history = new LoginHistory
+            loginhistory history = new loginhistory
             {
                 IPAddress = ipAddress,
                 PlayerCharacterID = playerID,
@@ -18,7 +18,7 @@ namespace MZS2ServerLib
 
             using (MZS2Context context = new MZS2Context(ConfigurationManager.ConnectionString))
             {
-                context.LoginHistories.Add(history);
+                context.loginhistories.Add(history);
                 context.SaveChanges();
             }
 
@@ -30,11 +30,9 @@ namespace MZS2ServerLib
             int iLoginHistoryID = Convert.ToInt32(sLoginHistoryID);
             string result = string.Empty;
 
-            System.IO.File.WriteAllText("C:\\getloginhistorytest.txt", "iLoginHistoryID = " + iLoginHistoryID); // DEBUG
-
             using (MZS2Context context = new MZS2Context(ConfigurationManager.ConnectionString))
             {
-                LoginHistory history = context.LoginHistories.SingleOrDefault(x => x.LoginHistoryID == iLoginHistoryID);
+                loginhistory history = context.loginhistories.SingleOrDefault(x => x.LoginHistoryID == iLoginHistoryID);
 
                 if (history != null)
                 {

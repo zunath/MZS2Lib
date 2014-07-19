@@ -24,7 +24,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>G:\NeverwinterNights\NWN\CSharpClasses\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -57,27 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationManager.cs" />
-    <Compile Include="craft_blueprints.cs">
-      <DependentUpon>MZS2DataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="craft_components.cs">
-      <DependentUpon>MZS2DataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataTransferObjects\ConfigurationFile.cs" />
-    <Compile Include="MZS2Context.cs" />
-    <Compile Include="MZS2DataModel1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MZS2DataModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Repositories\LoginHistoryRepository.cs" />
-    <Compile Include="Repositories\PlayerCharacterRepository.cs" />
     <Compile Include="dm_log.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="LoginHistory.cs">
+    <Compile Include="loginhistory.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="MZS2Context.cs" />
     <Compile Include="MZS2DataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -96,16 +83,21 @@
     <Compile Include="pc_corpse.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PlayerCharacter.cs">
+    <Compile Include="playercharacter.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="player_info.cs">
+      <DependentUpon>MZS2DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="pwdata.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pwobjdata.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\LoginHistoryRepository.cs" />
+    <Compile Include="Repositories\PlayerCharacterRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="zsttemplate.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
@@ -119,7 +111,7 @@
     </None>
     <EntityDeploy Include="MZS2DataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MZS2DataModel1.Designer.cs</LastGenOutput>
+      <LastGenOutput>MZS2DataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="MZS2DataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -5,508 +5,85 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="MZS2DataModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-  <EntityContainer Name="MZS2DataModelStoreContainer">
-    <EntitySet Name="craft_blueprints" EntityType="MZS2DataModel.Store.craft_blueprints" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="craft_components" EntityType="MZS2DataModel.Store.craft_components" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="dm_log" EntityType="MZS2DataModel.Store.dm_log" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="pc_corpse" EntityType="MZS2DataModel.Store.pc_corpse" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="pwdatas" EntityType="MZS2DataModel.Store.pwdatas" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="pwobjdatas" EntityType="MZS2DataModel.Store.pwobjdatas" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="zst_storage" EntityType="MZS2DataModel.Store.zst_storage" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="zsttemplates" EntityType="MZS2DataModel.Store.zsttemplates" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PlayerCharacters" EntityType="MZS2DataModel.Store.PlayerCharacters" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="LoginHistories" EntityType="MZS2DataModel.Store.LoginHistories" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="LoginHistoryPlayerCharacter" Association="MZS2DataModel.Store.LoginHistoryPlayerCharacter">
-      <End Role="LoginHistory" EntitySet="LoginHistories" />
-      <End Role="PlayerCharacter" EntitySet="PlayerCharacters" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="craft_blueprints">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="Name" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Description" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="ItemResref" Type="varchar" Nullable="true" MaxLength="16" />
-    <Property Name="BaseAmount" Type="int" Nullable="true" />
-    <Property Name="AdditionalAmount" Type="int" Nullable="true" />
-    <Property Name="Skill" Type="int" Nullable="true" />
-    <Property Name="BlueprintLevel" Type="int" Nullable="true" />
-    <Property Name="XP" Type="int" Nullable="true" />
-    <Property Name="Device" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component1Name" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component1Quantity" Type="int" Nullable="true" />
-    <Property Name="Component1Resref" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component2Name" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component2Quantity" Type="int" Nullable="true" />
-    <Property Name="Component2Resref" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component3Name" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component3Quantity" Type="int" Nullable="true" />
-    <Property Name="Component3Resref" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component4Name" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component4Quantity" Type="int" Nullable="true" />
-    <Property Name="Component4Resref" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component5Name" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component5Quantity" Type="int" Nullable="true" />
-    <Property Name="Component5Resref" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component6Name" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component6Quantity" Type="int" Nullable="true" />
-    <Property Name="Component6Resref" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component7Name" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component7Quantity" Type="int" Nullable="true" />
-    <Property Name="Component7Resref" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component8Name" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component8Quantity" Type="int" Nullable="true" />
-    <Property Name="Component8Resref" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component9Name" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component9Quantity" Type="int" Nullable="true" />
-    <Property Name="Component9Resref" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component10Name" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Component10Quantity" Type="int" Nullable="true" />
-    <Property Name="Component10Resref" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="MenuCategory" Type="int" Nullable="true" />
-    <Property Name="Component1" Type="int" Nullable="true" />
-    <Property Name="Component2" Type="int" Nullable="true" />
-    <Property Name="Component3" Type="int" Nullable="true" />
-    <Property Name="Component4" Type="int" Nullable="true" />
-    <Property Name="Component5" Type="int" Nullable="true" />
-    <Property Name="Component6" Type="int" Nullable="true" />
-    <Property Name="Component7" Type="int" Nullable="true" />
-    <Property Name="Component8" Type="int" Nullable="true" />
-    <Property Name="Component9" Type="int" Nullable="true" />
-    <Property Name="Component10" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="craft_components">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="Name" Type="varchar" Nullable="true" MaxLength="255" />
-    <Property Name="Quantity" Type="int" Nullable="true" />
-    <Property Name="Resref" Type="varchar" Nullable="true" MaxLength="16" />
-  </EntityType>
-  <EntityType Name="dm_log">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DM_Name" Type="varchar" Nullable="true" MaxLength="64" />
-    <Property Name="DM_Account" Type="varchar" Nullable="true" MaxLength="64" />
-    <Property Name="DM_CDKey" Type="varchar" Nullable="true" MaxLength="16" />
-    <Property Name="PC_Name" Type="varchar" Nullable="true" MaxLength="64" />
-    <Property Name="PC_Account" Type="varchar" Nullable="true" MaxLength="64" />
-    <Property Name="PC_CDKey" Type="varchar" Nullable="true" MaxLength="16" />
-    <Property Name="Action" Type="varchar" Nullable="true" MaxLength="16" />
-    <Property Name="ItemName" Type="varchar" Nullable="true" MaxLength="64" />
-    <Property Name="ItemTag" Type="varchar" Nullable="true" MaxLength="64" />
-    <Property Name="ItemResref" Type="varchar" Nullable="true" MaxLength="16" />
-    <Property Name="GoldAmount" Type="bigint" Nullable="true" />
-    <Property Name="XPAmount" Type="int" Nullable="true" />
-    <Property Name="Timestamp" Type="varchar" Nullable="true" MaxLength="20" />
-  </EntityType>
-  <EntityType Name="pc_corpse">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="bigint" Nullable="false" />
-    <Property Name="CorpseName" Type="varchar" Nullable="false" MaxLength="65535" />
-    <Property Name="Location" Type="varchar" Nullable="false" MaxLength="65535" />
-    <Property Name="StorageNPC" Type="longblob" Nullable="true" />
-  </EntityType>
-  <EntityType Name="pwdatas">
-    <Key>
-      <PropertyRef Name="player" />
-      <PropertyRef Name="tag" />
-      <PropertyRef Name="name" />
-    </Key>
-    <Property Name="player" Type="varchar" Nullable="false" MaxLength="64" />
-    <Property Name="tag" Type="varchar" Nullable="false" MaxLength="64" />
-    <Property Name="name" Type="varchar" Nullable="false" MaxLength="64" />
-    <Property Name="val" Type="varchar" Nullable="true" MaxLength="65535" />
-    <Property Name="expire" Type="int" Nullable="true" />
-    <Property Name="last" Type="datetime" StoreGeneratedPattern="Identity" Nullable="false" />
-  </EntityType>
-  <EntityType Name="pwobjdatas">
-    <Key>
-      <PropertyRef Name="player" />
-      <PropertyRef Name="tag" />
-      <PropertyRef Name="name" />
-    </Key>
-    <Property Name="player" Type="varchar" Nullable="false" MaxLength="64" />
-    <Property Name="tag" Type="varchar" Nullable="false" MaxLength="64" />
-    <Property Name="name" Type="varchar" Nullable="false" MaxLength="64" />
-    <Property Name="val" Type="longblob" Nullable="true" />
-    <Property Name="expire" Type="int" Nullable="true" />
-    <Property Name="last" Type="datetime" StoreGeneratedPattern="Identity" Nullable="false" />
-  </EntityType>
-  <EntityType Name="zst_storage">
-    <Key>
-      <PropertyRef Name="Tag" />
-      <PropertyRef Name="AreaTag" />
-    </Key>
-    <Property Name="Tag" Type="varchar" Nullable="false" MaxLength="40" />
-    <Property Name="AreaTag" Type="varchar" Nullable="false" MaxLength="64" />
-    <Property Name="AreaName" Type="varchar" Nullable="true" MaxLength="65535" />
-    <Property Name="Item1" Type="longblob" Nullable="true" />
-    <Property Name="Item2" Type="longblob" Nullable="true" />
-    <Property Name="Item3" Type="longblob" Nullable="true" />
-    <Property Name="Item4" Type="longblob" Nullable="true" />
-    <Property Name="Item5" Type="longblob" Nullable="true" />
-    <Property Name="Item6" Type="longblob" Nullable="true" />
-    <Property Name="Item7" Type="longblob" Nullable="true" />
-    <Property Name="Item8" Type="longblob" Nullable="true" />
-    <Property Name="Item9" Type="longblob" Nullable="true" />
-    <Property Name="Item10" Type="longblob" Nullable="true" />
-    <Property Name="Item11" Type="longblob" Nullable="true" />
-    <Property Name="Item12" Type="longblob" Nullable="true" />
-    <Property Name="Item13" Type="longblob" Nullable="true" />
-    <Property Name="Item14" Type="longblob" Nullable="true" />
-    <Property Name="Item15" Type="longblob" Nullable="true" />
-    <Property Name="Item16" Type="longblob" Nullable="true" />
-    <Property Name="Item17" Type="longblob" Nullable="true" />
-    <Property Name="Item18" Type="longblob" Nullable="true" />
-    <Property Name="Item19" Type="longblob" Nullable="true" />
-    <Property Name="Item20" Type="longblob" Nullable="true" />
-    <Property Name="Item21" Type="longblob" Nullable="true" />
-    <Property Name="Item22" Type="longblob" Nullable="true" />
-    <Property Name="Item23" Type="longblob" Nullable="true" />
-    <Property Name="Item24" Type="longblob" Nullable="true" />
-    <Property Name="Item25" Type="longblob" Nullable="true" />
-    <Property Name="Item26" Type="longblob" Nullable="true" />
-    <Property Name="Item27" Type="longblob" Nullable="true" />
-    <Property Name="Item28" Type="longblob" Nullable="true" />
-    <Property Name="Item29" Type="longblob" Nullable="true" />
-    <Property Name="Item30" Type="longblob" Nullable="true" />
-    <Property Name="Item31" Type="longblob" Nullable="true" />
-    <Property Name="Item32" Type="longblob" Nullable="true" />
-    <Property Name="Item33" Type="longblob" Nullable="true" />
-    <Property Name="Item34" Type="longblob" Nullable="true" />
-    <Property Name="Item35" Type="longblob" Nullable="true" />
-    <Property Name="Item36" Type="longblob" Nullable="true" />
-    <Property Name="Item37" Type="longblob" Nullable="true" />
-    <Property Name="Item38" Type="longblob" Nullable="true" />
-    <Property Name="Item39" Type="longblob" Nullable="true" />
-    <Property Name="Item40" Type="longblob" Nullable="true" />
-    <Property Name="Item41" Type="longblob" Nullable="true" />
-    <Property Name="Item42" Type="longblob" Nullable="true" />
-    <Property Name="Item43" Type="longblob" Nullable="true" />
-    <Property Name="Item44" Type="longblob" Nullable="true" />
-    <Property Name="Item45" Type="longblob" Nullable="true" />
-    <Property Name="Item46" Type="longblob" Nullable="true" />
-    <Property Name="Item47" Type="longblob" Nullable="true" />
-    <Property Name="Item48" Type="longblob" Nullable="true" />
-    <Property Name="Item49" Type="longblob" Nullable="true" />
-    <Property Name="Item50" Type="longblob" Nullable="true" />
-    <Property Name="Item51" Type="longblob" Nullable="true" />
-    <Property Name="Item52" Type="longblob" Nullable="true" />
-    <Property Name="Item53" Type="longblob" Nullable="true" />
-    <Property Name="Item54" Type="longblob" Nullable="true" />
-    <Property Name="Item55" Type="longblob" Nullable="true" />
-    <Property Name="Item56" Type="longblob" Nullable="true" />
-    <Property Name="Item57" Type="longblob" Nullable="true" />
-    <Property Name="Item58" Type="longblob" Nullable="true" />
-    <Property Name="Item59" Type="longblob" Nullable="true" />
-    <Property Name="Item60" Type="longblob" Nullable="true" />
-    <Property Name="Item61" Type="longblob" Nullable="true" />
-    <Property Name="Item62" Type="longblob" Nullable="true" />
-    <Property Name="Item63" Type="longblob" Nullable="true" />
-    <Property Name="Item64" Type="longblob" Nullable="true" />
-    <Property Name="Item65" Type="longblob" Nullable="true" />
-    <Property Name="Item66" Type="longblob" Nullable="true" />
-    <Property Name="Item67" Type="longblob" Nullable="true" />
-    <Property Name="Item68" Type="longblob" Nullable="true" />
-    <Property Name="Item69" Type="longblob" Nullable="true" />
-    <Property Name="Item70" Type="longblob" Nullable="true" />
-    <Property Name="Item71" Type="longblob" Nullable="true" />
-    <Property Name="Item72" Type="longblob" Nullable="true" />
-    <Property Name="Item73" Type="longblob" Nullable="true" />
-    <Property Name="Item74" Type="longblob" Nullable="true" />
-    <Property Name="Item75" Type="longblob" Nullable="true" />
-    <Property Name="Item76" Type="longblob" Nullable="true" />
-    <Property Name="Item77" Type="longblob" Nullable="true" />
-    <Property Name="Item78" Type="longblob" Nullable="true" />
-    <Property Name="Item79" Type="longblob" Nullable="true" />
-    <Property Name="Item80" Type="longblob" Nullable="true" />
-    <Property Name="Item81" Type="longblob" Nullable="true" />
-    <Property Name="Item82" Type="longblob" Nullable="true" />
-    <Property Name="Item83" Type="longblob" Nullable="true" />
-    <Property Name="Item84" Type="longblob" Nullable="true" />
-    <Property Name="Item85" Type="longblob" Nullable="true" />
-    <Property Name="Item86" Type="longblob" Nullable="true" />
-    <Property Name="Item87" Type="longblob" Nullable="true" />
-    <Property Name="Item88" Type="longblob" Nullable="true" />
-    <Property Name="Item89" Type="longblob" Nullable="true" />
-    <Property Name="Item90" Type="longblob" Nullable="true" />
-    <Property Name="Item91" Type="longblob" Nullable="true" />
-    <Property Name="Item92" Type="longblob" Nullable="true" />
-    <Property Name="Item93" Type="longblob" Nullable="true" />
-    <Property Name="Item94" Type="longblob" Nullable="true" />
-    <Property Name="Item95" Type="longblob" Nullable="true" />
-    <Property Name="Item96" Type="longblob" Nullable="true" />
-    <Property Name="Item97" Type="longblob" Nullable="true" />
-    <Property Name="Item98" Type="longblob" Nullable="true" />
-    <Property Name="Item99" Type="longblob" Nullable="true" />
-    <Property Name="Item100" Type="longblob" Nullable="true" />
-  </EntityType>
-  <EntityType Name="zsttemplates">
-    <Key>
-      <PropertyRef Name="Tag" />
-      <PropertyRef Name="AreaTag" />
-    </Key>
-    <Property Name="Tag" Type="varchar" Nullable="false" MaxLength="40" />
-    <Property Name="AreaTag" Type="varchar" Nullable="false" MaxLength="64" />
-    <Property Name="AreaName" Type="varchar" Nullable="true" MaxLength="65535" />
-    <Property Name="Item1" Type="longblob" Nullable="true" />
-    <Property Name="Item2" Type="longblob" Nullable="true" />
-    <Property Name="Item3" Type="longblob" Nullable="true" />
-    <Property Name="Item4" Type="longblob" Nullable="true" />
-    <Property Name="Item5" Type="longblob" Nullable="true" />
-    <Property Name="Item6" Type="longblob" Nullable="true" />
-    <Property Name="Item7" Type="longblob" Nullable="true" />
-    <Property Name="Item8" Type="longblob" Nullable="true" />
-    <Property Name="Item9" Type="longblob" Nullable="true" />
-    <Property Name="Item10" Type="longblob" Nullable="true" />
-    <Property Name="Item11" Type="longblob" Nullable="true" />
-    <Property Name="Item12" Type="longblob" Nullable="true" />
-    <Property Name="Item13" Type="longblob" Nullable="true" />
-    <Property Name="Item14" Type="longblob" Nullable="true" />
-    <Property Name="Item15" Type="longblob" Nullable="true" />
-    <Property Name="Item16" Type="longblob" Nullable="true" />
-    <Property Name="Item17" Type="longblob" Nullable="true" />
-    <Property Name="Item18" Type="longblob" Nullable="true" />
-    <Property Name="Item19" Type="longblob" Nullable="true" />
-    <Property Name="Item20" Type="longblob" Nullable="true" />
-    <Property Name="Item21" Type="longblob" Nullable="true" />
-    <Property Name="Item22" Type="longblob" Nullable="true" />
-    <Property Name="Item23" Type="longblob" Nullable="true" />
-    <Property Name="Item24" Type="longblob" Nullable="true" />
-    <Property Name="Item25" Type="longblob" Nullable="true" />
-    <Property Name="Item26" Type="longblob" Nullable="true" />
-    <Property Name="Item27" Type="longblob" Nullable="true" />
-    <Property Name="Item28" Type="longblob" Nullable="true" />
-    <Property Name="Item29" Type="longblob" Nullable="true" />
-    <Property Name="Item30" Type="longblob" Nullable="true" />
-    <Property Name="Item31" Type="longblob" Nullable="true" />
-    <Property Name="Item32" Type="longblob" Nullable="true" />
-    <Property Name="Item33" Type="longblob" Nullable="true" />
-    <Property Name="Item34" Type="longblob" Nullable="true" />
-    <Property Name="Item35" Type="longblob" Nullable="true" />
-    <Property Name="Item36" Type="longblob" Nullable="true" />
-    <Property Name="Item37" Type="longblob" Nullable="true" />
-    <Property Name="Item38" Type="longblob" Nullable="true" />
-    <Property Name="Item39" Type="longblob" Nullable="true" />
-    <Property Name="Item40" Type="longblob" Nullable="true" />
-    <Property Name="Item41" Type="longblob" Nullable="true" />
-    <Property Name="Item42" Type="longblob" Nullable="true" />
-    <Property Name="Item43" Type="longblob" Nullable="true" />
-    <Property Name="Item44" Type="longblob" Nullable="true" />
-    <Property Name="Item45" Type="longblob" Nullable="true" />
-    <Property Name="Item46" Type="longblob" Nullable="true" />
-    <Property Name="Item47" Type="longblob" Nullable="true" />
-    <Property Name="Item48" Type="longblob" Nullable="true" />
-    <Property Name="Item49" Type="longblob" Nullable="true" />
-    <Property Name="Item50" Type="longblob" Nullable="true" />
-    <Property Name="Item51" Type="longblob" Nullable="true" />
-    <Property Name="Item52" Type="longblob" Nullable="true" />
-    <Property Name="Item53" Type="longblob" Nullable="true" />
-    <Property Name="Item54" Type="longblob" Nullable="true" />
-    <Property Name="Item55" Type="longblob" Nullable="true" />
-    <Property Name="Item56" Type="longblob" Nullable="true" />
-    <Property Name="Item57" Type="longblob" Nullable="true" />
-    <Property Name="Item58" Type="longblob" Nullable="true" />
-    <Property Name="Item59" Type="longblob" Nullable="true" />
-    <Property Name="Item60" Type="longblob" Nullable="true" />
-    <Property Name="Item61" Type="longblob" Nullable="true" />
-    <Property Name="Item62" Type="longblob" Nullable="true" />
-    <Property Name="Item63" Type="longblob" Nullable="true" />
-    <Property Name="Item64" Type="longblob" Nullable="true" />
-    <Property Name="Item65" Type="longblob" Nullable="true" />
-    <Property Name="Item66" Type="longblob" Nullable="true" />
-    <Property Name="Item67" Type="longblob" Nullable="true" />
-    <Property Name="Item68" Type="longblob" Nullable="true" />
-    <Property Name="Item69" Type="longblob" Nullable="true" />
-    <Property Name="Item70" Type="longblob" Nullable="true" />
-    <Property Name="Item71" Type="longblob" Nullable="true" />
-    <Property Name="Item72" Type="longblob" Nullable="true" />
-    <Property Name="Item73" Type="longblob" Nullable="true" />
-    <Property Name="Item74" Type="longblob" Nullable="true" />
-    <Property Name="Item75" Type="longblob" Nullable="true" />
-    <Property Name="Item76" Type="longblob" Nullable="true" />
-    <Property Name="Item77" Type="longblob" Nullable="true" />
-    <Property Name="Item78" Type="longblob" Nullable="true" />
-    <Property Name="Item79" Type="longblob" Nullable="true" />
-    <Property Name="Item80" Type="longblob" Nullable="true" />
-    <Property Name="Item81" Type="longblob" Nullable="true" />
-    <Property Name="Item82" Type="longblob" Nullable="true" />
-    <Property Name="Item83" Type="longblob" Nullable="true" />
-    <Property Name="Item84" Type="longblob" Nullable="true" />
-    <Property Name="Item85" Type="longblob" Nullable="true" />
-    <Property Name="Item86" Type="longblob" Nullable="true" />
-    <Property Name="Item87" Type="longblob" Nullable="true" />
-    <Property Name="Item88" Type="longblob" Nullable="true" />
-    <Property Name="Item89" Type="longblob" Nullable="true" />
-    <Property Name="Item90" Type="longblob" Nullable="true" />
-    <Property Name="Item91" Type="longblob" Nullable="true" />
-    <Property Name="Item92" Type="longblob" Nullable="true" />
-    <Property Name="Item93" Type="longblob" Nullable="true" />
-    <Property Name="Item94" Type="longblob" Nullable="true" />
-    <Property Name="Item95" Type="longblob" Nullable="true" />
-    <Property Name="Item96" Type="longblob" Nullable="true" />
-    <Property Name="Item97" Type="longblob" Nullable="true" />
-    <Property Name="Item98" Type="longblob" Nullable="true" />
-    <Property Name="Item99" Type="longblob" Nullable="true" />
-    <Property Name="Item100" Type="longblob" Nullable="true" />
-  </EntityType>
-  <EntityType Name="PlayerCharacters">
-    <Key>
-      <PropertyRef Name="PlayerCharacterID" />
-    </Key>
-    <Property Name="PlayerCharacterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AccountName" Type="longtext" Nullable="false" />
-    <Property Name="CDKey" Type="longtext" Nullable="false" />
-    <Property Name="FirstName" Type="longtext" Nullable="false" />
-    <Property Name="LastName" Type="longtext" Nullable="false" />
-    <Property Name="HitPoints" Type="int" Nullable="false" />
-    <Property Name="LocationAreaTag" Type="longtext" Nullable="false" />
-    <Property Name="LocationX" Type="double" Nullable="false" />
-    <Property Name="LocationY" Type="double" Nullable="false" />
-    <Property Name="LocationZ" Type="double" Nullable="false" />
-    <Property Name="LocationOrientation" Type="double" Nullable="false" />
-  </EntityType>
-  <EntityType Name="LoginHistories">
-    <Key>
-      <PropertyRef Name="LoginHistoryID" />
-    </Key>
-    <Property Name="LoginHistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PlayerCharacterID" Type="int" Nullable="false" />
-    <Property Name="IPAddress" Type="longtext" Nullable="false" />
-    <Property Name="Timestamp" Type="datetime" StoreGeneratedPattern="Identity" Nullable="false" />
-  </EntityType>
-  <Association Name="LoginHistoryPlayerCharacter">
-    <End Role="LoginHistory" Type="MZS2DataModel.Store.LoginHistories" Multiplicity="*" />
-    <End Role="PlayerCharacter" Type="MZS2DataModel.Store.PlayerCharacters" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="PlayerCharacter">
-        <PropertyRef Name="PlayerCharacterID" />
-      </Principal>
-      <Dependent Role="LoginHistory">
-        <PropertyRef Name="PlayerCharacterID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
-    <!-- CSDL content -->
-    <edmx:ConceptualModels>
-      <Schema Namespace="MZS2DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="MZS2Context" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="craft_blueprints" EntityType="MZS2DataModel.craft_blueprints" />
-          <EntitySet Name="craft_components" EntityType="MZS2DataModel.craft_components" />
-          <EntitySet Name="dm_log" EntityType="MZS2DataModel.dm_log" />
-          <EntitySet Name="pc_corpse" EntityType="MZS2DataModel.pc_corpse" />
-          <EntitySet Name="pwdatas" EntityType="MZS2DataModel.pwdata" />
-          <EntitySet Name="pwobjdatas" EntityType="MZS2DataModel.pwobjdata" />
-          <EntitySet Name="zst_storage" EntityType="MZS2DataModel.zst_storage" />
-          <EntitySet Name="zsttemplates" EntityType="MZS2DataModel.zsttemplate" />
-          <EntitySet Name="PlayerCharacters" EntityType="MZS2DataModel.PlayerCharacter" />
-          <EntitySet Name="LoginHistories" EntityType="MZS2DataModel.LoginHistory" />
-          <AssociationSet Name="LoginHistoryPlayerCharacter" Association="MZS2DataModel.LoginHistoryPlayerCharacter">
-            <End Role="LoginHistory" EntitySet="LoginHistories" />
-            <End Role="PlayerCharacter" EntitySet="PlayerCharacters" />
+        <EntityContainer Name="MZS2DataModelStoreContainer">
+          <EntitySet Name="dm_log" EntityType="MZS2DataModel.Store.dm_log" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="loginhistories" EntityType="MZS2DataModel.Store.loginhistories" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="pc_corpse" EntityType="MZS2DataModel.Store.pc_corpse" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="player_info" EntityType="MZS2DataModel.Store.player_info" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="playercharacters" EntityType="MZS2DataModel.Store.playercharacters" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="pwdata" EntityType="MZS2DataModel.Store.pwdata" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="pwobjdata" EntityType="MZS2DataModel.Store.pwobjdata" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="zst_storage" EntityType="MZS2DataModel.Store.zst_storage" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="zsttemplate" EntityType="MZS2DataModel.Store.zsttemplate" store:Type="Tables" Schema="mzs2_dev" />
+          <AssociationSet Name="fk_player_character_id" Association="MZS2DataModel.Store.fk_player_character_id">
+            <End Role="playercharacters" EntitySet="playercharacters" />
+            <End Role="loginhistories" EntitySet="loginhistories" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="craft_blueprints">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="ItemResref" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
-          <Property Name="BaseAmount" Type="Int32" />
-          <Property Name="AdditionalAmount" Type="Int32" />
-          <Property Name="Skill" Type="Int32" />
-          <Property Name="BlueprintLevel" Type="Int32" />
-          <Property Name="XP" Type="Int32" />
-          <Property Name="Device" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component1Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component1Quantity" Type="Int32" />
-          <Property Name="Component1Resref" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component2Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component2Quantity" Type="Int32" />
-          <Property Name="Component2Resref" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component3Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component3Quantity" Type="Int32" />
-          <Property Name="Component3Resref" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component4Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component4Quantity" Type="Int32" />
-          <Property Name="Component4Resref" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component5Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component5Quantity" Type="Int32" />
-          <Property Name="Component5Resref" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component6Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component6Quantity" Type="Int32" />
-          <Property Name="Component6Resref" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component7Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component7Quantity" Type="Int32" />
-          <Property Name="Component7Resref" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component8Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component8Quantity" Type="Int32" />
-          <Property Name="Component8Resref" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component9Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component9Quantity" Type="Int32" />
-          <Property Name="Component9Resref" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component10Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Component10Quantity" Type="Int32" />
-          <Property Name="Component10Resref" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="MenuCategory" Type="Int32" />
-          <Property Name="Component1" Type="Int32" />
-          <Property Name="Component2" Type="Int32" />
-          <Property Name="Component3" Type="Int32" />
-          <Property Name="Component4" Type="Int32" />
-          <Property Name="Component5" Type="Int32" />
-          <Property Name="Component6" Type="Int32" />
-          <Property Name="Component7" Type="Int32" />
-          <Property Name="Component8" Type="Int32" />
-          <Property Name="Component9" Type="Int32" />
-          <Property Name="Component10" Type="Int32" />
-        </EntityType>
-        <EntityType Name="craft_components">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Quantity" Type="Int32" />
-          <Property Name="Resref" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
-        </EntityType>
         <EntityType Name="dm_log">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DM_Name" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="DM_Account" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="DM_CDKey" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
-          <Property Name="PC_Name" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="PC_Account" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="PC_CDKey" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
-          <Property Name="Action" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
-          <Property Name="ItemName" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="ItemTag" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="ItemResref" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
-          <Property Name="GoldAmount" Type="Int64" />
-          <Property Name="XPAmount" Type="Int32" />
-          <Property Name="Timestamp" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ID" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DM_Name" Type="varchar" MaxLength="64" />
+          <Property Name="DM_Account" Type="varchar" MaxLength="64" />
+          <Property Name="DM_CDKey" Type="varchar" MaxLength="16" />
+          <Property Name="PC_Name" Type="varchar" MaxLength="64" />
+          <Property Name="PC_Account" Type="varchar" MaxLength="64" />
+          <Property Name="PC_CDKey" Type="varchar" MaxLength="16" />
+          <Property Name="Action" Type="varchar" MaxLength="16" />
+          <Property Name="ItemName" Type="varchar" MaxLength="64" />
+          <Property Name="ItemTag" Type="varchar" MaxLength="64" />
+          <Property Name="ItemResref" Type="varchar" MaxLength="16" />
+          <Property Name="GoldAmount" Type="uint" />
+          <Property Name="XPAmount" Type="int" />
+          <Property Name="Timestamp" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="loginhistories">
+          <Key>
+            <PropertyRef Name="LoginHistoryID" />
+          </Key>
+          <Property Name="LoginHistoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PlayerCharacterID" Type="int" Nullable="false" />
+          <Property Name="IPAddress" Type="longtext" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="pc_corpse">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" />
-          <Property Name="CorpseName" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="Location" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="StorageNPC" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ID" Type="uint" Nullable="false" />
+          <Property Name="CorpseName" Type="text" Nullable="false" />
+          <Property Name="Location" Type="text" Nullable="false" />
+          <Property Name="StorageNPC" Type="blob" />
+        </EntityType>
+        <EntityType Name="player_info">
+          <Key>
+            <PropertyRef Name="Account" />
+            <PropertyRef Name="IP_Address" />
+            <PropertyRef Name="CDKey" />
+          </Key>
+          <Property Name="Account" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="IP_Address" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="CDKey" Type="varchar" Nullable="false" MaxLength="8" />
+          <Property Name="CharName" Type="varchar" MaxLength="64" />
+          <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="playercharacters">
+          <Key>
+            <PropertyRef Name="PlayerCharacterID" />
+          </Key>
+          <Property Name="PlayerCharacterID" Type="int" Nullable="false" />
+          <Property Name="AccountName" Type="longtext" Nullable="false" />
+          <Property Name="CDKey" Type="longtext" Nullable="false" />
+          <Property Name="FirstName" Type="longtext" Nullable="false" />
+          <Property Name="LastName" Type="longtext" Nullable="false" />
+          <Property Name="HitPoints" Type="int" Nullable="false" />
+          <Property Name="LocationAreaTag" Type="longtext" Nullable="false" />
+          <Property Name="LocationX" Type="double" Nullable="false" />
+          <Property Name="LocationY" Type="double" Nullable="false" />
+          <Property Name="LocationZ" Type="double" Nullable="false" />
+          <Property Name="LocationOrientation" Type="double" Nullable="false" />
         </EntityType>
         <EntityType Name="pwdata">
           <Key>
@@ -514,12 +91,12 @@
             <PropertyRef Name="tag" />
             <PropertyRef Name="name" />
           </Key>
-          <Property Name="player" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="tag" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="val" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="expire" Type="Int32" />
-          <Property Name="last" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="player" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="tag" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="val" Type="text" />
+          <Property Name="expire" Type="int" />
+          <Property Name="last" Type="timestamp" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="pwobjdata">
           <Key>
@@ -527,266 +104,581 @@
             <PropertyRef Name="tag" />
             <PropertyRef Name="name" />
           </Key>
-          <Property Name="player" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="tag" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="val" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="expire" Type="Int32" />
-          <Property Name="last" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="player" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="tag" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="val" Type="blob" />
+          <Property Name="expire" Type="int" />
+          <Property Name="last" Type="timestamp" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="zst_storage">
           <Key>
             <PropertyRef Name="Tag" />
             <PropertyRef Name="AreaTag" />
           </Key>
-          <Property Name="Tag" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
-          <Property Name="AreaTag" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="AreaName" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="Item1" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item2" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item3" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item4" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item5" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item6" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item7" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item8" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item9" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item10" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item11" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item12" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item13" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item14" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item15" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item16" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item17" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item18" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item19" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item20" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item21" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item22" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item23" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item24" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item25" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item26" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item27" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item28" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item29" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item30" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item31" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item32" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item33" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item34" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item35" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item36" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item37" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item38" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item39" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item40" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item41" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item42" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item43" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item44" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item45" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item46" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item47" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item48" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item49" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item50" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item51" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item52" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item53" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item54" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item55" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item56" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item57" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item58" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item59" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item60" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item61" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item62" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item63" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item64" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item65" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item66" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item67" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item68" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item69" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item70" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item71" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item72" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item73" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item74" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item75" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item76" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item77" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item78" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item79" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item80" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item81" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item82" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item83" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item84" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item85" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item86" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item87" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item88" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item89" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item90" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item91" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item92" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item93" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item94" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item95" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item96" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item97" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item98" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item99" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item100" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Tag" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="AreaTag" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="AreaName" Type="text" />
+          <Property Name="Item1" Type="blob" />
+          <Property Name="Item2" Type="blob" />
+          <Property Name="Item3" Type="blob" />
+          <Property Name="Item4" Type="blob" />
+          <Property Name="Item5" Type="blob" />
+          <Property Name="Item6" Type="blob" />
+          <Property Name="Item7" Type="blob" />
+          <Property Name="Item8" Type="blob" />
+          <Property Name="Item9" Type="blob" />
+          <Property Name="Item10" Type="blob" />
+          <Property Name="Item11" Type="blob" />
+          <Property Name="Item12" Type="blob" />
+          <Property Name="Item13" Type="blob" />
+          <Property Name="Item14" Type="blob" />
+          <Property Name="Item15" Type="blob" />
+          <Property Name="Item16" Type="blob" />
+          <Property Name="Item17" Type="blob" />
+          <Property Name="Item18" Type="blob" />
+          <Property Name="Item19" Type="blob" />
+          <Property Name="Item20" Type="blob" />
+          <Property Name="Item21" Type="blob" />
+          <Property Name="Item22" Type="blob" />
+          <Property Name="Item23" Type="blob" />
+          <Property Name="Item24" Type="blob" />
+          <Property Name="Item25" Type="blob" />
+          <Property Name="Item26" Type="blob" />
+          <Property Name="Item27" Type="blob" />
+          <Property Name="Item28" Type="blob" />
+          <Property Name="Item29" Type="blob" />
+          <Property Name="Item30" Type="blob" />
+          <Property Name="Item31" Type="blob" />
+          <Property Name="Item32" Type="blob" />
+          <Property Name="Item33" Type="blob" />
+          <Property Name="Item34" Type="blob" />
+          <Property Name="Item35" Type="blob" />
+          <Property Name="Item36" Type="blob" />
+          <Property Name="Item37" Type="blob" />
+          <Property Name="Item38" Type="blob" />
+          <Property Name="Item39" Type="blob" />
+          <Property Name="Item40" Type="blob" />
+          <Property Name="Item41" Type="blob" />
+          <Property Name="Item42" Type="blob" />
+          <Property Name="Item43" Type="blob" />
+          <Property Name="Item44" Type="blob" />
+          <Property Name="Item45" Type="blob" />
+          <Property Name="Item46" Type="blob" />
+          <Property Name="Item47" Type="blob" />
+          <Property Name="Item48" Type="blob" />
+          <Property Name="Item49" Type="blob" />
+          <Property Name="Item50" Type="blob" />
+          <Property Name="Item51" Type="blob" />
+          <Property Name="Item52" Type="blob" />
+          <Property Name="Item53" Type="blob" />
+          <Property Name="Item54" Type="blob" />
+          <Property Name="Item55" Type="blob" />
+          <Property Name="Item56" Type="blob" />
+          <Property Name="Item57" Type="blob" />
+          <Property Name="Item58" Type="blob" />
+          <Property Name="Item59" Type="blob" />
+          <Property Name="Item60" Type="blob" />
+          <Property Name="Item61" Type="blob" />
+          <Property Name="Item62" Type="blob" />
+          <Property Name="Item63" Type="blob" />
+          <Property Name="Item64" Type="blob" />
+          <Property Name="Item65" Type="blob" />
+          <Property Name="Item66" Type="blob" />
+          <Property Name="Item67" Type="blob" />
+          <Property Name="Item68" Type="blob" />
+          <Property Name="Item69" Type="blob" />
+          <Property Name="Item70" Type="blob" />
+          <Property Name="Item71" Type="blob" />
+          <Property Name="Item72" Type="blob" />
+          <Property Name="Item73" Type="blob" />
+          <Property Name="Item74" Type="blob" />
+          <Property Name="Item75" Type="blob" />
+          <Property Name="Item76" Type="blob" />
+          <Property Name="Item77" Type="blob" />
+          <Property Name="Item78" Type="blob" />
+          <Property Name="Item79" Type="blob" />
+          <Property Name="Item80" Type="blob" />
+          <Property Name="Item81" Type="blob" />
+          <Property Name="Item82" Type="blob" />
+          <Property Name="Item83" Type="blob" />
+          <Property Name="Item84" Type="blob" />
+          <Property Name="Item85" Type="blob" />
+          <Property Name="Item86" Type="blob" />
+          <Property Name="Item87" Type="blob" />
+          <Property Name="Item88" Type="blob" />
+          <Property Name="Item89" Type="blob" />
+          <Property Name="Item90" Type="blob" />
+          <Property Name="Item91" Type="blob" />
+          <Property Name="Item92" Type="blob" />
+          <Property Name="Item93" Type="blob" />
+          <Property Name="Item94" Type="blob" />
+          <Property Name="Item95" Type="blob" />
+          <Property Name="Item96" Type="blob" />
+          <Property Name="Item97" Type="blob" />
+          <Property Name="Item98" Type="blob" />
+          <Property Name="Item99" Type="blob" />
+          <Property Name="Item100" Type="blob" />
         </EntityType>
         <EntityType Name="zsttemplate">
           <Key>
             <PropertyRef Name="Tag" />
             <PropertyRef Name="AreaTag" />
           </Key>
-          <Property Name="Tag" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
-          <Property Name="AreaTag" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="AreaName" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="Item1" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item2" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item3" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item4" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item5" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item6" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item7" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item8" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item9" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item10" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item11" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item12" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item13" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item14" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item15" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item16" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item17" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item18" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item19" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item20" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item21" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item22" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item23" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item24" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item25" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item26" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item27" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item28" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item29" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item30" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item31" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item32" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item33" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item34" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item35" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item36" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item37" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item38" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item39" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item40" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item41" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item42" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item43" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item44" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item45" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item46" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item47" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item48" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item49" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item50" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item51" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item52" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item53" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item54" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item55" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item56" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item57" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item58" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item59" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item60" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item61" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item62" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item63" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item64" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item65" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item66" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item67" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item68" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item69" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item70" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item71" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item72" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item73" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item74" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item75" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item76" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item77" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item78" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item79" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item80" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item81" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item82" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item83" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item84" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item85" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item86" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item87" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item88" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item89" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item90" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item91" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item92" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item93" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item94" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item95" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item96" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item97" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item98" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item99" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Item100" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Tag" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="AreaTag" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="AreaName" Type="text" />
+          <Property Name="Item1" Type="blob" />
+          <Property Name="Item2" Type="blob" />
+          <Property Name="Item3" Type="blob" />
+          <Property Name="Item4" Type="blob" />
+          <Property Name="Item5" Type="blob" />
+          <Property Name="Item6" Type="blob" />
+          <Property Name="Item7" Type="blob" />
+          <Property Name="Item8" Type="blob" />
+          <Property Name="Item9" Type="blob" />
+          <Property Name="Item10" Type="blob" />
+          <Property Name="Item11" Type="blob" />
+          <Property Name="Item12" Type="blob" />
+          <Property Name="Item13" Type="blob" />
+          <Property Name="Item14" Type="blob" />
+          <Property Name="Item15" Type="blob" />
+          <Property Name="Item16" Type="blob" />
+          <Property Name="Item17" Type="blob" />
+          <Property Name="Item18" Type="blob" />
+          <Property Name="Item19" Type="blob" />
+          <Property Name="Item20" Type="blob" />
+          <Property Name="Item21" Type="blob" />
+          <Property Name="Item22" Type="blob" />
+          <Property Name="Item23" Type="blob" />
+          <Property Name="Item24" Type="blob" />
+          <Property Name="Item25" Type="blob" />
+          <Property Name="Item26" Type="blob" />
+          <Property Name="Item27" Type="blob" />
+          <Property Name="Item28" Type="blob" />
+          <Property Name="Item29" Type="blob" />
+          <Property Name="Item30" Type="blob" />
+          <Property Name="Item31" Type="blob" />
+          <Property Name="Item32" Type="blob" />
+          <Property Name="Item33" Type="blob" />
+          <Property Name="Item34" Type="blob" />
+          <Property Name="Item35" Type="blob" />
+          <Property Name="Item36" Type="blob" />
+          <Property Name="Item37" Type="blob" />
+          <Property Name="Item38" Type="blob" />
+          <Property Name="Item39" Type="blob" />
+          <Property Name="Item40" Type="blob" />
+          <Property Name="Item41" Type="blob" />
+          <Property Name="Item42" Type="blob" />
+          <Property Name="Item43" Type="blob" />
+          <Property Name="Item44" Type="blob" />
+          <Property Name="Item45" Type="blob" />
+          <Property Name="Item46" Type="blob" />
+          <Property Name="Item47" Type="blob" />
+          <Property Name="Item48" Type="blob" />
+          <Property Name="Item49" Type="blob" />
+          <Property Name="Item50" Type="blob" />
+          <Property Name="Item51" Type="blob" />
+          <Property Name="Item52" Type="blob" />
+          <Property Name="Item53" Type="blob" />
+          <Property Name="Item54" Type="blob" />
+          <Property Name="Item55" Type="blob" />
+          <Property Name="Item56" Type="blob" />
+          <Property Name="Item57" Type="blob" />
+          <Property Name="Item58" Type="blob" />
+          <Property Name="Item59" Type="blob" />
+          <Property Name="Item60" Type="blob" />
+          <Property Name="Item61" Type="blob" />
+          <Property Name="Item62" Type="blob" />
+          <Property Name="Item63" Type="blob" />
+          <Property Name="Item64" Type="blob" />
+          <Property Name="Item65" Type="blob" />
+          <Property Name="Item66" Type="blob" />
+          <Property Name="Item67" Type="blob" />
+          <Property Name="Item68" Type="blob" />
+          <Property Name="Item69" Type="blob" />
+          <Property Name="Item70" Type="blob" />
+          <Property Name="Item71" Type="blob" />
+          <Property Name="Item72" Type="blob" />
+          <Property Name="Item73" Type="blob" />
+          <Property Name="Item74" Type="blob" />
+          <Property Name="Item75" Type="blob" />
+          <Property Name="Item76" Type="blob" />
+          <Property Name="Item77" Type="blob" />
+          <Property Name="Item78" Type="blob" />
+          <Property Name="Item79" Type="blob" />
+          <Property Name="Item80" Type="blob" />
+          <Property Name="Item81" Type="blob" />
+          <Property Name="Item82" Type="blob" />
+          <Property Name="Item83" Type="blob" />
+          <Property Name="Item84" Type="blob" />
+          <Property Name="Item85" Type="blob" />
+          <Property Name="Item86" Type="blob" />
+          <Property Name="Item87" Type="blob" />
+          <Property Name="Item88" Type="blob" />
+          <Property Name="Item89" Type="blob" />
+          <Property Name="Item90" Type="blob" />
+          <Property Name="Item91" Type="blob" />
+          <Property Name="Item92" Type="blob" />
+          <Property Name="Item93" Type="blob" />
+          <Property Name="Item94" Type="blob" />
+          <Property Name="Item95" Type="blob" />
+          <Property Name="Item96" Type="blob" />
+          <Property Name="Item97" Type="blob" />
+          <Property Name="Item98" Type="blob" />
+          <Property Name="Item99" Type="blob" />
+          <Property Name="Item100" Type="blob" />
         </EntityType>
-        <EntityType Name="PlayerCharacter">
+        <Association Name="fk_player_character_id">
+          <End Role="playercharacters" Type="MZS2DataModel.Store.playercharacters" Multiplicity="1" />
+          <End Role="loginhistories" Type="MZS2DataModel.Store.loginhistories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="playercharacters">
+              <PropertyRef Name="PlayerCharacterID" />
+            </Principal>
+            <Dependent Role="loginhistories">
+              <PropertyRef Name="PlayerCharacterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MZS2DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MZS2Context" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dm_log" EntityType="MZS2DataModel.dm_log" />
+          <EntitySet Name="loginhistories" EntityType="MZS2DataModel.loginhistory" />
+          <EntitySet Name="pc_corpse" EntityType="MZS2DataModel.pc_corpse" />
+          <EntitySet Name="player_info" EntityType="MZS2DataModel.player_info" />
+          <EntitySet Name="playercharacters" EntityType="MZS2DataModel.playercharacter" />
+          <EntitySet Name="pwdatas" EntityType="MZS2DataModel.pwdata" />
+          <EntitySet Name="pwobjdatas" EntityType="MZS2DataModel.pwobjdata" />
+          <EntitySet Name="zst_storage" EntityType="MZS2DataModel.zst_storage" />
+          <EntitySet Name="zsttemplates" EntityType="MZS2DataModel.zsttemplate" />
+          <AssociationSet Name="fk_player_character_id" Association="MZS2DataModel.fk_player_character_id">
+            <End Role="playercharacter" EntitySet="playercharacters" />
+            <End Role="loginhistory" EntitySet="loginhistories" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="dm_log">
           <Key>
-            <PropertyRef Name="PlayerCharacterID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Int32" Name="PlayerCharacterID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="AccountName" Nullable="false" />
-          <Property Type="String" Name="CDKey" Nullable="false" />
-          <Property Type="String" Name="FirstName" Nullable="false" />
-          <Property Type="String" Name="LastName" Nullable="false" />
-          <Property Type="Int32" Name="HitPoints" Nullable="false" />
-          <Property Type="String" Name="LocationAreaTag" Nullable="false" />
-          <Property Type="Double" Name="LocationX" Nullable="false" />
-          <Property Type="Double" Name="LocationY" Nullable="false" />
-          <Property Type="Double" Name="LocationZ" Nullable="false" />
-          <Property Type="Double" Name="LocationOrientation" Nullable="false" />
-          <NavigationProperty Name="LoginHistories" Relationship="MZS2DataModel.LoginHistoryPlayerCharacter" FromRole="PlayerCharacter" ToRole="LoginHistory" />
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="DM_Name" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DM_Account" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DM_CDKey" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PC_Name" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PC_Account" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PC_CDKey" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Action" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ItemName" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ItemTag" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ItemResref" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="GoldAmount" />
+          <Property Type="Int32" Name="XPAmount" />
+          <Property Type="String" Name="Timestamp" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="LoginHistory">
+        <EntityType Name="loginhistory">
           <Key>
             <PropertyRef Name="LoginHistoryID" />
           </Key>
           <Property Type="Int32" Name="LoginHistoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="PlayerCharacter" Relationship="MZS2DataModel.LoginHistoryPlayerCharacter" FromRole="LoginHistory" ToRole="PlayerCharacter" />
           <Property Type="Int32" Name="PlayerCharacterID" Nullable="false" />
-          <Property Type="String" Name="IPAddress" Nullable="false" />
+          <Property Type="String" Name="IPAddress" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Timestamp" Nullable="false" />
+          <NavigationProperty Name="playercharacter" Relationship="MZS2DataModel.fk_player_character_id" FromRole="loginhistory" ToRole="playercharacter" />
+        </EntityType>
+        <EntityType Name="pc_corpse">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CorpseName" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Location" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="StorageNPC" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="player_info">
+          <Key>
+            <PropertyRef Name="Account" />
+            <PropertyRef Name="IP_Address" />
+            <PropertyRef Name="CDKey" />
+          </Key>
+          <Property Type="String" Name="Account" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IP_Address" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CDKey" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CharName" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="Timestamp" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
-        <Association Name="LoginHistoryPlayerCharacter">
-          <End Type="MZS2DataModel.LoginHistory" Role="LoginHistory" Multiplicity="*" />
-          <End Type="MZS2DataModel.PlayerCharacter" Role="PlayerCharacter" Multiplicity="1" />
+        <EntityType Name="playercharacter">
+          <Key>
+            <PropertyRef Name="PlayerCharacterID" />
+          </Key>
+          <Property Type="Int32" Name="PlayerCharacterID" Nullable="false" />
+          <Property Type="String" Name="AccountName" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CDKey" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="HitPoints" Nullable="false" />
+          <Property Type="String" Name="LocationAreaTag" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="LocationX" Nullable="false" />
+          <Property Type="Double" Name="LocationY" Nullable="false" />
+          <Property Type="Double" Name="LocationZ" Nullable="false" />
+          <Property Type="Double" Name="LocationOrientation" Nullable="false" />
+          <NavigationProperty Name="loginhistories" Relationship="MZS2DataModel.fk_player_character_id" FromRole="playercharacter" ToRole="loginhistory" />
+        </EntityType>
+        <EntityType Name="pwdata">
+          <Key>
+            <PropertyRef Name="player" />
+            <PropertyRef Name="tag" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Type="String" Name="player" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="tag" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="val" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="expire" />
+          <Property Type="DateTime" Name="last" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="pwobjdata">
+          <Key>
+            <PropertyRef Name="player" />
+            <PropertyRef Name="tag" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Type="String" Name="player" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="tag" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="val" MaxLength="Max" FixedLength="false" />
+          <Property Type="Int32" Name="expire" />
+          <Property Type="DateTime" Name="last" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="zst_storage">
+          <Key>
+            <PropertyRef Name="Tag" />
+            <PropertyRef Name="AreaTag" />
+          </Key>
+          <Property Type="String" Name="Tag" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AreaTag" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AreaName" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="Item1" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item2" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item3" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item4" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item5" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item6" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item7" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item8" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item9" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item10" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item11" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item12" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item13" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item14" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item15" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item16" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item17" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item18" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item19" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item20" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item21" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item22" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item23" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item24" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item25" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item26" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item27" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item28" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item29" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item30" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item31" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item32" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item33" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item34" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item35" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item36" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item37" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item38" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item39" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item40" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item41" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item42" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item43" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item44" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item45" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item46" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item47" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item48" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item49" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item50" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item51" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item52" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item53" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item54" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item55" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item56" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item57" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item58" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item59" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item60" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item61" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item62" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item63" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item64" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item65" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item66" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item67" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item68" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item69" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item70" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item71" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item72" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item73" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item74" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item75" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item76" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item77" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item78" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item79" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item80" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item81" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item82" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item83" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item84" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item85" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item86" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item87" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item88" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item89" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item90" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item91" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item92" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item93" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item94" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item95" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item96" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item97" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item98" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item99" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item100" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="zsttemplate">
+          <Key>
+            <PropertyRef Name="Tag" />
+            <PropertyRef Name="AreaTag" />
+          </Key>
+          <Property Type="String" Name="Tag" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AreaTag" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AreaName" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="Item1" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item2" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item3" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item4" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item5" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item6" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item7" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item8" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item9" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item10" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item11" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item12" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item13" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item14" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item15" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item16" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item17" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item18" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item19" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item20" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item21" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item22" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item23" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item24" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item25" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item26" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item27" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item28" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item29" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item30" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item31" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item32" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item33" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item34" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item35" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item36" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item37" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item38" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item39" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item40" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item41" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item42" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item43" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item44" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item45" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item46" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item47" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item48" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item49" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item50" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item51" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item52" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item53" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item54" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item55" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item56" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item57" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item58" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item59" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item60" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item61" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item62" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item63" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item64" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item65" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item66" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item67" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item68" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item69" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item70" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item71" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item72" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item73" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item74" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item75" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item76" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item77" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item78" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item79" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item80" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item81" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item82" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item83" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item84" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item85" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item86" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item87" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item88" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item89" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item90" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item91" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item92" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item93" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item94" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item95" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item96" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item97" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item98" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item99" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Item100" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="fk_player_character_id">
+          <End Type="MZS2DataModel.playercharacter" Role="playercharacter" Multiplicity="1" />
+          <End Type="MZS2DataModel.loginhistory" Role="loginhistory" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PlayerCharacter">
+            <Principal Role="playercharacter">
               <PropertyRef Name="PlayerCharacterID" />
             </Principal>
-            <Dependent Role="LoginHistory">
+            <Dependent Role="loginhistory">
               <PropertyRef Name="PlayerCharacterID" />
             </Dependent>
           </ReferentialConstraint>
@@ -797,373 +689,317 @@
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="MZS2DataModelStoreContainer" CdmEntityContainer="MZS2Context">
-    <EntitySetMapping Name="craft_blueprints">
-      <EntityTypeMapping TypeName="IsTypeOf(MZS2DataModel.craft_blueprints)">
-        <MappingFragment StoreEntitySet="craft_blueprints">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="ItemResref" ColumnName="ItemResref" />
-          <ScalarProperty Name="BaseAmount" ColumnName="BaseAmount" />
-          <ScalarProperty Name="AdditionalAmount" ColumnName="AdditionalAmount" />
-          <ScalarProperty Name="Skill" ColumnName="Skill" />
-          <ScalarProperty Name="BlueprintLevel" ColumnName="BlueprintLevel" />
-          <ScalarProperty Name="XP" ColumnName="XP" />
-          <ScalarProperty Name="Device" ColumnName="Device" />
-          <ScalarProperty Name="Component1Name" ColumnName="Component1Name" />
-          <ScalarProperty Name="Component1Quantity" ColumnName="Component1Quantity" />
-          <ScalarProperty Name="Component1Resref" ColumnName="Component1Resref" />
-          <ScalarProperty Name="Component2Name" ColumnName="Component2Name" />
-          <ScalarProperty Name="Component2Quantity" ColumnName="Component2Quantity" />
-          <ScalarProperty Name="Component2Resref" ColumnName="Component2Resref" />
-          <ScalarProperty Name="Component3Name" ColumnName="Component3Name" />
-          <ScalarProperty Name="Component3Quantity" ColumnName="Component3Quantity" />
-          <ScalarProperty Name="Component3Resref" ColumnName="Component3Resref" />
-          <ScalarProperty Name="Component4Name" ColumnName="Component4Name" />
-          <ScalarProperty Name="Component4Quantity" ColumnName="Component4Quantity" />
-          <ScalarProperty Name="Component4Resref" ColumnName="Component4Resref" />
-          <ScalarProperty Name="Component5Name" ColumnName="Component5Name" />
-          <ScalarProperty Name="Component5Quantity" ColumnName="Component5Quantity" />
-          <ScalarProperty Name="Component5Resref" ColumnName="Component5Resref" />
-          <ScalarProperty Name="Component6Name" ColumnName="Component6Name" />
-          <ScalarProperty Name="Component6Quantity" ColumnName="Component6Quantity" />
-          <ScalarProperty Name="Component6Resref" ColumnName="Component6Resref" />
-          <ScalarProperty Name="Component7Name" ColumnName="Component7Name" />
-          <ScalarProperty Name="Component7Quantity" ColumnName="Component7Quantity" />
-          <ScalarProperty Name="Component7Resref" ColumnName="Component7Resref" />
-          <ScalarProperty Name="Component8Name" ColumnName="Component8Name" />
-          <ScalarProperty Name="Component8Quantity" ColumnName="Component8Quantity" />
-          <ScalarProperty Name="Component8Resref" ColumnName="Component8Resref" />
-          <ScalarProperty Name="Component9Name" ColumnName="Component9Name" />
-          <ScalarProperty Name="Component9Quantity" ColumnName="Component9Quantity" />
-          <ScalarProperty Name="Component9Resref" ColumnName="Component9Resref" />
-          <ScalarProperty Name="Component10Name" ColumnName="Component10Name" />
-          <ScalarProperty Name="Component10Quantity" ColumnName="Component10Quantity" />
-          <ScalarProperty Name="Component10Resref" ColumnName="Component10Resref" />
-          <ScalarProperty Name="MenuCategory" ColumnName="MenuCategory" />
-          <ScalarProperty Name="Component1" ColumnName="Component1" />
-          <ScalarProperty Name="Component2" ColumnName="Component2" />
-          <ScalarProperty Name="Component3" ColumnName="Component3" />
-          <ScalarProperty Name="Component4" ColumnName="Component4" />
-          <ScalarProperty Name="Component5" ColumnName="Component5" />
-          <ScalarProperty Name="Component6" ColumnName="Component6" />
-          <ScalarProperty Name="Component7" ColumnName="Component7" />
-          <ScalarProperty Name="Component8" ColumnName="Component8" />
-          <ScalarProperty Name="Component9" ColumnName="Component9" />
-          <ScalarProperty Name="Component10" ColumnName="Component10" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="craft_components">
-      <EntityTypeMapping TypeName="IsTypeOf(MZS2DataModel.craft_components)">
-        <MappingFragment StoreEntitySet="craft_components">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Resref" ColumnName="Resref" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="dm_log">
-      <EntityTypeMapping TypeName="IsTypeOf(MZS2DataModel.dm_log)">
-        <MappingFragment StoreEntitySet="dm_log">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="DM_Name" ColumnName="DM_Name" />
-          <ScalarProperty Name="DM_Account" ColumnName="DM_Account" />
-          <ScalarProperty Name="DM_CDKey" ColumnName="DM_CDKey" />
-          <ScalarProperty Name="PC_Name" ColumnName="PC_Name" />
-          <ScalarProperty Name="PC_Account" ColumnName="PC_Account" />
-          <ScalarProperty Name="PC_CDKey" ColumnName="PC_CDKey" />
-          <ScalarProperty Name="Action" ColumnName="Action" />
-          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-          <ScalarProperty Name="ItemTag" ColumnName="ItemTag" />
-          <ScalarProperty Name="ItemResref" ColumnName="ItemResref" />
-          <ScalarProperty Name="GoldAmount" ColumnName="GoldAmount" />
-          <ScalarProperty Name="XPAmount" ColumnName="XPAmount" />
-          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="pc_corpse">
-      <EntityTypeMapping TypeName="IsTypeOf(MZS2DataModel.pc_corpse)">
-        <MappingFragment StoreEntitySet="pc_corpse">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="CorpseName" ColumnName="CorpseName" />
-          <ScalarProperty Name="Location" ColumnName="Location" />
-          <ScalarProperty Name="StorageNPC" ColumnName="StorageNPC" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="pwdatas">
-      <EntityTypeMapping TypeName="IsTypeOf(MZS2DataModel.pwdata)">
-        <MappingFragment StoreEntitySet="pwdatas">
-          <ScalarProperty Name="player" ColumnName="player" />
-          <ScalarProperty Name="tag" ColumnName="tag" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="val" ColumnName="val" />
-          <ScalarProperty Name="expire" ColumnName="expire" />
-          <ScalarProperty Name="last" ColumnName="last" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="pwobjdatas">
-      <EntityTypeMapping TypeName="IsTypeOf(MZS2DataModel.pwobjdata)">
-        <MappingFragment StoreEntitySet="pwobjdatas">
-          <ScalarProperty Name="player" ColumnName="player" />
-          <ScalarProperty Name="tag" ColumnName="tag" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="val" ColumnName="val" />
-          <ScalarProperty Name="expire" ColumnName="expire" />
-          <ScalarProperty Name="last" ColumnName="last" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="zst_storage">
-      <EntityTypeMapping TypeName="IsTypeOf(MZS2DataModel.zst_storage)">
-        <MappingFragment StoreEntitySet="zst_storage">
-          <ScalarProperty Name="Tag" ColumnName="Tag" />
-          <ScalarProperty Name="AreaTag" ColumnName="AreaTag" />
-          <ScalarProperty Name="AreaName" ColumnName="AreaName" />
-          <ScalarProperty Name="Item1" ColumnName="Item1" />
-          <ScalarProperty Name="Item2" ColumnName="Item2" />
-          <ScalarProperty Name="Item3" ColumnName="Item3" />
-          <ScalarProperty Name="Item4" ColumnName="Item4" />
-          <ScalarProperty Name="Item5" ColumnName="Item5" />
-          <ScalarProperty Name="Item6" ColumnName="Item6" />
-          <ScalarProperty Name="Item7" ColumnName="Item7" />
-          <ScalarProperty Name="Item8" ColumnName="Item8" />
-          <ScalarProperty Name="Item9" ColumnName="Item9" />
-          <ScalarProperty Name="Item10" ColumnName="Item10" />
-          <ScalarProperty Name="Item11" ColumnName="Item11" />
-          <ScalarProperty Name="Item12" ColumnName="Item12" />
-          <ScalarProperty Name="Item13" ColumnName="Item13" />
-          <ScalarProperty Name="Item14" ColumnName="Item14" />
-          <ScalarProperty Name="Item15" ColumnName="Item15" />
-          <ScalarProperty Name="Item16" ColumnName="Item16" />
-          <ScalarProperty Name="Item17" ColumnName="Item17" />
-          <ScalarProperty Name="Item18" ColumnName="Item18" />
-          <ScalarProperty Name="Item19" ColumnName="Item19" />
-          <ScalarProperty Name="Item20" ColumnName="Item20" />
-          <ScalarProperty Name="Item21" ColumnName="Item21" />
-          <ScalarProperty Name="Item22" ColumnName="Item22" />
-          <ScalarProperty Name="Item23" ColumnName="Item23" />
-          <ScalarProperty Name="Item24" ColumnName="Item24" />
-          <ScalarProperty Name="Item25" ColumnName="Item25" />
-          <ScalarProperty Name="Item26" ColumnName="Item26" />
-          <ScalarProperty Name="Item27" ColumnName="Item27" />
-          <ScalarProperty Name="Item28" ColumnName="Item28" />
-          <ScalarProperty Name="Item29" ColumnName="Item29" />
-          <ScalarProperty Name="Item30" ColumnName="Item30" />
-          <ScalarProperty Name="Item31" ColumnName="Item31" />
-          <ScalarProperty Name="Item32" ColumnName="Item32" />
-          <ScalarProperty Name="Item33" ColumnName="Item33" />
-          <ScalarProperty Name="Item34" ColumnName="Item34" />
-          <ScalarProperty Name="Item35" ColumnName="Item35" />
-          <ScalarProperty Name="Item36" ColumnName="Item36" />
-          <ScalarProperty Name="Item37" ColumnName="Item37" />
-          <ScalarProperty Name="Item38" ColumnName="Item38" />
-          <ScalarProperty Name="Item39" ColumnName="Item39" />
-          <ScalarProperty Name="Item40" ColumnName="Item40" />
-          <ScalarProperty Name="Item41" ColumnName="Item41" />
-          <ScalarProperty Name="Item42" ColumnName="Item42" />
-          <ScalarProperty Name="Item43" ColumnName="Item43" />
-          <ScalarProperty Name="Item44" ColumnName="Item44" />
-          <ScalarProperty Name="Item45" ColumnName="Item45" />
-          <ScalarProperty Name="Item46" ColumnName="Item46" />
-          <ScalarProperty Name="Item47" ColumnName="Item47" />
-          <ScalarProperty Name="Item48" ColumnName="Item48" />
-          <ScalarProperty Name="Item49" ColumnName="Item49" />
-          <ScalarProperty Name="Item50" ColumnName="Item50" />
-          <ScalarProperty Name="Item51" ColumnName="Item51" />
-          <ScalarProperty Name="Item52" ColumnName="Item52" />
-          <ScalarProperty Name="Item53" ColumnName="Item53" />
-          <ScalarProperty Name="Item54" ColumnName="Item54" />
-          <ScalarProperty Name="Item55" ColumnName="Item55" />
-          <ScalarProperty Name="Item56" ColumnName="Item56" />
-          <ScalarProperty Name="Item57" ColumnName="Item57" />
-          <ScalarProperty Name="Item58" ColumnName="Item58" />
-          <ScalarProperty Name="Item59" ColumnName="Item59" />
-          <ScalarProperty Name="Item60" ColumnName="Item60" />
-          <ScalarProperty Name="Item61" ColumnName="Item61" />
-          <ScalarProperty Name="Item62" ColumnName="Item62" />
-          <ScalarProperty Name="Item63" ColumnName="Item63" />
-          <ScalarProperty Name="Item64" ColumnName="Item64" />
-          <ScalarProperty Name="Item65" ColumnName="Item65" />
-          <ScalarProperty Name="Item66" ColumnName="Item66" />
-          <ScalarProperty Name="Item67" ColumnName="Item67" />
-          <ScalarProperty Name="Item68" ColumnName="Item68" />
-          <ScalarProperty Name="Item69" ColumnName="Item69" />
-          <ScalarProperty Name="Item70" ColumnName="Item70" />
-          <ScalarProperty Name="Item71" ColumnName="Item71" />
-          <ScalarProperty Name="Item72" ColumnName="Item72" />
-          <ScalarProperty Name="Item73" ColumnName="Item73" />
-          <ScalarProperty Name="Item74" ColumnName="Item74" />
-          <ScalarProperty Name="Item75" ColumnName="Item75" />
-          <ScalarProperty Name="Item76" ColumnName="Item76" />
-          <ScalarProperty Name="Item77" ColumnName="Item77" />
-          <ScalarProperty Name="Item78" ColumnName="Item78" />
-          <ScalarProperty Name="Item79" ColumnName="Item79" />
-          <ScalarProperty Name="Item80" ColumnName="Item80" />
-          <ScalarProperty Name="Item81" ColumnName="Item81" />
-          <ScalarProperty Name="Item82" ColumnName="Item82" />
-          <ScalarProperty Name="Item83" ColumnName="Item83" />
-          <ScalarProperty Name="Item84" ColumnName="Item84" />
-          <ScalarProperty Name="Item85" ColumnName="Item85" />
-          <ScalarProperty Name="Item86" ColumnName="Item86" />
-          <ScalarProperty Name="Item87" ColumnName="Item87" />
-          <ScalarProperty Name="Item88" ColumnName="Item88" />
-          <ScalarProperty Name="Item89" ColumnName="Item89" />
-          <ScalarProperty Name="Item90" ColumnName="Item90" />
-          <ScalarProperty Name="Item91" ColumnName="Item91" />
-          <ScalarProperty Name="Item92" ColumnName="Item92" />
-          <ScalarProperty Name="Item93" ColumnName="Item93" />
-          <ScalarProperty Name="Item94" ColumnName="Item94" />
-          <ScalarProperty Name="Item95" ColumnName="Item95" />
-          <ScalarProperty Name="Item96" ColumnName="Item96" />
-          <ScalarProperty Name="Item97" ColumnName="Item97" />
-          <ScalarProperty Name="Item98" ColumnName="Item98" />
-          <ScalarProperty Name="Item99" ColumnName="Item99" />
-          <ScalarProperty Name="Item100" ColumnName="Item100" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="zsttemplates">
-      <EntityTypeMapping TypeName="IsTypeOf(MZS2DataModel.zsttemplate)">
-        <MappingFragment StoreEntitySet="zsttemplates">
-          <ScalarProperty Name="Tag" ColumnName="Tag" />
-          <ScalarProperty Name="AreaTag" ColumnName="AreaTag" />
-          <ScalarProperty Name="AreaName" ColumnName="AreaName" />
-          <ScalarProperty Name="Item1" ColumnName="Item1" />
-          <ScalarProperty Name="Item2" ColumnName="Item2" />
-          <ScalarProperty Name="Item3" ColumnName="Item3" />
-          <ScalarProperty Name="Item4" ColumnName="Item4" />
-          <ScalarProperty Name="Item5" ColumnName="Item5" />
-          <ScalarProperty Name="Item6" ColumnName="Item6" />
-          <ScalarProperty Name="Item7" ColumnName="Item7" />
-          <ScalarProperty Name="Item8" ColumnName="Item8" />
-          <ScalarProperty Name="Item9" ColumnName="Item9" />
-          <ScalarProperty Name="Item10" ColumnName="Item10" />
-          <ScalarProperty Name="Item11" ColumnName="Item11" />
-          <ScalarProperty Name="Item12" ColumnName="Item12" />
-          <ScalarProperty Name="Item13" ColumnName="Item13" />
-          <ScalarProperty Name="Item14" ColumnName="Item14" />
-          <ScalarProperty Name="Item15" ColumnName="Item15" />
-          <ScalarProperty Name="Item16" ColumnName="Item16" />
-          <ScalarProperty Name="Item17" ColumnName="Item17" />
-          <ScalarProperty Name="Item18" ColumnName="Item18" />
-          <ScalarProperty Name="Item19" ColumnName="Item19" />
-          <ScalarProperty Name="Item20" ColumnName="Item20" />
-          <ScalarProperty Name="Item21" ColumnName="Item21" />
-          <ScalarProperty Name="Item22" ColumnName="Item22" />
-          <ScalarProperty Name="Item23" ColumnName="Item23" />
-          <ScalarProperty Name="Item24" ColumnName="Item24" />
-          <ScalarProperty Name="Item25" ColumnName="Item25" />
-          <ScalarProperty Name="Item26" ColumnName="Item26" />
-          <ScalarProperty Name="Item27" ColumnName="Item27" />
-          <ScalarProperty Name="Item28" ColumnName="Item28" />
-          <ScalarProperty Name="Item29" ColumnName="Item29" />
-          <ScalarProperty Name="Item30" ColumnName="Item30" />
-          <ScalarProperty Name="Item31" ColumnName="Item31" />
-          <ScalarProperty Name="Item32" ColumnName="Item32" />
-          <ScalarProperty Name="Item33" ColumnName="Item33" />
-          <ScalarProperty Name="Item34" ColumnName="Item34" />
-          <ScalarProperty Name="Item35" ColumnName="Item35" />
-          <ScalarProperty Name="Item36" ColumnName="Item36" />
-          <ScalarProperty Name="Item37" ColumnName="Item37" />
-          <ScalarProperty Name="Item38" ColumnName="Item38" />
-          <ScalarProperty Name="Item39" ColumnName="Item39" />
-          <ScalarProperty Name="Item40" ColumnName="Item40" />
-          <ScalarProperty Name="Item41" ColumnName="Item41" />
-          <ScalarProperty Name="Item42" ColumnName="Item42" />
-          <ScalarProperty Name="Item43" ColumnName="Item43" />
-          <ScalarProperty Name="Item44" ColumnName="Item44" />
-          <ScalarProperty Name="Item45" ColumnName="Item45" />
-          <ScalarProperty Name="Item46" ColumnName="Item46" />
-          <ScalarProperty Name="Item47" ColumnName="Item47" />
-          <ScalarProperty Name="Item48" ColumnName="Item48" />
-          <ScalarProperty Name="Item49" ColumnName="Item49" />
-          <ScalarProperty Name="Item50" ColumnName="Item50" />
-          <ScalarProperty Name="Item51" ColumnName="Item51" />
-          <ScalarProperty Name="Item52" ColumnName="Item52" />
-          <ScalarProperty Name="Item53" ColumnName="Item53" />
-          <ScalarProperty Name="Item54" ColumnName="Item54" />
-          <ScalarProperty Name="Item55" ColumnName="Item55" />
-          <ScalarProperty Name="Item56" ColumnName="Item56" />
-          <ScalarProperty Name="Item57" ColumnName="Item57" />
-          <ScalarProperty Name="Item58" ColumnName="Item58" />
-          <ScalarProperty Name="Item59" ColumnName="Item59" />
-          <ScalarProperty Name="Item60" ColumnName="Item60" />
-          <ScalarProperty Name="Item61" ColumnName="Item61" />
-          <ScalarProperty Name="Item62" ColumnName="Item62" />
-          <ScalarProperty Name="Item63" ColumnName="Item63" />
-          <ScalarProperty Name="Item64" ColumnName="Item64" />
-          <ScalarProperty Name="Item65" ColumnName="Item65" />
-          <ScalarProperty Name="Item66" ColumnName="Item66" />
-          <ScalarProperty Name="Item67" ColumnName="Item67" />
-          <ScalarProperty Name="Item68" ColumnName="Item68" />
-          <ScalarProperty Name="Item69" ColumnName="Item69" />
-          <ScalarProperty Name="Item70" ColumnName="Item70" />
-          <ScalarProperty Name="Item71" ColumnName="Item71" />
-          <ScalarProperty Name="Item72" ColumnName="Item72" />
-          <ScalarProperty Name="Item73" ColumnName="Item73" />
-          <ScalarProperty Name="Item74" ColumnName="Item74" />
-          <ScalarProperty Name="Item75" ColumnName="Item75" />
-          <ScalarProperty Name="Item76" ColumnName="Item76" />
-          <ScalarProperty Name="Item77" ColumnName="Item77" />
-          <ScalarProperty Name="Item78" ColumnName="Item78" />
-          <ScalarProperty Name="Item79" ColumnName="Item79" />
-          <ScalarProperty Name="Item80" ColumnName="Item80" />
-          <ScalarProperty Name="Item81" ColumnName="Item81" />
-          <ScalarProperty Name="Item82" ColumnName="Item82" />
-          <ScalarProperty Name="Item83" ColumnName="Item83" />
-          <ScalarProperty Name="Item84" ColumnName="Item84" />
-          <ScalarProperty Name="Item85" ColumnName="Item85" />
-          <ScalarProperty Name="Item86" ColumnName="Item86" />
-          <ScalarProperty Name="Item87" ColumnName="Item87" />
-          <ScalarProperty Name="Item88" ColumnName="Item88" />
-          <ScalarProperty Name="Item89" ColumnName="Item89" />
-          <ScalarProperty Name="Item90" ColumnName="Item90" />
-          <ScalarProperty Name="Item91" ColumnName="Item91" />
-          <ScalarProperty Name="Item92" ColumnName="Item92" />
-          <ScalarProperty Name="Item93" ColumnName="Item93" />
-          <ScalarProperty Name="Item94" ColumnName="Item94" />
-          <ScalarProperty Name="Item95" ColumnName="Item95" />
-          <ScalarProperty Name="Item96" ColumnName="Item96" />
-          <ScalarProperty Name="Item97" ColumnName="Item97" />
-          <ScalarProperty Name="Item98" ColumnName="Item98" />
-          <ScalarProperty Name="Item99" ColumnName="Item99" />
-          <ScalarProperty Name="Item100" ColumnName="Item100" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PlayerCharacters">
-      <EntityTypeMapping TypeName="IsTypeOf(MZS2DataModel.PlayerCharacter)">
-        <MappingFragment StoreEntitySet="PlayerCharacters">
-          <ScalarProperty Name="PlayerCharacterID" ColumnName="PlayerCharacterID" />
-          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
-          <ScalarProperty Name="CDKey" ColumnName="CDKey" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="HitPoints" ColumnName="HitPoints" />
-          <ScalarProperty Name="LocationAreaTag" ColumnName="LocationAreaTag" />
-          <ScalarProperty Name="LocationX" ColumnName="LocationX" />
-          <ScalarProperty Name="LocationY" ColumnName="LocationY" />
-          <ScalarProperty Name="LocationZ" ColumnName="LocationZ" />
-          <ScalarProperty Name="LocationOrientation" ColumnName="LocationOrientation" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="LoginHistories">
-      <EntityTypeMapping TypeName="IsTypeOf(MZS2DataModel.LoginHistory)">
-        <MappingFragment StoreEntitySet="LoginHistories">
-          <ScalarProperty Name="LoginHistoryID" ColumnName="LoginHistoryID" />
-          <ScalarProperty Name="PlayerCharacterID" ColumnName="PlayerCharacterID" />
-          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
-          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-  </EntityContainerMapping>
+          <EntitySetMapping Name="dm_log">
+            <EntityTypeMapping TypeName="MZS2DataModel.dm_log">
+              <MappingFragment StoreEntitySet="dm_log">
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="XPAmount" ColumnName="XPAmount" />
+                <ScalarProperty Name="GoldAmount" ColumnName="GoldAmount" />
+                <ScalarProperty Name="ItemResref" ColumnName="ItemResref" />
+                <ScalarProperty Name="ItemTag" ColumnName="ItemTag" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="PC_CDKey" ColumnName="PC_CDKey" />
+                <ScalarProperty Name="PC_Account" ColumnName="PC_Account" />
+                <ScalarProperty Name="PC_Name" ColumnName="PC_Name" />
+                <ScalarProperty Name="DM_CDKey" ColumnName="DM_CDKey" />
+                <ScalarProperty Name="DM_Account" ColumnName="DM_Account" />
+                <ScalarProperty Name="DM_Name" ColumnName="DM_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loginhistories">
+            <EntityTypeMapping TypeName="MZS2DataModel.loginhistory">
+              <MappingFragment StoreEntitySet="loginhistories">
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="PlayerCharacterID" ColumnName="PlayerCharacterID" />
+                <ScalarProperty Name="LoginHistoryID" ColumnName="LoginHistoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pc_corpse">
+            <EntityTypeMapping TypeName="MZS2DataModel.pc_corpse">
+              <MappingFragment StoreEntitySet="pc_corpse">
+                <ScalarProperty Name="StorageNPC" ColumnName="StorageNPC" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="CorpseName" ColumnName="CorpseName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="player_info">
+            <EntityTypeMapping TypeName="MZS2DataModel.player_info">
+              <MappingFragment StoreEntitySet="player_info">
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="CharName" ColumnName="CharName" />
+                <ScalarProperty Name="CDKey" ColumnName="CDKey" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="playercharacters">
+            <EntityTypeMapping TypeName="MZS2DataModel.playercharacter">
+              <MappingFragment StoreEntitySet="playercharacters">
+                <ScalarProperty Name="LocationOrientation" ColumnName="LocationOrientation" />
+                <ScalarProperty Name="LocationZ" ColumnName="LocationZ" />
+                <ScalarProperty Name="LocationY" ColumnName="LocationY" />
+                <ScalarProperty Name="LocationX" ColumnName="LocationX" />
+                <ScalarProperty Name="LocationAreaTag" ColumnName="LocationAreaTag" />
+                <ScalarProperty Name="HitPoints" ColumnName="HitPoints" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CDKey" ColumnName="CDKey" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="PlayerCharacterID" ColumnName="PlayerCharacterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pwdatas">
+            <EntityTypeMapping TypeName="MZS2DataModel.pwdata">
+              <MappingFragment StoreEntitySet="pwdata">
+                <ScalarProperty Name="last" ColumnName="last" />
+                <ScalarProperty Name="expire" ColumnName="expire" />
+                <ScalarProperty Name="val" ColumnName="val" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="tag" ColumnName="tag" />
+                <ScalarProperty Name="player" ColumnName="player" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pwobjdatas">
+            <EntityTypeMapping TypeName="MZS2DataModel.pwobjdata">
+              <MappingFragment StoreEntitySet="pwobjdata">
+                <ScalarProperty Name="last" ColumnName="last" />
+                <ScalarProperty Name="expire" ColumnName="expire" />
+                <ScalarProperty Name="val" ColumnName="val" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="tag" ColumnName="tag" />
+                <ScalarProperty Name="player" ColumnName="player" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zst_storage">
+            <EntityTypeMapping TypeName="MZS2DataModel.zst_storage">
+              <MappingFragment StoreEntitySet="zst_storage">
+                <ScalarProperty Name="Item100" ColumnName="Item100" />
+                <ScalarProperty Name="Item99" ColumnName="Item99" />
+                <ScalarProperty Name="Item98" ColumnName="Item98" />
+                <ScalarProperty Name="Item97" ColumnName="Item97" />
+                <ScalarProperty Name="Item96" ColumnName="Item96" />
+                <ScalarProperty Name="Item95" ColumnName="Item95" />
+                <ScalarProperty Name="Item94" ColumnName="Item94" />
+                <ScalarProperty Name="Item93" ColumnName="Item93" />
+                <ScalarProperty Name="Item92" ColumnName="Item92" />
+                <ScalarProperty Name="Item91" ColumnName="Item91" />
+                <ScalarProperty Name="Item90" ColumnName="Item90" />
+                <ScalarProperty Name="Item89" ColumnName="Item89" />
+                <ScalarProperty Name="Item88" ColumnName="Item88" />
+                <ScalarProperty Name="Item87" ColumnName="Item87" />
+                <ScalarProperty Name="Item86" ColumnName="Item86" />
+                <ScalarProperty Name="Item85" ColumnName="Item85" />
+                <ScalarProperty Name="Item84" ColumnName="Item84" />
+                <ScalarProperty Name="Item83" ColumnName="Item83" />
+                <ScalarProperty Name="Item82" ColumnName="Item82" />
+                <ScalarProperty Name="Item81" ColumnName="Item81" />
+                <ScalarProperty Name="Item80" ColumnName="Item80" />
+                <ScalarProperty Name="Item79" ColumnName="Item79" />
+                <ScalarProperty Name="Item78" ColumnName="Item78" />
+                <ScalarProperty Name="Item77" ColumnName="Item77" />
+                <ScalarProperty Name="Item76" ColumnName="Item76" />
+                <ScalarProperty Name="Item75" ColumnName="Item75" />
+                <ScalarProperty Name="Item74" ColumnName="Item74" />
+                <ScalarProperty Name="Item73" ColumnName="Item73" />
+                <ScalarProperty Name="Item72" ColumnName="Item72" />
+                <ScalarProperty Name="Item71" ColumnName="Item71" />
+                <ScalarProperty Name="Item70" ColumnName="Item70" />
+                <ScalarProperty Name="Item69" ColumnName="Item69" />
+                <ScalarProperty Name="Item68" ColumnName="Item68" />
+                <ScalarProperty Name="Item67" ColumnName="Item67" />
+                <ScalarProperty Name="Item66" ColumnName="Item66" />
+                <ScalarProperty Name="Item65" ColumnName="Item65" />
+                <ScalarProperty Name="Item64" ColumnName="Item64" />
+                <ScalarProperty Name="Item63" ColumnName="Item63" />
+                <ScalarProperty Name="Item62" ColumnName="Item62" />
+                <ScalarProperty Name="Item61" ColumnName="Item61" />
+                <ScalarProperty Name="Item60" ColumnName="Item60" />
+                <ScalarProperty Name="Item59" ColumnName="Item59" />
+                <ScalarProperty Name="Item58" ColumnName="Item58" />
+                <ScalarProperty Name="Item57" ColumnName="Item57" />
+                <ScalarProperty Name="Item56" ColumnName="Item56" />
+                <ScalarProperty Name="Item55" ColumnName="Item55" />
+                <ScalarProperty Name="Item54" ColumnName="Item54" />
+                <ScalarProperty Name="Item53" ColumnName="Item53" />
+                <ScalarProperty Name="Item52" ColumnName="Item52" />
+                <ScalarProperty Name="Item51" ColumnName="Item51" />
+                <ScalarProperty Name="Item50" ColumnName="Item50" />
+                <ScalarProperty Name="Item49" ColumnName="Item49" />
+                <ScalarProperty Name="Item48" ColumnName="Item48" />
+                <ScalarProperty Name="Item47" ColumnName="Item47" />
+                <ScalarProperty Name="Item46" ColumnName="Item46" />
+                <ScalarProperty Name="Item45" ColumnName="Item45" />
+                <ScalarProperty Name="Item44" ColumnName="Item44" />
+                <ScalarProperty Name="Item43" ColumnName="Item43" />
+                <ScalarProperty Name="Item42" ColumnName="Item42" />
+                <ScalarProperty Name="Item41" ColumnName="Item41" />
+                <ScalarProperty Name="Item40" ColumnName="Item40" />
+                <ScalarProperty Name="Item39" ColumnName="Item39" />
+                <ScalarProperty Name="Item38" ColumnName="Item38" />
+                <ScalarProperty Name="Item37" ColumnName="Item37" />
+                <ScalarProperty Name="Item36" ColumnName="Item36" />
+                <ScalarProperty Name="Item35" ColumnName="Item35" />
+                <ScalarProperty Name="Item34" ColumnName="Item34" />
+                <ScalarProperty Name="Item33" ColumnName="Item33" />
+                <ScalarProperty Name="Item32" ColumnName="Item32" />
+                <ScalarProperty Name="Item31" ColumnName="Item31" />
+                <ScalarProperty Name="Item30" ColumnName="Item30" />
+                <ScalarProperty Name="Item29" ColumnName="Item29" />
+                <ScalarProperty Name="Item28" ColumnName="Item28" />
+                <ScalarProperty Name="Item27" ColumnName="Item27" />
+                <ScalarProperty Name="Item26" ColumnName="Item26" />
+                <ScalarProperty Name="Item25" ColumnName="Item25" />
+                <ScalarProperty Name="Item24" ColumnName="Item24" />
+                <ScalarProperty Name="Item23" ColumnName="Item23" />
+                <ScalarProperty Name="Item22" ColumnName="Item22" />
+                <ScalarProperty Name="Item21" ColumnName="Item21" />
+                <ScalarProperty Name="Item20" ColumnName="Item20" />
+                <ScalarProperty Name="Item19" ColumnName="Item19" />
+                <ScalarProperty Name="Item18" ColumnName="Item18" />
+                <ScalarProperty Name="Item17" ColumnName="Item17" />
+                <ScalarProperty Name="Item16" ColumnName="Item16" />
+                <ScalarProperty Name="Item15" ColumnName="Item15" />
+                <ScalarProperty Name="Item14" ColumnName="Item14" />
+                <ScalarProperty Name="Item13" ColumnName="Item13" />
+                <ScalarProperty Name="Item12" ColumnName="Item12" />
+                <ScalarProperty Name="Item11" ColumnName="Item11" />
+                <ScalarProperty Name="Item10" ColumnName="Item10" />
+                <ScalarProperty Name="Item9" ColumnName="Item9" />
+                <ScalarProperty Name="Item8" ColumnName="Item8" />
+                <ScalarProperty Name="Item7" ColumnName="Item7" />
+                <ScalarProperty Name="Item6" ColumnName="Item6" />
+                <ScalarProperty Name="Item5" ColumnName="Item5" />
+                <ScalarProperty Name="Item4" ColumnName="Item4" />
+                <ScalarProperty Name="Item3" ColumnName="Item3" />
+                <ScalarProperty Name="Item2" ColumnName="Item2" />
+                <ScalarProperty Name="Item1" ColumnName="Item1" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="AreaTag" ColumnName="AreaTag" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zsttemplates">
+            <EntityTypeMapping TypeName="MZS2DataModel.zsttemplate">
+              <MappingFragment StoreEntitySet="zsttemplate">
+                <ScalarProperty Name="Item100" ColumnName="Item100" />
+                <ScalarProperty Name="Item99" ColumnName="Item99" />
+                <ScalarProperty Name="Item98" ColumnName="Item98" />
+                <ScalarProperty Name="Item97" ColumnName="Item97" />
+                <ScalarProperty Name="Item96" ColumnName="Item96" />
+                <ScalarProperty Name="Item95" ColumnName="Item95" />
+                <ScalarProperty Name="Item94" ColumnName="Item94" />
+                <ScalarProperty Name="Item93" ColumnName="Item93" />
+                <ScalarProperty Name="Item92" ColumnName="Item92" />
+                <ScalarProperty Name="Item91" ColumnName="Item91" />
+                <ScalarProperty Name="Item90" ColumnName="Item90" />
+                <ScalarProperty Name="Item89" ColumnName="Item89" />
+                <ScalarProperty Name="Item88" ColumnName="Item88" />
+                <ScalarProperty Name="Item87" ColumnName="Item87" />
+                <ScalarProperty Name="Item86" ColumnName="Item86" />
+                <ScalarProperty Name="Item85" ColumnName="Item85" />
+                <ScalarProperty Name="Item84" ColumnName="Item84" />
+                <ScalarProperty Name="Item83" ColumnName="Item83" />
+                <ScalarProperty Name="Item82" ColumnName="Item82" />
+                <ScalarProperty Name="Item81" ColumnName="Item81" />
+                <ScalarProperty Name="Item80" ColumnName="Item80" />
+                <ScalarProperty Name="Item79" ColumnName="Item79" />
+                <ScalarProperty Name="Item78" ColumnName="Item78" />
+                <ScalarProperty Name="Item77" ColumnName="Item77" />
+                <ScalarProperty Name="Item76" ColumnName="Item76" />
+                <ScalarProperty Name="Item75" ColumnName="Item75" />
+                <ScalarProperty Name="Item74" ColumnName="Item74" />
+                <ScalarProperty Name="Item73" ColumnName="Item73" />
+                <ScalarProperty Name="Item72" ColumnName="Item72" />
+                <ScalarProperty Name="Item71" ColumnName="Item71" />
+                <ScalarProperty Name="Item70" ColumnName="Item70" />
+                <ScalarProperty Name="Item69" ColumnName="Item69" />
+                <ScalarProperty Name="Item68" ColumnName="Item68" />
+                <ScalarProperty Name="Item67" ColumnName="Item67" />
+                <ScalarProperty Name="Item66" ColumnName="Item66" />
+                <ScalarProperty Name="Item65" ColumnName="Item65" />
+                <ScalarProperty Name="Item64" ColumnName="Item64" />
+                <ScalarProperty Name="Item63" ColumnName="Item63" />
+                <ScalarProperty Name="Item62" ColumnName="Item62" />
+                <ScalarProperty Name="Item61" ColumnName="Item61" />
+                <ScalarProperty Name="Item60" ColumnName="Item60" />
+                <ScalarProperty Name="Item59" ColumnName="Item59" />
+                <ScalarProperty Name="Item58" ColumnName="Item58" />
+                <ScalarProperty Name="Item57" ColumnName="Item57" />
+                <ScalarProperty Name="Item56" ColumnName="Item56" />
+                <ScalarProperty Name="Item55" ColumnName="Item55" />
+                <ScalarProperty Name="Item54" ColumnName="Item54" />
+                <ScalarProperty Name="Item53" ColumnName="Item53" />
+                <ScalarProperty Name="Item52" ColumnName="Item52" />
+                <ScalarProperty Name="Item51" ColumnName="Item51" />
+                <ScalarProperty Name="Item50" ColumnName="Item50" />
+                <ScalarProperty Name="Item49" ColumnName="Item49" />
+                <ScalarProperty Name="Item48" ColumnName="Item48" />
+                <ScalarProperty Name="Item47" ColumnName="Item47" />
+                <ScalarProperty Name="Item46" ColumnName="Item46" />
+                <ScalarProperty Name="Item45" ColumnName="Item45" />
+                <ScalarProperty Name="Item44" ColumnName="Item44" />
+                <ScalarProperty Name="Item43" ColumnName="Item43" />
+                <ScalarProperty Name="Item42" ColumnName="Item42" />
+                <ScalarProperty Name="Item41" ColumnName="Item41" />
+                <ScalarProperty Name="Item40" ColumnName="Item40" />
+                <ScalarProperty Name="Item39" ColumnName="Item39" />
+                <ScalarProperty Name="Item38" ColumnName="Item38" />
+                <ScalarProperty Name="Item37" ColumnName="Item37" />
+                <ScalarProperty Name="Item36" ColumnName="Item36" />
+                <ScalarProperty Name="Item35" ColumnName="Item35" />
+                <ScalarProperty Name="Item34" ColumnName="Item34" />
+                <ScalarProperty Name="Item33" ColumnName="Item33" />
+                <ScalarProperty Name="Item32" ColumnName="Item32" />
+                <ScalarProperty Name="Item31" ColumnName="Item31" />
+                <ScalarProperty Name="Item30" ColumnName="Item30" />
+                <ScalarProperty Name="Item29" ColumnName="Item29" />
+                <ScalarProperty Name="Item28" ColumnName="Item28" />
+                <ScalarProperty Name="Item27" ColumnName="Item27" />
+                <ScalarProperty Name="Item26" ColumnName="Item26" />
+                <ScalarProperty Name="Item25" ColumnName="Item25" />
+                <ScalarProperty Name="Item24" ColumnName="Item24" />
+                <ScalarProperty Name="Item23" ColumnName="Item23" />
+                <ScalarProperty Name="Item22" ColumnName="Item22" />
+                <ScalarProperty Name="Item21" ColumnName="Item21" />
+                <ScalarProperty Name="Item20" ColumnName="Item20" />
+                <ScalarProperty Name="Item19" ColumnName="Item19" />
+                <ScalarProperty Name="Item18" ColumnName="Item18" />
+                <ScalarProperty Name="Item17" ColumnName="Item17" />
+                <ScalarProperty Name="Item16" ColumnName="Item16" />
+                <ScalarProperty Name="Item15" ColumnName="Item15" />
+                <ScalarProperty Name="Item14" ColumnName="Item14" />
+                <ScalarProperty Name="Item13" ColumnName="Item13" />
+                <ScalarProperty Name="Item12" ColumnName="Item12" />
+                <ScalarProperty Name="Item11" ColumnName="Item11" />
+                <ScalarProperty Name="Item10" ColumnName="Item10" />
+                <ScalarProperty Name="Item9" ColumnName="Item9" />
+                <ScalarProperty Name="Item8" ColumnName="Item8" />
+                <ScalarProperty Name="Item7" ColumnName="Item7" />
+                <ScalarProperty Name="Item6" ColumnName="Item6" />
+                <ScalarProperty Name="Item5" ColumnName="Item5" />
+                <ScalarProperty Name="Item4" ColumnName="Item4" />
+                <ScalarProperty Name="Item3" ColumnName="Item3" />
+                <ScalarProperty Name="Item2" ColumnName="Item2" />
+                <ScalarProperty Name="Item1" ColumnName="Item1" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="AreaTag" ColumnName="AreaTag" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->

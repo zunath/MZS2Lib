@@ -25,15 +25,14 @@ namespace MZS2ServerLib
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<craft_blueprints> craft_blueprints { get; set; }
-        public DbSet<craft_components> craft_components { get; set; }
         public DbSet<dm_log> dm_log { get; set; }
+        public DbSet<loginhistory> loginhistories { get; set; }
         public DbSet<pc_corpse> pc_corpse { get; set; }
+        public DbSet<player_info> player_info { get; set; }
+        public DbSet<playercharacter> playercharacters { get; set; }
         public DbSet<pwdata> pwdatas { get; set; }
         public DbSet<pwobjdata> pwobjdatas { get; set; }
         public DbSet<zst_storage> zst_storage { get; set; }
         public DbSet<zsttemplate> zsttemplates { get; set; }
-        public DbSet<PlayerCharacter> PlayerCharacters { get; set; }
-        public DbSet<LoginHistory> LoginHistories { get; set; }
     }
 }

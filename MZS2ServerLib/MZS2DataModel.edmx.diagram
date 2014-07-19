@@ -4,18 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="38f2f8421d2d48ac8a96ea0b15269420" Name="Diagram1" ZoomLevel="116">
-        <EntityTypeShape EntityType="MZS2DataModel.craft_blueprints" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MZS2DataModel.craft_components" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MZS2DataModel.dm_log" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MZS2DataModel.pc_corpse" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MZS2DataModel.pwdata" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MZS2DataModel.pwobjdata" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MZS2DataModel.zst_storage" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MZS2DataModel.zsttemplate" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MZS2DataModel.PlayerCharacter" Width="1.5" PointX="8.625" PointY="1.75" />
-        <EntityTypeShape EntityType="MZS2DataModel.LoginHistory" Width="1.5" PointX="11.75" PointY="3" />
-        <AssociationConnector Association="MZS2DataModel.LoginHistoryPlayerCharacter" />
+      <Diagram DiagramId="38f2f8421d2d48ac8a96ea0b15269420" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="MZS2DataModel.dm_log" Width="1.5" PointX="20.375" PointY="2.125" />
+        <EntityTypeShape EntityType="MZS2DataModel.loginhistory" Width="1.5" PointX="2.875" PointY="3.625" />
+        <EntityTypeShape EntityType="MZS2DataModel.pc_corpse" Width="1.5" PointX="5.375" PointY="5.125" />
+        <EntityTypeShape EntityType="MZS2DataModel.player_info" Width="1.5" PointX="8.375" PointY="6.625" />
+        <EntityTypeShape EntityType="MZS2DataModel.playercharacter" Width="1.5" PointX="11.375" PointY="8.125" />
+        <EntityTypeShape EntityType="MZS2DataModel.pwdata" Width="1.5" PointX="14.375" PointY="9.625" />
+        <EntityTypeShape EntityType="MZS2DataModel.pwobjdata" Width="1.5" PointX="17.375" PointY="11.125" />
+        <EntityTypeShape EntityType="MZS2DataModel.zst_storage" Width="1.5" PointX="20.375" PointY="12.625" />
+        <EntityTypeShape EntityType="MZS2DataModel.zsttemplate" Width="1.5" PointX="2.875" PointY="14.125" />
+        <AssociationConnector Association="MZS2DataModel.fk_player_character_id" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,11 +12,11 @@ namespace MZS2ServerLib
     using System;
     using System.Collections.Generic;
     
-    public partial class PlayerCharacter
+    public partial class playercharacter
     {
-        public PlayerCharacter()
+        public playercharacter()
         {
-            this.LoginHistories = new HashSet<LoginHistory>();
+            this.loginhistories = new HashSet<loginhistory>();
         }
     
         public int PlayerCharacterID { get; set; }
@@ -31,6 +31,6 @@ namespace MZS2ServerLib
         public double LocationZ { get; set; }
         public double LocationOrientation { get; set; }
     
-        public virtual ICollection<LoginHistory> LoginHistories { get; set; }
+        public virtual ICollection<loginhistory> loginhistories { get; set; }
     }
 }
