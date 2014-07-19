@@ -84,6 +84,7 @@
           <Property Name="LocationY" Type="double" Nullable="false" />
           <Property Name="LocationZ" Type="double" Nullable="false" />
           <Property Name="LocationOrientation" Type="double" Nullable="false" />
+          <Property Name="CreateTimestamp" Type="datetime" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="pwdata">
           <Key>
@@ -350,11 +351,11 @@
           <EntitySet Name="loginhistories" EntityType="MZS2DataModel.loginhistory" />
           <EntitySet Name="pc_corpse" EntityType="MZS2DataModel.pc_corpse" />
           <EntitySet Name="player_info" EntityType="MZS2DataModel.player_info" />
-          <EntitySet Name="playercharacters" EntityType="MZS2DataModel.playercharacter" />
           <EntitySet Name="pwdatas" EntityType="MZS2DataModel.pwdata" />
           <EntitySet Name="pwobjdatas" EntityType="MZS2DataModel.pwobjdata" />
           <EntitySet Name="zst_storage" EntityType="MZS2DataModel.zst_storage" />
           <EntitySet Name="zsttemplates" EntityType="MZS2DataModel.zsttemplate" />
+          <EntitySet Name="playercharacters" EntityType="MZS2DataModel.playercharacter" />
           <AssociationSet Name="fk_player_character_id" Association="MZS2DataModel.fk_player_character_id">
             <End Role="playercharacter" EntitySet="playercharacters" />
             <End Role="loginhistory" EntitySet="loginhistories" />
@@ -409,23 +410,6 @@
           <Property Type="String" Name="CDKey" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="CharName" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="Timestamp" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="playercharacter">
-          <Key>
-            <PropertyRef Name="PlayerCharacterID" />
-          </Key>
-          <Property Type="Int32" Name="PlayerCharacterID" Nullable="false" />
-          <Property Type="String" Name="AccountName" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="CDKey" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="LastName" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="HitPoints" Nullable="false" />
-          <Property Type="String" Name="LocationAreaTag" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="Double" Name="LocationX" Nullable="false" />
-          <Property Type="Double" Name="LocationY" Nullable="false" />
-          <Property Type="Double" Name="LocationZ" Nullable="false" />
-          <Property Type="Double" Name="LocationOrientation" Nullable="false" />
-          <NavigationProperty Name="loginhistories" Relationship="MZS2DataModel.fk_player_character_id" FromRole="playercharacter" ToRole="loginhistory" />
         </EntityType>
         <EntityType Name="pwdata">
           <Key>
@@ -671,6 +655,24 @@
           <Property Type="Binary" Name="Item99" MaxLength="Max" FixedLength="false" />
           <Property Type="Binary" Name="Item100" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="playercharacter">
+          <Key>
+            <PropertyRef Name="PlayerCharacterID" />
+          </Key>
+          <Property Type="Int32" Name="PlayerCharacterID" Nullable="false" />
+          <Property Type="String" Name="AccountName" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CDKey" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="HitPoints" Nullable="false" />
+          <Property Type="String" Name="LocationAreaTag" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="LocationX" Nullable="false" />
+          <Property Type="Double" Name="LocationY" Nullable="false" />
+          <Property Type="Double" Name="LocationZ" Nullable="false" />
+          <Property Type="Double" Name="LocationOrientation" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTimestamp" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="loginhistories" Relationship="MZS2DataModel.fk_player_character_id" FromRole="playercharacter" ToRole="loginhistory" />
+        </EntityType>
         <Association Name="fk_player_character_id">
           <End Type="MZS2DataModel.playercharacter" Role="playercharacter" Multiplicity="1" />
           <End Type="MZS2DataModel.loginhistory" Role="loginhistory" Multiplicity="*" />
@@ -737,23 +739,6 @@
                 <ScalarProperty Name="CDKey" ColumnName="CDKey" />
                 <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
                 <ScalarProperty Name="Account" ColumnName="Account" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="playercharacters">
-            <EntityTypeMapping TypeName="MZS2DataModel.playercharacter">
-              <MappingFragment StoreEntitySet="playercharacters">
-                <ScalarProperty Name="LocationOrientation" ColumnName="LocationOrientation" />
-                <ScalarProperty Name="LocationZ" ColumnName="LocationZ" />
-                <ScalarProperty Name="LocationY" ColumnName="LocationY" />
-                <ScalarProperty Name="LocationX" ColumnName="LocationX" />
-                <ScalarProperty Name="LocationAreaTag" ColumnName="LocationAreaTag" />
-                <ScalarProperty Name="HitPoints" ColumnName="HitPoints" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="CDKey" ColumnName="CDKey" />
-                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
-                <ScalarProperty Name="PlayerCharacterID" ColumnName="PlayerCharacterID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -996,6 +981,24 @@
                 <ScalarProperty Name="AreaName" ColumnName="AreaName" />
                 <ScalarProperty Name="AreaTag" ColumnName="AreaTag" />
                 <ScalarProperty Name="Tag" ColumnName="Tag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="playercharacters">
+            <EntityTypeMapping TypeName="MZS2DataModel.playercharacter">
+              <MappingFragment StoreEntitySet="playercharacters">
+                <ScalarProperty Name="CreateTimestamp" ColumnName="CreateTimestamp" />
+                <ScalarProperty Name="LocationOrientation" ColumnName="LocationOrientation" />
+                <ScalarProperty Name="LocationZ" ColumnName="LocationZ" />
+                <ScalarProperty Name="LocationY" ColumnName="LocationY" />
+                <ScalarProperty Name="LocationX" ColumnName="LocationX" />
+                <ScalarProperty Name="LocationAreaTag" ColumnName="LocationAreaTag" />
+                <ScalarProperty Name="HitPoints" ColumnName="HitPoints" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CDKey" ColumnName="CDKey" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="PlayerCharacterID" ColumnName="PlayerCharacterID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -30,6 +30,7 @@ namespace MZS2ServerLib
         public double LocationY { get; set; }
         public double LocationZ { get; set; }
         public double LocationOrientation { get; set; }
+        public System.DateTime CreateTimestamp { get; set; }
     
         public virtual ICollection<loginhistory> loginhistories { get; set; }
     }

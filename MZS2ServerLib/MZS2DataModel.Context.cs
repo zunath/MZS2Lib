@@ -29,10 +29,10 @@ namespace MZS2ServerLib
         public DbSet<loginhistory> loginhistories { get; set; }
         public DbSet<pc_corpse> pc_corpse { get; set; }
         public DbSet<player_info> player_info { get; set; }
-        public DbSet<playercharacter> playercharacters { get; set; }
         public DbSet<pwdata> pwdatas { get; set; }
         public DbSet<pwobjdata> pwobjdatas { get; set; }
         public DbSet<zst_storage> zst_storage { get; set; }
         public DbSet<zsttemplate> zsttemplates { get; set; }
+        public DbSet<playercharacter> playercharacters { get; set; }
     }
 }
