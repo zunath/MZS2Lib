@@ -6,9 +6,11 @@
     <edmx:StorageModels>
     <Schema Namespace="MZS2DataModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="MZS2DataModelStoreContainer">
+          <EntitySet Name="authorized_dm" EntityType="MZS2DataModel.Store.authorized_dm" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="dm_log" EntityType="MZS2DataModel.Store.dm_log" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="dm_role_domain" EntityType="MZS2DataModel.Store.dm_role_domain" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="errorlog" EntityType="MZS2DataModel.Store.errorlog" store:Type="Tables" Schema="mzs2_dev" />
-          <EntitySet Name="loginhistories" EntityType="MZS2DataModel.Store.loginhistories" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="loginhistory" EntityType="MZS2DataModel.Store.loginhistory" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="pc_corpse" EntityType="MZS2DataModel.Store.pc_corpse" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="player_info" EntityType="MZS2DataModel.Store.player_info" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="playercharacters" EntityType="MZS2DataModel.Store.playercharacters" store:Type="Tables" Schema="mzs2_dev" />
@@ -16,11 +18,24 @@
           <EntitySet Name="pwobjdata" EntityType="MZS2DataModel.Store.pwobjdata" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="zst_storage" EntityType="MZS2DataModel.Store.zst_storage" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="zsttemplate" EntityType="MZS2DataModel.Store.zsttemplate" store:Type="Tables" Schema="mzs2_dev" />
+          <AssociationSet Name="authorized_dm_role_FK" Association="MZS2DataModel.Store.authorized_dm_role_FK">
+            <End Role="dm_role_domain" EntitySet="dm_role_domain" />
+            <End Role="authorized_dm" EntitySet="authorized_dm" />
+          </AssociationSet>
           <AssociationSet Name="fk_player_character_id" Association="MZS2DataModel.Store.fk_player_character_id">
             <End Role="playercharacters" EntitySet="playercharacters" />
-            <End Role="loginhistories" EntitySet="loginhistories" />
+            <End Role="loginhistory" EntitySet="loginhistory" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="authorized_dm">
+          <Key>
+            <PropertyRef Name="AuthorizedDMID" />
+          </Key>
+          <Property Name="AuthorizedDMID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="CDKey" Type="varchar" MaxLength="20" />
+          <Property Name="DMRole" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="dm_log">
           <Key>
             <PropertyRef Name="ID" />
@@ -40,6 +55,13 @@
           <Property Name="XPAmount" Type="int" />
           <Property Name="Timestamp" Type="varchar" MaxLength="20" />
         </EntityType>
+        <EntityType Name="dm_role_domain">
+          <Key>
+            <PropertyRef Name="DMRoleDomainID" />
+          </Key>
+          <Property Name="DMRoleDomainID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
         <EntityType Name="errorlog">
           <Key>
             <PropertyRef Name="ErrorLogID" />
@@ -49,7 +71,7 @@
           <Property Name="Message" Type="text" Nullable="false" />
           <Property Name="StackTrace" Type="text" Nullable="false" />
         </EntityType>
-        <EntityType Name="loginhistories">
+        <EntityType Name="loginhistory">
           <Key>
             <PropertyRef Name="LoginHistoryID" />
           </Key>
@@ -339,14 +361,26 @@
           <Property Name="Item99" Type="blob" />
           <Property Name="Item100" Type="blob" />
         </EntityType>
+        <Association Name="authorized_dm_role_FK">
+          <End Role="dm_role_domain" Type="MZS2DataModel.Store.dm_role_domain" Multiplicity="1" />
+          <End Role="authorized_dm" Type="MZS2DataModel.Store.authorized_dm" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="dm_role_domain">
+              <PropertyRef Name="DMRoleDomainID" />
+            </Principal>
+            <Dependent Role="authorized_dm">
+              <PropertyRef Name="AuthorizedDMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_player_character_id">
           <End Role="playercharacters" Type="MZS2DataModel.Store.playercharacters" Multiplicity="1" />
-          <End Role="loginhistories" Type="MZS2DataModel.Store.loginhistories" Multiplicity="*" />
+          <End Role="loginhistory" Type="MZS2DataModel.Store.loginhistory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="playercharacters">
               <PropertyRef Name="PlayerCharacterID" />
             </Principal>
-            <Dependent Role="loginhistories">
+            <Dependent Role="loginhistory">
               <PropertyRef Name="PlayerCharacterID" />
             </Dependent>
           </ReferentialConstraint>
@@ -357,7 +391,6 @@
       <Schema Namespace="MZS2DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="MZS2Context" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="dm_log" EntityType="MZS2DataModel.dm_log" />
-          <EntitySet Name="loginhistories" EntityType="MZS2DataModel.loginhistory" />
           <EntitySet Name="pc_corpse" EntityType="MZS2DataModel.pc_corpse" />
           <EntitySet Name="player_info" EntityType="MZS2DataModel.player_info" />
           <EntitySet Name="pwdatas" EntityType="MZS2DataModel.pwdata" />
@@ -365,11 +398,18 @@
           <EntitySet Name="zst_storage" EntityType="MZS2DataModel.zst_storage" />
           <EntitySet Name="zsttemplates" EntityType="MZS2DataModel.zsttemplate" />
           <EntitySet Name="playercharacters" EntityType="MZS2DataModel.playercharacter" />
+          <EntitySet Name="errorlogs" EntityType="MZS2DataModel.errorlog" />
+          <EntitySet Name="authorized_dm" EntityType="MZS2DataModel.authorized_dm" />
+          <EntitySet Name="dm_role_domain" EntityType="MZS2DataModel.dm_role_domain" />
+          <EntitySet Name="loginhistories" EntityType="MZS2DataModel.loginhistory" />
           <AssociationSet Name="fk_player_character_id" Association="MZS2DataModel.fk_player_character_id">
             <End Role="playercharacter" EntitySet="playercharacters" />
             <End Role="loginhistory" EntitySet="loginhistories" />
           </AssociationSet>
-          <EntitySet Name="errorlogs" EntityType="MZS2DataModel.errorlog" />
+          <AssociationSet Name="authorized_dm_role_FK" Association="MZS2DataModel.authorized_dm_role_FK">
+            <End Role="dm_role_domain" EntitySet="dm_role_domain" />
+            <End Role="authorized_dm" EntitySet="authorized_dm" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="dm_log">
           <Key>
@@ -389,16 +429,6 @@
           <Property Type="Int64" Name="GoldAmount" />
           <Property Type="Int32" Name="XPAmount" />
           <Property Type="String" Name="Timestamp" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="loginhistory">
-          <Key>
-            <PropertyRef Name="LoginHistoryID" />
-          </Key>
-          <Property Type="Int32" Name="LoginHistoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="PlayerCharacterID" Nullable="false" />
-          <Property Type="String" Name="IPAddress" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="Timestamp" Nullable="false" />
-          <NavigationProperty Name="playercharacter" Relationship="MZS2DataModel.fk_player_character_id" FromRole="loginhistory" ToRole="playercharacter" />
         </EntityType>
         <EntityType Name="pc_corpse">
           <Key>
@@ -682,6 +712,43 @@
           <Property Type="DateTime" Name="CreateTimestamp" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="loginhistories" Relationship="MZS2DataModel.fk_player_character_id" FromRole="playercharacter" ToRole="loginhistory" />
         </EntityType>
+        <EntityType Name="errorlog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Type="Int32" Name="ErrorLogID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="CreateTimestamp" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Message" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StackTrace" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="authorized_dm">
+          <Key>
+            <PropertyRef Name="AuthorizedDMID" />
+          </Key>
+          <Property Type="Int32" Name="AuthorizedDMID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CDKey" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="DMRole" Nullable="false" />
+          <NavigationProperty Name="dm_role_domain" Relationship="MZS2DataModel.authorized_dm_role_FK" FromRole="authorized_dm" ToRole="dm_role_domain" />
+        </EntityType>
+        <EntityType Name="dm_role_domain">
+          <Key>
+            <PropertyRef Name="DMRoleDomainID" />
+          </Key>
+          <Property Type="Int32" Name="DMRoleDomainID" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="authorized_dm" Relationship="MZS2DataModel.authorized_dm_role_FK" FromRole="dm_role_domain" ToRole="authorized_dm" />
+        </EntityType>
+        <EntityType Name="loginhistory">
+          <Key>
+            <PropertyRef Name="LoginHistoryID" />
+          </Key>
+          <Property Type="Int32" Name="LoginHistoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PlayerCharacterID" Nullable="false" />
+          <Property Type="String" Name="IPAddress" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Timestamp" Nullable="false" />
+          <NavigationProperty Name="playercharacter" Relationship="MZS2DataModel.fk_player_character_id" FromRole="loginhistory" ToRole="playercharacter" />
+        </EntityType>
         <Association Name="fk_player_character_id">
           <End Type="MZS2DataModel.playercharacter" Role="playercharacter" Multiplicity="1" />
           <End Type="MZS2DataModel.loginhistory" Role="loginhistory" Multiplicity="*" />
@@ -694,15 +761,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="errorlog">
-          <Key>
-            <PropertyRef Name="ErrorLogID" />
-          </Key>
-          <Property Type="Int32" Name="ErrorLogID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="CreateTimestamp" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Message" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="StackTrace" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
-        </EntityType>
+        <Association Name="authorized_dm_role_FK">
+          <End Type="MZS2DataModel.dm_role_domain" Role="dm_role_domain" Multiplicity="1" />
+          <End Type="MZS2DataModel.authorized_dm" Role="authorized_dm" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="dm_role_domain">
+              <PropertyRef Name="DMRoleDomainID" />
+            </Principal>
+            <Dependent Role="authorized_dm">
+              <PropertyRef Name="AuthorizedDMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -726,16 +796,6 @@
                 <ScalarProperty Name="DM_Account" ColumnName="DM_Account" />
                 <ScalarProperty Name="DM_Name" ColumnName="DM_Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="loginhistories">
-            <EntityTypeMapping TypeName="MZS2DataModel.loginhistory">
-              <MappingFragment StoreEntitySet="loginhistories">
-                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
-                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
-                <ScalarProperty Name="PlayerCharacterID" ColumnName="PlayerCharacterID" />
-                <ScalarProperty Name="LoginHistoryID" ColumnName="LoginHistoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1026,6 +1086,34 @@
                 <ScalarProperty Name="Message" ColumnName="Message" />
                 <ScalarProperty Name="CreateTimestamp" ColumnName="CreateTimestamp" />
                 <ScalarProperty Name="ErrorLogID" ColumnName="ErrorLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="authorized_dm">
+            <EntityTypeMapping TypeName="MZS2DataModel.authorized_dm">
+              <MappingFragment StoreEntitySet="authorized_dm">
+                <ScalarProperty Name="DMRole" ColumnName="DMRole" />
+                <ScalarProperty Name="CDKey" ColumnName="CDKey" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AuthorizedDMID" ColumnName="AuthorizedDMID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dm_role_domain">
+            <EntityTypeMapping TypeName="MZS2DataModel.dm_role_domain">
+              <MappingFragment StoreEntitySet="dm_role_domain">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DMRoleDomainID" ColumnName="DMRoleDomainID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loginhistories">
+            <EntityTypeMapping TypeName="MZS2DataModel.loginhistory">
+              <MappingFragment StoreEntitySet="loginhistory">
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="PlayerCharacterID" ColumnName="PlayerCharacterID" />
+                <ScalarProperty Name="LoginHistoryID" ColumnName="LoginHistoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

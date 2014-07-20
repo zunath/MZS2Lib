@@ -26,7 +26,6 @@ namespace MZS2ServerLib
         }
     
         public DbSet<dm_log> dm_log { get; set; }
-        public DbSet<loginhistory> loginhistories { get; set; }
         public DbSet<pc_corpse> pc_corpse { get; set; }
         public DbSet<player_info> player_info { get; set; }
         public DbSet<pwdata> pwdatas { get; set; }
@@ -35,5 +34,8 @@ namespace MZS2ServerLib
         public DbSet<zsttemplate> zsttemplates { get; set; }
         public DbSet<playercharacter> playercharacters { get; set; }
         public DbSet<errorlog> errorlogs { get; set; }
+        public DbSet<authorized_dm> authorized_dm { get; set; }
+        public DbSet<dm_role_domain> dm_role_domain { get; set; }
+        public DbSet<loginhistory> loginhistories { get; set; }
     }
 }

@@ -56,9 +56,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="authorized_dm.cs">
+      <DependentUpon>MZS2DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ConfigurationManager.cs" />
     <Compile Include="DataTransferObjects\ConfigurationFile.cs" />
     <Compile Include="dm_log.cs">
+      <DependentUpon>MZS2DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_role_domain.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="errorlog.cs">
@@ -98,6 +104,7 @@
     <Compile Include="pwobjdata.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\AuthorizedDMRepository.cs" />
     <Compile Include="Repositories\LoginHistoryRepository.cs" />
     <Compile Include="Repositories\PlayerCharacterRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
