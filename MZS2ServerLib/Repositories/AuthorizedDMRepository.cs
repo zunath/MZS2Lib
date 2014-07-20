@@ -13,7 +13,7 @@ namespace MZS2ServerLib
 
             using (MZS2Context context = new MZS2Context(ConfigurationManager.ConnectionString))
             {
-                authorized_dm dm = context.authorized_dm.SingleOrDefault(x => x.CDKey == cdKey);
+                authorized_dm dm = context.authorized_dm.SingleOrDefault(x => x.CDKey == cdKey && x.IsActive == true);
 
                 if (dm != null)
                 {
@@ -30,7 +30,7 @@ namespace MZS2ServerLib
 
             using (MZS2Context context = new MZS2Context(ConfigurationManager.ConnectionString))
             {
-                authorized_dm dm = context.authorized_dm.SingleOrDefault(x => x.CDKey == cdKey);
+                authorized_dm dm = context.authorized_dm.SingleOrDefault(x => x.CDKey == cdKey && x.IsActive == true);
 
                 if (dm != null)
                 {
@@ -51,7 +51,7 @@ namespace MZS2ServerLib
 
             using (MZS2Context context = new MZS2Context(ConfigurationManager.ConnectionString))
             {
-                authorized_dm dm = context.authorized_dm.SingleOrDefault(x => x.CDKey == cdKey);
+                authorized_dm dm = context.authorized_dm.SingleOrDefault(x => x.CDKey == cdKey && x.IsActive == true);
 
                 if (dm != null)
                 {

@@ -10,6 +10,7 @@
           <EntitySet Name="dm_log" EntityType="MZS2DataModel.Store.dm_log" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="dm_role_domain" EntityType="MZS2DataModel.Store.dm_role_domain" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="errorlog" EntityType="MZS2DataModel.Store.errorlog" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="item_transfer_audit" EntityType="MZS2DataModel.Store.item_transfer_audit" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="loginhistory" EntityType="MZS2DataModel.Store.loginhistory" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="pc_corpse" EntityType="MZS2DataModel.Store.pc_corpse" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="player_info" EntityType="MZS2DataModel.Store.player_info" store:Type="Tables" Schema="mzs2_dev" />
@@ -26,6 +27,14 @@
             <End Role="playercharacters" EntitySet="playercharacters" />
             <End Role="loginhistory" EntitySet="loginhistory" />
           </AssociationSet>
+          <AssociationSet Name="item_transfer_audit_ibfk_1" Association="MZS2DataModel.Store.item_transfer_audit_ibfk_1">
+            <End Role="playercharacters" EntitySet="playercharacters" />
+            <End Role="item_transfer_audit" EntitySet="item_transfer_audit" />
+          </AssociationSet>
+          <AssociationSet Name="item_transfer_audit_ibfk_2" Association="MZS2DataModel.Store.item_transfer_audit_ibfk_2">
+            <End Role="authorized_dm" EntitySet="authorized_dm" />
+            <End Role="item_transfer_audit" EntitySet="item_transfer_audit" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="authorized_dm">
           <Key>
@@ -35,6 +44,7 @@
           <Property Name="Name" Type="varchar" MaxLength="255" />
           <Property Name="CDKey" Type="varchar" MaxLength="20" />
           <Property Name="DMRole" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="dm_log">
           <Key>
@@ -70,6 +80,22 @@
           <Property Name="CreateTimestamp" Type="datetime" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Message" Type="text" Nullable="false" />
           <Property Name="StackTrace" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="item_transfer_audit">
+          <Key>
+            <PropertyRef Name="ItemTransferAuditID" />
+          </Key>
+          <Property Name="ItemTransferAuditID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ItemName" Type="varchar" Nullable="false" MaxLength="1024" />
+          <Property Name="ItemTag" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="ItemResref" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="PlayerCharacterID" Type="int" />
+          <Property Name="AuthorizedDMID" Type="int" />
+          <Property Name="AreaName" Type="varchar" Nullable="false" MaxLength="1024" />
+          <Property Name="AreaTag" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="AreaResref" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="TransferTimestamp" Type="datetime" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="loginhistory">
           <Key>
@@ -385,6 +411,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="item_transfer_audit_ibfk_1">
+          <End Role="playercharacters" Type="MZS2DataModel.Store.playercharacters" Multiplicity="0..1" />
+          <End Role="item_transfer_audit" Type="MZS2DataModel.Store.item_transfer_audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="playercharacters">
+              <PropertyRef Name="PlayerCharacterID" />
+            </Principal>
+            <Dependent Role="item_transfer_audit">
+              <PropertyRef Name="PlayerCharacterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="item_transfer_audit_ibfk_2">
+          <End Role="authorized_dm" Type="MZS2DataModel.Store.authorized_dm" Multiplicity="0..1" />
+          <End Role="item_transfer_audit" Type="MZS2DataModel.Store.item_transfer_audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="authorized_dm">
+              <PropertyRef Name="AuthorizedDMID" />
+            </Principal>
+            <Dependent Role="item_transfer_audit">
+              <PropertyRef Name="AuthorizedDMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -409,6 +459,15 @@
           <AssociationSet Name="authorized_dm_role_FK" Association="MZS2DataModel.authorized_dm_role_FK">
             <End Role="dm_role_domain" EntitySet="dm_role_domain" />
             <End Role="authorized_dm" EntitySet="authorized_dm" />
+          </AssociationSet>
+          <EntitySet Name="item_transfer_audit" EntityType="MZS2DataModel.item_transfer_audit" />
+          <AssociationSet Name="item_transfer_audit_ibfk_2" Association="MZS2DataModel.item_transfer_audit_ibfk_2">
+            <End Role="authorized_dm" EntitySet="authorized_dm" />
+            <End Role="item_transfer_audit" EntitySet="item_transfer_audit" />
+          </AssociationSet>
+          <AssociationSet Name="item_transfer_audit_ibfk_1" Association="MZS2DataModel.item_transfer_audit_ibfk_1">
+            <End Role="playercharacter" EntitySet="playercharacters" />
+            <End Role="item_transfer_audit" EntitySet="item_transfer_audit" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="dm_log">
@@ -711,6 +770,7 @@
           <Property Type="Double" Name="LocationOrientation" Nullable="false" />
           <Property Type="DateTime" Name="CreateTimestamp" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="loginhistories" Relationship="MZS2DataModel.fk_player_character_id" FromRole="playercharacter" ToRole="loginhistory" />
+          <NavigationProperty Name="item_transfer_audit" Relationship="MZS2DataModel.item_transfer_audit_ibfk_1" FromRole="playercharacter" ToRole="item_transfer_audit" />
         </EntityType>
         <EntityType Name="errorlog">
           <Key>
@@ -730,6 +790,8 @@
           <Property Type="String" Name="CDKey" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="DMRole" Nullable="false" />
           <NavigationProperty Name="dm_role_domain" Relationship="MZS2DataModel.authorized_dm_role_FK" FromRole="authorized_dm" ToRole="dm_role_domain" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <NavigationProperty Name="item_transfer_audit" Relationship="MZS2DataModel.item_transfer_audit_ibfk_2" FromRole="authorized_dm" ToRole="item_transfer_audit" />
         </EntityType>
         <EntityType Name="dm_role_domain">
           <Key>
@@ -770,6 +832,48 @@
             </Principal>
             <Dependent Role="authorized_dm">
               <PropertyRef Name="AuthorizedDMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="item_transfer_audit">
+          <Key>
+            <PropertyRef Name="ItemTransferAuditID" />
+          </Key>
+          <Property Type="Int32" Name="ItemTransferAuditID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ItemName" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ItemTag" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ItemResref" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="Int32" Name="PlayerCharacterID" />
+          <Property Type="Int32" Name="AuthorizedDMID" />
+          <Property Type="String" Name="AreaName" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AreaTag" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AreaResref" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="TransferTimestamp" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="authorized_dm" Relationship="MZS2DataModel.item_transfer_audit_ibfk_2" FromRole="item_transfer_audit" ToRole="authorized_dm" />
+          <NavigationProperty Name="playercharacter" Relationship="MZS2DataModel.item_transfer_audit_ibfk_1" FromRole="item_transfer_audit" ToRole="playercharacter" />
+        </EntityType>
+        <Association Name="item_transfer_audit_ibfk_2">
+          <End Type="MZS2DataModel.authorized_dm" Role="authorized_dm" Multiplicity="0..1" />
+          <End Type="MZS2DataModel.item_transfer_audit" Role="item_transfer_audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="authorized_dm">
+              <PropertyRef Name="AuthorizedDMID" />
+            </Principal>
+            <Dependent Role="item_transfer_audit">
+              <PropertyRef Name="AuthorizedDMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="item_transfer_audit_ibfk_1">
+          <End Type="MZS2DataModel.playercharacter" Role="playercharacter" Multiplicity="0..1" />
+          <End Type="MZS2DataModel.item_transfer_audit" Role="item_transfer_audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="playercharacter">
+              <PropertyRef Name="PlayerCharacterID" />
+            </Principal>
+            <Dependent Role="item_transfer_audit">
+              <PropertyRef Name="PlayerCharacterID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1092,6 +1196,7 @@
           <EntitySetMapping Name="authorized_dm">
             <EntityTypeMapping TypeName="MZS2DataModel.authorized_dm">
               <MappingFragment StoreEntitySet="authorized_dm">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="DMRole" ColumnName="DMRole" />
                 <ScalarProperty Name="CDKey" ColumnName="CDKey" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1114,6 +1219,23 @@
                 <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
                 <ScalarProperty Name="PlayerCharacterID" ColumnName="PlayerCharacterID" />
                 <ScalarProperty Name="LoginHistoryID" ColumnName="LoginHistoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item_transfer_audit">
+            <EntityTypeMapping TypeName="MZS2DataModel.item_transfer_audit">
+              <MappingFragment StoreEntitySet="item_transfer_audit">
+                <ScalarProperty Name="TransferTimestamp" ColumnName="TransferTimestamp" />
+                <ScalarProperty Name="AreaResref" ColumnName="AreaResref" />
+                <ScalarProperty Name="AreaTag" ColumnName="AreaTag" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="AuthorizedDMID" ColumnName="AuthorizedDMID" />
+                <ScalarProperty Name="PlayerCharacterID" ColumnName="PlayerCharacterID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ItemResref" ColumnName="ItemResref" />
+                <ScalarProperty Name="ItemTag" ColumnName="ItemTag" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemTransferAuditID" ColumnName="ItemTransferAuditID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

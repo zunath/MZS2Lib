@@ -17,6 +17,7 @@ namespace MZS2ServerLib
         public playercharacter()
         {
             this.loginhistories = new HashSet<loginhistory>();
+            this.item_transfer_audit = new HashSet<item_transfer_audit>();
         }
     
         public int PlayerCharacterID { get; set; }
@@ -32,5 +33,6 @@ namespace MZS2ServerLib
         public System.DateTime CreateTimestamp { get; set; }
     
         public virtual ICollection<loginhistory> loginhistories { get; set; }
+        public virtual ICollection<item_transfer_audit> item_transfer_audit { get; set; }
     }
 }

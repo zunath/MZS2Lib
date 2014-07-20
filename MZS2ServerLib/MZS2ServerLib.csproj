@@ -70,6 +70,9 @@
     <Compile Include="errorlog.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="item_transfer_audit.cs">
+      <DependentUpon>MZS2DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="loginhistory.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
@@ -105,6 +108,7 @@
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\AuthorizedDMRepository.cs" />
+    <Compile Include="Repositories\ItemTransferAuditRepository.cs" />
     <Compile Include="Repositories\LoginHistoryRepository.cs" />
     <Compile Include="Repositories\PlayerCharacterRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

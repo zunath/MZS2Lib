@@ -14,11 +14,18 @@ namespace MZS2ServerLib
     
     public partial class authorized_dm
     {
+        public authorized_dm()
+        {
+            this.item_transfer_audit = new HashSet<item_transfer_audit>();
+        }
+    
         public int AuthorizedDMID { get; set; }
         public string Name { get; set; }
         public string CDKey { get; set; }
         public int DMRole { get; set; }
+        public bool IsActive { get; set; }
     
         public virtual dm_role_domain dm_role_domain { get; set; }
+        public virtual ICollection<item_transfer_audit> item_transfer_audit { get; set; }
     }
 }
