@@ -61,6 +61,9 @@
     <Compile Include="dm_log.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="errorlog.cs">
+      <DependentUpon>MZS2DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="loginhistory.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>

@@ -22,9 +22,8 @@ namespace MZS2ServerLib
                         pc.PlayerCharacterID,
                         pc.AccountName,
                         pc.CDKey,
-                        pc.FirstName,
+                        pc.CharacterName,
                         pc.HitPoints,
-                        pc.LastName,
                         pc.LocationAreaTag,
                         pc.LocationOrientation,
                         pc.LocationX,
@@ -37,11 +36,11 @@ namespace MZS2ServerLib
             return result;
         }
 
-        public static string SavePlayerCharacter(string sPCID, 
+        public static string SavePlayerCharacter(
+            string sPCID, 
             string accountName,
             string cdKey,
-            string firstName,
-            string lastName,
+            string characterName,
             string sHitPoints,
             string locationAreaTag,
             string sLocationX,
@@ -57,45 +56,47 @@ namespace MZS2ServerLib
             double locationY = Convert.ToDouble(sLocationY);
             double locationZ = Convert.ToDouble(sLocationZ);
 
-            using (MZS2Context context = new MZS2Context(ConfigurationManager.ConnectionString))
+            if (pcID > 0)
             {
-                playercharacter existing = context.playercharacters.SingleOrDefault(x => x.PlayerCharacterID == pcID);
-
-                if (existing == null)
+                using (MZS2Context context = new MZS2Context(ConfigurationManager.ConnectionString))
                 {
-                    playercharacter pc = new playercharacter
+                    playercharacter existing = context.playercharacters.SingleOrDefault(x => x.PlayerCharacterID == pcID);
+
+                    if (existing == null)
                     {
-                        AccountName = accountName,
-                        CDKey = cdKey,
-                        FirstName = firstName,
-                        HitPoints = hp,
-                        LastName = lastName,
-                        LocationAreaTag = locationAreaTag,
-                        LocationOrientation = orientation,
-                        LocationX = locationX,
-                        LocationY = locationY,
-                        LocationZ = locationZ,
-                        PlayerCharacterID = pcID
-                    };
+                        playercharacter pc = new playercharacter
+                        {
+                            AccountName = accountName,
+                            CDKey = cdKey,
+                            CharacterName = characterName,
+                            HitPoints = hp,
+                            LocationAreaTag = locationAreaTag,
+                            LocationOrientation = orientation,
+                            LocationX = locationX,
+                            LocationY = locationY,
+                            LocationZ = locationZ,
+                            PlayerCharacterID = pcID
+                        };
 
-                    context.playercharacters.Add(pc);
-                }
-                else
-                {
-                    existing.AccountName = accountName;
-                    existing.CDKey = cdKey;
-                    existing.FirstName = firstName;
-                    existing.HitPoints = hp;
-                    existing.LastName = lastName;
-                    existing.LocationAreaTag = locationAreaTag;
-                    existing.LocationOrientation = orientation;
-                    existing.LocationX = locationX;
-                    existing.LocationY = locationY;
-                    existing.LocationZ = locationZ;
-                }
+                        context.playercharacters.Add(pc);
+                    }
+                    else
+                    {
+                        existing.AccountName = accountName;
+                        existing.CDKey = cdKey;
+                        existing.CharacterName = characterName;
+                        existing.HitPoints = hp;
+                        existing.LocationAreaTag = locationAreaTag;
+                        existing.LocationOrientation = orientation;
+                        existing.LocationX = locationX;
+                        existing.LocationY = locationY;
+                        existing.LocationZ = locationZ;
+                    }
 
-                context.SaveChanges();
+                    context.SaveChanges();
+                }
             }
+
             return result;
         }
     }

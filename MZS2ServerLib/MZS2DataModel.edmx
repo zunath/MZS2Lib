@@ -7,6 +7,7 @@
     <Schema Namespace="MZS2DataModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="MZS2DataModelStoreContainer">
           <EntitySet Name="dm_log" EntityType="MZS2DataModel.Store.dm_log" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="errorlog" EntityType="MZS2DataModel.Store.errorlog" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="loginhistories" EntityType="MZS2DataModel.Store.loginhistories" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="pc_corpse" EntityType="MZS2DataModel.Store.pc_corpse" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="player_info" EntityType="MZS2DataModel.Store.player_info" store:Type="Tables" Schema="mzs2_dev" />
@@ -38,6 +39,15 @@
           <Property Name="GoldAmount" Type="uint" />
           <Property Name="XPAmount" Type="int" />
           <Property Name="Timestamp" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="errorlog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Name="ErrorLogID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CreateTimestamp" Type="datetime" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="text" Nullable="false" />
+          <Property Name="StackTrace" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="loginhistories">
           <Key>
@@ -76,8 +86,7 @@
           <Property Name="PlayerCharacterID" Type="int" Nullable="false" />
           <Property Name="AccountName" Type="longtext" Nullable="false" />
           <Property Name="CDKey" Type="longtext" Nullable="false" />
-          <Property Name="FirstName" Type="longtext" Nullable="false" />
-          <Property Name="LastName" Type="longtext" Nullable="false" />
+          <Property Name="CharacterName" Type="longtext" Nullable="false" />
           <Property Name="HitPoints" Type="int" Nullable="false" />
           <Property Name="LocationAreaTag" Type="longtext" Nullable="false" />
           <Property Name="LocationX" Type="double" Nullable="false" />
@@ -360,6 +369,7 @@
             <End Role="playercharacter" EntitySet="playercharacters" />
             <End Role="loginhistory" EntitySet="loginhistories" />
           </AssociationSet>
+          <EntitySet Name="errorlogs" EntityType="MZS2DataModel.errorlog" />
         </EntityContainer>
         <EntityType Name="dm_log">
           <Key>
@@ -662,8 +672,7 @@
           <Property Type="Int32" Name="PlayerCharacterID" Nullable="false" />
           <Property Type="String" Name="AccountName" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="CDKey" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="LastName" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CharacterName" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="HitPoints" Nullable="false" />
           <Property Type="String" Name="LocationAreaTag" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
           <Property Type="Double" Name="LocationX" Nullable="false" />
@@ -685,6 +694,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="errorlog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Type="Int32" Name="ErrorLogID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="CreateTimestamp" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Message" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StackTrace" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -987,6 +1005,7 @@
           <EntitySetMapping Name="playercharacters">
             <EntityTypeMapping TypeName="MZS2DataModel.playercharacter">
               <MappingFragment StoreEntitySet="playercharacters">
+                <ScalarProperty Name="CharacterName" ColumnName="CharacterName" />
                 <ScalarProperty Name="CreateTimestamp" ColumnName="CreateTimestamp" />
                 <ScalarProperty Name="LocationOrientation" ColumnName="LocationOrientation" />
                 <ScalarProperty Name="LocationZ" ColumnName="LocationZ" />
@@ -994,11 +1013,19 @@
                 <ScalarProperty Name="LocationX" ColumnName="LocationX" />
                 <ScalarProperty Name="LocationAreaTag" ColumnName="LocationAreaTag" />
                 <ScalarProperty Name="HitPoints" ColumnName="HitPoints" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="CDKey" ColumnName="CDKey" />
                 <ScalarProperty Name="AccountName" ColumnName="AccountName" />
                 <ScalarProperty Name="PlayerCharacterID" ColumnName="PlayerCharacterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="errorlogs">
+            <EntityTypeMapping TypeName="MZS2DataModel.errorlog">
+              <MappingFragment StoreEntitySet="errorlog">
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="CreateTimestamp" ColumnName="CreateTimestamp" />
+                <ScalarProperty Name="ErrorLogID" ColumnName="ErrorLogID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

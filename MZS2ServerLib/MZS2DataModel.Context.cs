@@ -34,5 +34,6 @@ namespace MZS2ServerLib
         public DbSet<zst_storage> zst_storage { get; set; }
         public DbSet<zsttemplate> zsttemplates { get; set; }
         public DbSet<playercharacter> playercharacters { get; set; }
+        public DbSet<errorlog> errorlogs { get; set; }
     }
 }

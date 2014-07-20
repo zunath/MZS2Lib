@@ -22,8 +22,7 @@ namespace MZS2ServerLib
         public int PlayerCharacterID { get; set; }
         public string AccountName { get; set; }
         public string CDKey { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string CharacterName { get; set; }
         public int HitPoints { get; set; }
         public string LocationAreaTag { get; set; }
         public double LocationX { get; set; }

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="38f2f8421d2d48ac8a96ea0b15269420" Name="Diagram1" ZoomLevel="127">
+      <Diagram DiagramId="38f2f8421d2d48ac8a96ea0b15269420" Name="Diagram1" ZoomLevel="120">
         <EntityTypeShape EntityType="MZS2DataModel.dm_log" Width="1.5" PointX="7.875" PointY="2.25" />
         <EntityTypeShape EntityType="MZS2DataModel.loginhistory" Width="1.5" PointX="2.875" PointY="3.625" />
         <EntityTypeShape EntityType="MZS2DataModel.pc_corpse" Width="1.5" PointX="5.375" PointY="5.125" />
@@ -13,8 +13,9 @@
         <EntityTypeShape EntityType="MZS2DataModel.pwobjdata" Width="1.5" PointX="12.125" PointY="5.75" />
         <EntityTypeShape EntityType="MZS2DataModel.zst_storage" Width="1.5" PointX="10.375" PointY="2.25" />
         <EntityTypeShape EntityType="MZS2DataModel.zsttemplate" Width="1.5" PointX="1" PointY="4.375" />
-        <EntityTypeShape EntityType="MZS2DataModel.playercharacter" Width="1.5" PointX="3.9486343152581869" PointY="30.524390950111854" />
+        <EntityTypeShape EntityType="MZS2DataModel.playercharacter" Width="1.5" PointX="4" PointY="8" />
         <AssociationConnector Association="MZS2DataModel.fk_player_character_id" />
+        <EntityTypeShape EntityType="MZS2DataModel.errorlog" Width="1.5" PointX="11.204367158563979" PointY="2.7085872007108236" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

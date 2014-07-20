@@ -71,6 +71,7 @@
     <Compile Include="Repositories\LoginHistoryRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MZS2ContextTests.cs" />
+    <Compile Include="Repositories\PlayerCharacterRepositoryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MZS2ServerLib\MZS2ServerLib.csproj">

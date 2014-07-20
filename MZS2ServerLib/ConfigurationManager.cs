@@ -20,8 +20,13 @@ namespace MZS2ServerLib
             {
                 if (string.IsNullOrWhiteSpace(_connectionString))
                 {
-
                     string configFile = "./CSharpClasses/MZS2Configuration.xml";
+
+                    if (!File.Exists(configFile))
+                    {
+                        configFile = "./MZS2Configuration.xml";
+                    }
+                    
                     XmlSerializer ser = new XmlSerializer(typeof(ConfigurationFile));
                     StreamReader reader = new StreamReader(configFile);
                     ConfigurationFile settings = (ConfigurationFile)ser.Deserialize(reader);
