@@ -17,6 +17,7 @@ namespace MZS2ServerLib
         public authorized_dm()
         {
             this.item_transfer_audit = new HashSet<item_transfer_audit>();
+            this.item_transfer_audit1 = new HashSet<item_transfer_audit>();
         }
     
         public int AuthorizedDMID { get; set; }
@@ -27,5 +28,6 @@ namespace MZS2ServerLib
     
         public virtual dm_role_domain dm_role_domain { get; set; }
         public virtual ICollection<item_transfer_audit> item_transfer_audit { get; set; }
+        public virtual ICollection<item_transfer_audit> item_transfer_audit1 { get; set; }
     }
 }

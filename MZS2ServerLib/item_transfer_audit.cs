@@ -19,14 +19,19 @@ namespace MZS2ServerLib
         public string ItemTag { get; set; }
         public string ItemResref { get; set; }
         public int Quantity { get; set; }
-        public Nullable<int> PlayerCharacterID { get; set; }
-        public Nullable<int> AuthorizedDMID { get; set; }
+        public Nullable<int> OldPlayerCharacterID { get; set; }
+        public Nullable<int> NewPlayerCharacterID { get; set; }
+        public Nullable<int> OldAuthorizedDMID { get; set; }
+        public Nullable<int> NewAuthorizedDMID { get; set; }
         public string AreaName { get; set; }
         public string AreaTag { get; set; }
         public string AreaResref { get; set; }
         public System.DateTime TransferTimestamp { get; set; }
+        public int ModuleEventTypeID { get; set; }
     
         public virtual authorized_dm authorized_dm { get; set; }
+        public virtual authorized_dm authorized_dm1 { get; set; }
         public virtual playercharacter playercharacter { get; set; }
+        public virtual playercharacter playercharacter1 { get; set; }
     }
 }

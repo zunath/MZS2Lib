@@ -38,5 +38,6 @@ namespace MZS2ServerLib
         public DbSet<dm_role_domain> dm_role_domain { get; set; }
         public DbSet<loginhistory> loginhistories { get; set; }
         public DbSet<item_transfer_audit> item_transfer_audit { get; set; }
+        public DbSet<module_event_type_domain> module_event_type_domain { get; set; }
     }
 }

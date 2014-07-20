@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="38f2f8421d2d48ac8a96ea0b15269420" Name="Diagram1" ZoomLevel="93">
+      <Diagram DiagramId="38f2f8421d2d48ac8a96ea0b15269420" Name="Diagram1" ZoomLevel="111">
         <EntityTypeShape EntityType="MZS2DataModel.dm_log" Width="1.5" PointX="7.875" PointY="2.25" />
         <EntityTypeShape EntityType="MZS2DataModel.pc_corpse" Width="1.5" PointX="5.375" PointY="5.125" />
         <EntityTypeShape EntityType="MZS2DataModel.player_info" Width="1.5" PointX="8.375" PointY="6.625" />
@@ -19,9 +19,12 @@
         <EntityTypeShape EntityType="MZS2DataModel.loginhistory" Width="1.5" PointX="8.17449046679516" PointY="11.590469455155763" />
         <AssociationConnector Association="MZS2DataModel.fk_player_character_id" />
         <AssociationConnector Association="MZS2DataModel.authorized_dm_role_FK" />
-        <EntityTypeShape EntityType="MZS2DataModel.item_transfer_audit" Width="1.5" PointX="3.625" PointY="14.25" />
+        <EntityTypeShape EntityType="MZS2DataModel.item_transfer_audit" Width="1.5" PointX="4" PointY="17.375" />
         <AssociationConnector Association="MZS2DataModel.item_transfer_audit_ibfk_2" />
+        <AssociationConnector Association="MZS2DataModel.item_transfer_audit_ibfk_3" />
         <AssociationConnector Association="MZS2DataModel.item_transfer_audit_ibfk_1" />
+        <AssociationConnector Association="MZS2DataModel.item_transfer_audit_ibfk_4" />
+        <EntityTypeShape EntityType="MZS2DataModel.module_event_type_domain" Width="1.5" PointX="7.625" PointY="19.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

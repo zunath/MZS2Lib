@@ -76,6 +76,9 @@
     <Compile Include="loginhistory.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="module_event_type_domain.cs">
+      <DependentUpon>MZS2DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MZS2Context.cs" />
     <Compile Include="MZS2DataModel.Context.cs">
       <AutoGen>True</AutoGen>

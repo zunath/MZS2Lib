@@ -12,30 +12,52 @@ namespace MZS2ServerLib
             string itemTag,
             string itemResref,
             string quantity,
-            string pcID,
-            string dmCDKey,
+            string oldPCID,
+            string newPCID,
+            string oldDMCDKey,
+            string newDMCDKey,
             string areaName,
             string areaTag,
-            string areaResref)
+            string areaResref,
+            string eventType)
         {
             string result = "FALSE";
+            // One of the identifiers must be valid for us to even care about storing it.
+            if (oldPCID == "~" && newPCID == "~" &&
+                oldDMCDKey == "~" && newDMCDKey == "~")
+            {
+                return result;
+            }
 
             using (MZS2Context context = new MZS2Context(ConfigurationManager.ConnectionString))
             {
-                Nullable<int> dbDMID = new Nullable<int>();
+                Nullable<int> dbOldDMID = new Nullable<int>();
+                Nullable<int> dbNewDMID = new Nullable<int>();
+                int eventTypeID = Convert.ToInt32(eventType);
 
-                if (dmCDKey != "~")
+                if (oldDMCDKey != "~")
                 {
-                    authorized_dm dm = context.authorized_dm.SingleOrDefault(x => x.CDKey == dmCDKey);
+                    authorized_dm dm = context.authorized_dm.SingleOrDefault(x => x.CDKey == oldDMCDKey);
 
                     if (dm != null)
                     {
-                        dbDMID = dm.AuthorizedDMID;
+                        dbOldDMID = dm.AuthorizedDMID;
+                    }
+                }
+
+                if (newDMCDKey != "~")
+                {
+                    authorized_dm dm = context.authorized_dm.SingleOrDefault(x => x.CDKey == newDMCDKey);
+
+                    if (dm != null)
+                    {
+                        dbNewDMID = dm.AuthorizedDMID;
                     }
                 }
 
 
-                Nullable<int> dbPCID = pcID == "~" ? new Nullable<int>() : Convert.ToInt32(pcID);
+                Nullable<int> dbOldPCID = oldPCID == "~" ? new Nullable<int>() : Convert.ToInt32(oldPCID);
+                Nullable<int> dbNewPCID = newPCID == "~" ? new Nullable<int>() : Convert.ToInt32(newPCID);
                 int dbQuantity = Convert.ToInt32(quantity);
 
                 item_transfer_audit audit = new item_transfer_audit
@@ -43,12 +65,15 @@ namespace MZS2ServerLib
                     AreaName = areaName,
                     AreaResref = areaResref,
                     AreaTag = areaTag,
-                    AuthorizedDMID = dbDMID,
+                    OldAuthorizedDMID = dbOldDMID,
+                    OldPlayerCharacterID = dbOldPCID,
+                    NewAuthorizedDMID = dbNewDMID,
+                    NewPlayerCharacterID = dbNewPCID,
                     ItemName = itemName,
                     ItemResref = itemResref,
                     ItemTag = itemTag,
-                    PlayerCharacterID = dbPCID,
-                    Quantity = dbQuantity
+                    Quantity = dbQuantity,
+                    ModuleEventTypeID = eventTypeID
                 };
 
                 context.item_transfer_audit.Add(audit);
