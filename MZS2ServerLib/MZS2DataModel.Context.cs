@@ -39,5 +39,12 @@ namespace MZS2ServerLib
         public DbSet<loginhistory> loginhistories { get; set; }
         public DbSet<item_transfer_audit> item_transfer_audit { get; set; }
         public DbSet<module_event_type_domain> module_event_type_domain { get; set; }
+        public DbSet<fame_region_domain> fame_region_domain { get; set; }
+        public DbSet<key_item_category_domain> key_item_category_domain { get; set; }
+        public DbSet<key_item_domain> key_item_domain { get; set; }
+        public DbSet<quest_kill_groups> quest_kill_groups { get; set; }
+        public DbSet<quest_type_domain> quest_type_domain { get; set; }
+        public DbSet<quest> quests { get; set; }
+        public DbSet<player_key_items> player_key_items { get; set; }
     }
 }

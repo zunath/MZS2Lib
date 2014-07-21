@@ -29,5 +29,6 @@ namespace MZS2ServerLib
         public virtual dm_role_domain dm_role_domain { get; set; }
         public virtual ICollection<item_transfer_audit> item_transfer_audit { get; set; }
         public virtual ICollection<item_transfer_audit> item_transfer_audit1 { get; set; }
+        public virtual dm_role_domain dm_role_domain1 { get; set; }
     }
 }

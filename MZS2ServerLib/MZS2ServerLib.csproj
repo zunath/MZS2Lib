@@ -70,7 +70,16 @@
     <Compile Include="errorlog.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="fame_region_domain.cs">
+      <DependentUpon>MZS2DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="item_transfer_audit.cs">
+      <DependentUpon>MZS2DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="key_item_category_domain.cs">
+      <DependentUpon>MZS2DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="key_item_domain.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="loginhistory.cs">
@@ -104,14 +113,27 @@
     <Compile Include="player_info.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="player_key_items.cs">
+      <DependentUpon>MZS2DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="pwdata.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pwobjdata.cs">
       <DependentUpon>MZS2DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="quest.cs">
+      <DependentUpon>MZS2DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="quest_kill_groups.cs">
+      <DependentUpon>MZS2DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="quest_type_domain.cs">
+      <DependentUpon>MZS2DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\AuthorizedDMRepository.cs" />
     <Compile Include="Repositories\ItemTransferAuditRepository.cs" />
+    <Compile Include="Repositories\KeyItemRepository.cs" />
     <Compile Include="Repositories\LoginHistoryRepository.cs" />
     <Compile Include="Repositories\PlayerCharacterRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

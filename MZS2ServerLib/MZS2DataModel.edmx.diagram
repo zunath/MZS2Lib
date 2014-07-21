@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="38f2f8421d2d48ac8a96ea0b15269420" Name="Diagram1" ZoomLevel="111">
+      <Diagram DiagramId="38f2f8421d2d48ac8a96ea0b15269420" Name="Diagram1" ZoomLevel="121">
         <EntityTypeShape EntityType="MZS2DataModel.dm_log" Width="1.5" PointX="7.875" PointY="2.25" />
         <EntityTypeShape EntityType="MZS2DataModel.pc_corpse" Width="1.5" PointX="5.375" PointY="5.125" />
         <EntityTypeShape EntityType="MZS2DataModel.player_info" Width="1.5" PointX="8.375" PointY="6.625" />
@@ -25,6 +25,34 @@
         <AssociationConnector Association="MZS2DataModel.item_transfer_audit_ibfk_1" />
         <AssociationConnector Association="MZS2DataModel.item_transfer_audit_ibfk_4" />
         <EntityTypeShape EntityType="MZS2DataModel.module_event_type_domain" Width="1.5" PointX="7.625" PointY="19.25" />
+        <EntityTypeShape EntityType="MZS2DataModel.fame_region_domain" Width="1.5" PointX="0.5" PointY="19.625" />
+        <EntityTypeShape EntityType="MZS2DataModel.key_item_category_domain" Width="1.5" PointX="3" PointY="21.125" />
+        <EntityTypeShape EntityType="MZS2DataModel.key_item_domain" Width="1.5" PointX="6" PointY="22.625" />
+        <EntityTypeShape EntityType="MZS2DataModel.quest_kill_groups" Width="1.5" PointX="12" PointY="25.625" />
+        <EntityTypeShape EntityType="MZS2DataModel.quest_type_domain" Width="1.5" PointX="15" PointY="27.125" />
+        <EntityTypeShape EntityType="MZS2DataModel.quest" Width="2.25" PointX="3.5" PointY="27" />
+        <AssociationConnector Association="MZS2DataModel.authorized_dm_ibfk_1" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_1" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_2" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_3" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_4" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_5" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_6" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_7" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_8" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_10" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_11" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_12" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_13" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_9" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_14" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_15" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_16" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_17" />
+        <AssociationConnector Association="MZS2DataModel.quests_ibfk_18" />
+        <AssociationConnector Association="MZS2DataModel.key_item_domain_ibfk_1" />
+        <EntityTypeShape EntityType="MZS2DataModel.player_key_items" Width="1.5" PointX="8.79539852440143" PointY="6.8193534048364279" />
+        <AssociationConnector Association="MZS2DataModel.player_key_items_ibfk_1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

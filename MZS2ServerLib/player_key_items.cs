@@ -12,17 +12,13 @@ namespace MZS2ServerLib
     using System;
     using System.Collections.Generic;
     
-    public partial class dm_role_domain
+    public partial class player_key_items
     {
-        public dm_role_domain()
-        {
-            this.authorized_dm1 = new HashSet<authorized_dm>();
-        }
+        public int PlayerKeyItemID { get; set; }
+        public int PlayerCharacterID { get; set; }
+        public int KeyItemID { get; set; }
+        public System.DateTime CreateTimestamp { get; set; }
     
-        public int DMRoleDomainID { get; set; }
-        public string Description { get; set; }
-    
-        public virtual authorized_dm authorized_dm { get; set; }
-        public virtual ICollection<authorized_dm> authorized_dm1 { get; set; }
+        public virtual key_item_domain key_item_domain { get; set; }
     }
 }

@@ -10,17 +10,24 @@
           <EntitySet Name="dm_log" EntityType="MZS2DataModel.Store.dm_log" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="dm_role_domain" EntityType="MZS2DataModel.Store.dm_role_domain" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="errorlog" EntityType="MZS2DataModel.Store.errorlog" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="fame_region_domain" EntityType="MZS2DataModel.Store.fame_region_domain" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="item_transfer_audit" EntityType="MZS2DataModel.Store.item_transfer_audit" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="key_item_category_domain" EntityType="MZS2DataModel.Store.key_item_category_domain" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="key_item_domain" EntityType="MZS2DataModel.Store.key_item_domain" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="loginhistory" EntityType="MZS2DataModel.Store.loginhistory" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="module_event_type_domain" EntityType="MZS2DataModel.Store.module_event_type_domain" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="pc_corpse" EntityType="MZS2DataModel.Store.pc_corpse" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="player_info" EntityType="MZS2DataModel.Store.player_info" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="player_key_items" EntityType="MZS2DataModel.Store.player_key_items" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="playercharacters" EntityType="MZS2DataModel.Store.playercharacters" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="pwdata" EntityType="MZS2DataModel.Store.pwdata" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="pwobjdata" EntityType="MZS2DataModel.Store.pwobjdata" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="quest_kill_groups" EntityType="MZS2DataModel.Store.quest_kill_groups" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="quest_type_domain" EntityType="MZS2DataModel.Store.quest_type_domain" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="quests" EntityType="MZS2DataModel.Store.quests" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="zst_storage" EntityType="MZS2DataModel.Store.zst_storage" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="zsttemplate" EntityType="MZS2DataModel.Store.zsttemplate" store:Type="Tables" Schema="mzs2_dev" />
-          <AssociationSet Name="authorized_dm_role_FK" Association="MZS2DataModel.Store.authorized_dm_role_FK">
+          <AssociationSet Name="authorized_dm_ibfk_1" Association="MZS2DataModel.Store.authorized_dm_ibfk_1">
             <End Role="dm_role_domain" EntitySet="dm_role_domain" />
             <End Role="authorized_dm" EntitySet="authorized_dm" />
           </AssociationSet>
@@ -43,6 +50,86 @@
           <AssociationSet Name="item_transfer_audit_ibfk_4" Association="MZS2DataModel.Store.item_transfer_audit_ibfk_4">
             <End Role="playercharacters" EntitySet="playercharacters" />
             <End Role="item_transfer_audit" EntitySet="item_transfer_audit" />
+          </AssociationSet>
+          <AssociationSet Name="key_item_domain_ibfk_1" Association="MZS2DataModel.Store.key_item_domain_ibfk_1">
+            <End Role="key_item_category_domain" EntitySet="key_item_category_domain" />
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+          </AssociationSet>
+          <AssociationSet Name="player_key_items_ibfk_1" Association="MZS2DataModel.Store.player_key_items_ibfk_1">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="player_key_items" EntitySet="player_key_items" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_1" Association="MZS2DataModel.Store.quests_ibfk_1">
+            <End Role="fame_region_domain" EntitySet="fame_region_domain" />
+            <End Role="quests" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_10" Association="MZS2DataModel.Store.quests_ibfk_10">
+            <End Role="quest_kill_groups" EntitySet="quest_kill_groups" />
+            <End Role="quests" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_11" Association="MZS2DataModel.Store.quests_ibfk_11">
+            <End Role="quest_kill_groups" EntitySet="quest_kill_groups" />
+            <End Role="quests" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_12" Association="MZS2DataModel.Store.quests_ibfk_12">
+            <End Role="quest_kill_groups" EntitySet="quest_kill_groups" />
+            <End Role="quests" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_13" Association="MZS2DataModel.Store.quests_ibfk_13">
+            <End Role="quest_kill_groups" EntitySet="quest_kill_groups" />
+            <End Role="quests" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_14" Association="MZS2DataModel.Store.quests_ibfk_14">
+            <End Role="quests" EntitySet="quests" />
+            <End Role="quests1" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_15" Association="MZS2DataModel.Store.quests_ibfk_15">
+            <End Role="quests" EntitySet="quests" />
+            <End Role="quests1" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_16" Association="MZS2DataModel.Store.quests_ibfk_16">
+            <End Role="quests" EntitySet="quests" />
+            <End Role="quests1" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_17" Association="MZS2DataModel.Store.quests_ibfk_17">
+            <End Role="quests" EntitySet="quests" />
+            <End Role="quests1" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_18" Association="MZS2DataModel.Store.quests_ibfk_18">
+            <End Role="quests" EntitySet="quests" />
+            <End Role="quests1" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_2" Association="MZS2DataModel.Store.quests_ibfk_2">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="quests" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_3" Association="MZS2DataModel.Store.quests_ibfk_3">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="quests" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_4" Association="MZS2DataModel.Store.quests_ibfk_4">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="quests" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_5" Association="MZS2DataModel.Store.quests_ibfk_5">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="quests" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_6" Association="MZS2DataModel.Store.quests_ibfk_6">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="quests" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_7" Association="MZS2DataModel.Store.quests_ibfk_7">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="quests" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_8" Association="MZS2DataModel.Store.quests_ibfk_8">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="quests" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_9" Association="MZS2DataModel.Store.quests_ibfk_9">
+            <End Role="quest_kill_groups" EntitySet="quest_kill_groups" />
+            <End Role="quests" EntitySet="quests" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="authorized_dm">
@@ -90,6 +177,14 @@
           <Property Name="Message" Type="text" Nullable="false" />
           <Property Name="StackTrace" Type="text" Nullable="false" />
         </EntityType>
+        <EntityType Name="fame_region_domain">
+          <Key>
+            <PropertyRef Name="FameRegionID" />
+          </Key>
+          <Property Name="FameRegionID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="item_transfer_audit">
           <Key>
             <PropertyRef Name="ItemTransferAuditID" />
@@ -108,6 +203,23 @@
           <Property Name="AreaResref" Type="varchar" Nullable="false" MaxLength="16" />
           <Property Name="TransferTimestamp" Type="datetime" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ModuleEventTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="key_item_category_domain">
+          <Key>
+            <PropertyRef Name="KeyItemCategoryID" />
+          </Key>
+          <Property Name="KeyItemCategoryID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="key_item_domain">
+          <Key>
+            <PropertyRef Name="KeyItemID" />
+          </Key>
+          <Property Name="KeyItemID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="KeyItemCategoryID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="loginhistory">
           <Key>
@@ -145,6 +257,15 @@
           <Property Name="CDKey" Type="varchar" Nullable="false" MaxLength="8" />
           <Property Name="CharName" Type="varchar" MaxLength="64" />
           <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="player_key_items">
+          <Key>
+            <PropertyRef Name="PlayerKeyItemID" />
+          </Key>
+          <Property Name="PlayerKeyItemID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PlayerCharacterID" Type="int" Nullable="false" />
+          <Property Name="KeyItemID" Type="int" Nullable="false" />
+          <Property Name="CreateTimestamp" Type="datetime" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="playercharacters">
           <Key>
@@ -187,6 +308,85 @@
           <Property Name="val" Type="blob" />
           <Property Name="expire" Type="int" />
           <Property Name="last" Type="timestamp" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="quest_kill_groups">
+          <Key>
+            <PropertyRef Name="QuestKillGroupID" />
+          </Key>
+          <Property Name="QuestKillGroupID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="quest_type_domain">
+          <Key>
+            <PropertyRef Name="QuestTypeID" />
+          </Key>
+          <Property Name="QuestTypeID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="quests">
+          <Key>
+            <PropertyRef Name="QuestID" />
+          </Key>
+          <Property Name="QuestID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="JournalTag" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="QuestTypeID" Type="int" Nullable="false" />
+          <Property Name="FameRegionID" Type="int" Nullable="false" />
+          <Property Name="FameRequired" Type="int" Nullable="false" />
+          <Property Name="MaxLevel" Type="int" Nullable="false" />
+          <Property Name="MinLevel" Type="int" Nullable="false" />
+          <Property Name="AllowRewardSelection" Type="bit" Nullable="false" />
+          <Property Name="FinishState" Type="int" Nullable="false" />
+          <Property Name="IsRepeatable" Type="bit" Nullable="false" />
+          <Property Name="MapNoteTag" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="QuestAcceptedKeyItemID" Type="int" />
+          <Property Name="RemoveTemporaryKeyItem" Type="bit" Nullable="false" />
+          <Property Name="GoldReward" Type="int" Nullable="false" />
+          <Property Name="XPReward" Type="int" Nullable="false" />
+          <Property Name="KeyItemIDReward" Type="int" Nullable="false" />
+          <Property Name="FameReward" Type="int" Nullable="false" />
+          <Property Name="ItemRewardResref1" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="ItemRewardQuantity1" Type="int" Nullable="false" />
+          <Property Name="ItemRewardResref2" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="ItemRewardQuantity2" Type="int" Nullable="false" />
+          <Property Name="ItemRewardResref3" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="ItemRewardQuantity3" Type="int" Nullable="false" />
+          <Property Name="ItemRewardResref4" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="ItemRewardQuantity4" Type="int" Nullable="false" />
+          <Property Name="ItemRewardResref5" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="ItemRewardQuantity5" Type="int" Nullable="false" />
+          <Property Name="KillGroupID1" Type="int" Nullable="false" />
+          <Property Name="KillGroupQuantity1" Type="int" Nullable="false" />
+          <Property Name="KillGroupID2" Type="int" Nullable="false" />
+          <Property Name="KillGroupQuantity2" Type="int" Nullable="false" />
+          <Property Name="KillGroupID3" Type="int" Nullable="false" />
+          <Property Name="KillGroupQuantity3" Type="int" Nullable="false" />
+          <Property Name="KillGroupID4" Type="int" Nullable="false" />
+          <Property Name="KillGroupQuantity4" Type="int" Nullable="false" />
+          <Property Name="KillGroupID5" Type="int" Nullable="false" />
+          <Property Name="KillGroupQuantity5" Type="int" Nullable="false" />
+          <Property Name="RequiredItem1" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="RequiredItemQuantity1" Type="int" Nullable="false" />
+          <Property Name="RequiredItem2" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="RequiredItemQuantity2" Type="int" Nullable="false" />
+          <Property Name="RequiredItem3" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="RequiredItemQuantity3" Type="int" Nullable="false" />
+          <Property Name="RequiredItem4" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="RequiredItemQuantity4" Type="int" Nullable="false" />
+          <Property Name="RequiredItem5" Type="varchar" Nullable="false" MaxLength="16" />
+          <Property Name="RequiredItemQuantity5" Type="int" Nullable="false" />
+          <Property Name="RequiredKeyItem1" Type="int" Nullable="false" />
+          <Property Name="RequiredKeyItem2" Type="int" Nullable="false" />
+          <Property Name="RequiredKeyItem3" Type="int" Nullable="false" />
+          <Property Name="RequiredKeyItem4" Type="int" Nullable="false" />
+          <Property Name="RequiredKeyItem5" Type="int" Nullable="false" />
+          <Property Name="PrerequisiteQuestID1" Type="int" Nullable="false" />
+          <Property Name="PrerequisiteQuestID2" Type="int" Nullable="false" />
+          <Property Name="PrerequisiteQuestID3" Type="int" Nullable="false" />
+          <Property Name="PrerequisiteQuestID4" Type="int" Nullable="false" />
+          <Property Name="PrerequisiteQuestID5" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="zst_storage">
           <Key>
@@ -406,15 +606,15 @@
           <Property Name="Item99" Type="blob" />
           <Property Name="Item100" Type="blob" />
         </EntityType>
-        <Association Name="authorized_dm_role_FK">
+        <Association Name="authorized_dm_ibfk_1">
           <End Role="dm_role_domain" Type="MZS2DataModel.Store.dm_role_domain" Multiplicity="1" />
-          <End Role="authorized_dm" Type="MZS2DataModel.Store.authorized_dm" Multiplicity="0..1" />
+          <End Role="authorized_dm" Type="MZS2DataModel.Store.authorized_dm" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="dm_role_domain">
               <PropertyRef Name="DMRoleDomainID" />
             </Principal>
             <Dependent Role="authorized_dm">
-              <PropertyRef Name="AuthorizedDMID" />
+              <PropertyRef Name="DMRole" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -478,6 +678,246 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="key_item_domain_ibfk_1">
+          <End Role="key_item_category_domain" Type="MZS2DataModel.Store.key_item_category_domain" Multiplicity="1" />
+          <End Role="key_item_domain" Type="MZS2DataModel.Store.key_item_domain" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_category_domain">
+              <PropertyRef Name="KeyItemCategoryID" />
+            </Principal>
+            <Dependent Role="key_item_domain">
+              <PropertyRef Name="KeyItemCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="player_key_items_ibfk_1">
+          <End Role="key_item_domain" Type="MZS2DataModel.Store.key_item_domain" Multiplicity="1" />
+          <End Role="player_key_items" Type="MZS2DataModel.Store.player_key_items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="player_key_items">
+              <PropertyRef Name="KeyItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_1">
+          <End Role="fame_region_domain" Type="MZS2DataModel.Store.fame_region_domain" Multiplicity="1" />
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fame_region_domain">
+              <PropertyRef Name="FameRegionID" />
+            </Principal>
+            <Dependent Role="quests">
+              <PropertyRef Name="FameRegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_10">
+          <End Role="quest_kill_groups" Type="MZS2DataModel.Store.quest_kill_groups" Multiplicity="1" />
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quest_kill_groups">
+              <PropertyRef Name="QuestKillGroupID" />
+            </Principal>
+            <Dependent Role="quests">
+              <PropertyRef Name="KillGroupID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_11">
+          <End Role="quest_kill_groups" Type="MZS2DataModel.Store.quest_kill_groups" Multiplicity="1" />
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quest_kill_groups">
+              <PropertyRef Name="QuestKillGroupID" />
+            </Principal>
+            <Dependent Role="quests">
+              <PropertyRef Name="KillGroupID3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_12">
+          <End Role="quest_kill_groups" Type="MZS2DataModel.Store.quest_kill_groups" Multiplicity="1" />
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quest_kill_groups">
+              <PropertyRef Name="QuestKillGroupID" />
+            </Principal>
+            <Dependent Role="quests">
+              <PropertyRef Name="KillGroupID4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_13">
+          <End Role="quest_kill_groups" Type="MZS2DataModel.Store.quest_kill_groups" Multiplicity="1" />
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quest_kill_groups">
+              <PropertyRef Name="QuestKillGroupID" />
+            </Principal>
+            <Dependent Role="quests">
+              <PropertyRef Name="KillGroupID5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_14">
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="1" />
+          <End Role="quests1" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quests">
+              <PropertyRef Name="QuestID" />
+            </Principal>
+            <Dependent Role="quests1">
+              <PropertyRef Name="PrerequisiteQuestID1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_15">
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="1" />
+          <End Role="quests1" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quests">
+              <PropertyRef Name="QuestID" />
+            </Principal>
+            <Dependent Role="quests1">
+              <PropertyRef Name="PrerequisiteQuestID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_16">
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="1" />
+          <End Role="quests1" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quests">
+              <PropertyRef Name="QuestID" />
+            </Principal>
+            <Dependent Role="quests1">
+              <PropertyRef Name="PrerequisiteQuestID3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_17">
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="1" />
+          <End Role="quests1" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quests">
+              <PropertyRef Name="QuestID" />
+            </Principal>
+            <Dependent Role="quests1">
+              <PropertyRef Name="PrerequisiteQuestID4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_18">
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="1" />
+          <End Role="quests1" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quests">
+              <PropertyRef Name="QuestID" />
+            </Principal>
+            <Dependent Role="quests1">
+              <PropertyRef Name="PrerequisiteQuestID5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_2">
+          <End Role="key_item_domain" Type="MZS2DataModel.Store.key_item_domain" Multiplicity="0..1" />
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="quests">
+              <PropertyRef Name="QuestAcceptedKeyItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_3">
+          <End Role="key_item_domain" Type="MZS2DataModel.Store.key_item_domain" Multiplicity="1" />
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="quests">
+              <PropertyRef Name="KeyItemIDReward" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_4">
+          <End Role="key_item_domain" Type="MZS2DataModel.Store.key_item_domain" Multiplicity="1" />
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="quests">
+              <PropertyRef Name="RequiredKeyItem1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_5">
+          <End Role="key_item_domain" Type="MZS2DataModel.Store.key_item_domain" Multiplicity="1" />
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="quests">
+              <PropertyRef Name="RequiredKeyItem2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_6">
+          <End Role="key_item_domain" Type="MZS2DataModel.Store.key_item_domain" Multiplicity="1" />
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="quests">
+              <PropertyRef Name="RequiredKeyItem3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_7">
+          <End Role="key_item_domain" Type="MZS2DataModel.Store.key_item_domain" Multiplicity="1" />
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="quests">
+              <PropertyRef Name="RequiredKeyItem4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_8">
+          <End Role="key_item_domain" Type="MZS2DataModel.Store.key_item_domain" Multiplicity="1" />
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="quests">
+              <PropertyRef Name="RequiredKeyItem5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_9">
+          <End Role="quest_kill_groups" Type="MZS2DataModel.Store.quest_kill_groups" Multiplicity="1" />
+          <End Role="quests" Type="MZS2DataModel.Store.quests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quest_kill_groups">
+              <PropertyRef Name="QuestKillGroupID" />
+            </Principal>
+            <Dependent Role="quests">
+              <PropertyRef Name="KillGroupID1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -521,6 +961,97 @@
             <End Role="item_transfer_audit" EntitySet="item_transfer_audit" />
           </AssociationSet>
           <EntitySet Name="module_event_type_domain" EntityType="MZS2DataModel.module_event_type_domain" />
+          <EntitySet Name="fame_region_domain" EntityType="MZS2DataModel.fame_region_domain" />
+          <EntitySet Name="key_item_category_domain" EntityType="MZS2DataModel.key_item_category_domain" />
+          <EntitySet Name="key_item_domain" EntityType="MZS2DataModel.key_item_domain" />
+          <EntitySet Name="quest_kill_groups" EntityType="MZS2DataModel.quest_kill_groups" />
+          <EntitySet Name="quest_type_domain" EntityType="MZS2DataModel.quest_type_domain" />
+          <EntitySet Name="quests" EntityType="MZS2DataModel.quest" />
+          <AssociationSet Name="authorized_dm_ibfk_1" Association="MZS2DataModel.authorized_dm_ibfk_1">
+            <End Role="dm_role_domain" EntitySet="dm_role_domain" />
+            <End Role="authorized_dm" EntitySet="authorized_dm" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_1" Association="MZS2DataModel.quests_ibfk_1">
+            <End Role="fame_region_domain" EntitySet="fame_region_domain" />
+            <End Role="quest" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_2" Association="MZS2DataModel.quests_ibfk_2">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="quest" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_3" Association="MZS2DataModel.quests_ibfk_3">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="quest" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_4" Association="MZS2DataModel.quests_ibfk_4">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="quest" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_5" Association="MZS2DataModel.quests_ibfk_5">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="quest" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_6" Association="MZS2DataModel.quests_ibfk_6">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="quest" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_7" Association="MZS2DataModel.quests_ibfk_7">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="quest" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_8" Association="MZS2DataModel.quests_ibfk_8">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="quest" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_10" Association="MZS2DataModel.quests_ibfk_10">
+            <End Role="quest_kill_groups" EntitySet="quest_kill_groups" />
+            <End Role="quest" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_11" Association="MZS2DataModel.quests_ibfk_11">
+            <End Role="quest_kill_groups" EntitySet="quest_kill_groups" />
+            <End Role="quest" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_12" Association="MZS2DataModel.quests_ibfk_12">
+            <End Role="quest_kill_groups" EntitySet="quest_kill_groups" />
+            <End Role="quest" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_13" Association="MZS2DataModel.quests_ibfk_13">
+            <End Role="quest_kill_groups" EntitySet="quest_kill_groups" />
+            <End Role="quest" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_9" Association="MZS2DataModel.quests_ibfk_9">
+            <End Role="quest_kill_groups" EntitySet="quest_kill_groups" />
+            <End Role="quest" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_14" Association="MZS2DataModel.quests_ibfk_14">
+            <End Role="quest" EntitySet="quests" />
+            <End Role="quest1" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_15" Association="MZS2DataModel.quests_ibfk_15">
+            <End Role="quest" EntitySet="quests" />
+            <End Role="quest1" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_16" Association="MZS2DataModel.quests_ibfk_16">
+            <End Role="quest" EntitySet="quests" />
+            <End Role="quest1" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_17" Association="MZS2DataModel.quests_ibfk_17">
+            <End Role="quest" EntitySet="quests" />
+            <End Role="quest1" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="quests_ibfk_18" Association="MZS2DataModel.quests_ibfk_18">
+            <End Role="quest" EntitySet="quests" />
+            <End Role="quest1" EntitySet="quests" />
+          </AssociationSet>
+          <AssociationSet Name="key_item_domain_ibfk_1" Association="MZS2DataModel.key_item_domain_ibfk_1">
+            <End Role="key_item_category_domain" EntitySet="key_item_category_domain" />
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+          </AssociationSet>
+          <EntitySet Name="player_key_items" EntityType="MZS2DataModel.player_key_items" />
+          <AssociationSet Name="player_key_items_ibfk_1" Association="MZS2DataModel.player_key_items_ibfk_1">
+            <End Role="key_item_domain" EntitySet="key_item_domain" />
+            <End Role="player_key_items" EntitySet="player_key_items" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="dm_log">
           <Key>
@@ -846,6 +1377,7 @@
           <Property Type="Boolean" Name="IsActive" Nullable="false" />
           <NavigationProperty Name="item_transfer_audit" Relationship="MZS2DataModel.item_transfer_audit_ibfk_2" FromRole="authorized_dm" ToRole="item_transfer_audit" />
           <NavigationProperty Name="item_transfer_audit1" Relationship="MZS2DataModel.item_transfer_audit_ibfk_3" FromRole="authorized_dm" ToRole="item_transfer_audit" />
+          <NavigationProperty Name="dm_role_domain1" Relationship="MZS2DataModel.authorized_dm_ibfk_1" FromRole="authorized_dm" ToRole="dm_role_domain" />
           </EntityType>
         <EntityType Name="dm_role_domain">
           <Key>
@@ -854,6 +1386,7 @@
           <Property Type="Int32" Name="DMRoleDomainID" Nullable="false" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="authorized_dm" Relationship="MZS2DataModel.authorized_dm_role_FK" FromRole="dm_role_domain" ToRole="authorized_dm" />
+          <NavigationProperty Name="authorized_dm1" Relationship="MZS2DataModel.authorized_dm_ibfk_1" FromRole="dm_role_domain" ToRole="authorized_dm" />
         </EntityType>
         <EntityType Name="loginhistory">
           <Key>
@@ -967,6 +1500,411 @@
           <Property Type="Int32" Name="ModuleEventTypeID" Nullable="false" />
           <Property Type="String" Name="EventName" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="fame_region_domain">
+          <Key>
+            <PropertyRef Name="FameRegionID" />
+          </Key>
+          <Property Type="Int32" Name="FameRegionID" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <NavigationProperty Name="quests" Relationship="MZS2DataModel.quests_ibfk_1" FromRole="fame_region_domain" ToRole="quest" />
+        </EntityType>
+        <EntityType Name="key_item_category_domain">
+          <Key>
+            <PropertyRef Name="KeyItemCategoryID" />
+          </Key>
+          <Property Type="Int32" Name="KeyItemCategoryID" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <NavigationProperty Name="key_item_domain" Relationship="MZS2DataModel.key_item_domain_ibfk_1" FromRole="key_item_category_domain" ToRole="key_item_domain" />
+        </EntityType>
+        <EntityType Name="key_item_domain">
+          <Key>
+            <PropertyRef Name="KeyItemID" />
+          </Key>
+          <Property Type="Int32" Name="KeyItemID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <NavigationProperty Name="quests" Relationship="MZS2DataModel.quests_ibfk_2" FromRole="key_item_domain" ToRole="quest" />
+          <NavigationProperty Name="quests1" Relationship="MZS2DataModel.quests_ibfk_3" FromRole="key_item_domain" ToRole="quest" />
+          <NavigationProperty Name="quests2" Relationship="MZS2DataModel.quests_ibfk_4" FromRole="key_item_domain" ToRole="quest" />
+          <NavigationProperty Name="quests3" Relationship="MZS2DataModel.quests_ibfk_5" FromRole="key_item_domain" ToRole="quest" />
+          <NavigationProperty Name="quests4" Relationship="MZS2DataModel.quests_ibfk_6" FromRole="key_item_domain" ToRole="quest" />
+          <NavigationProperty Name="quests5" Relationship="MZS2DataModel.quests_ibfk_7" FromRole="key_item_domain" ToRole="quest" />
+          <NavigationProperty Name="quests6" Relationship="MZS2DataModel.quests_ibfk_8" FromRole="key_item_domain" ToRole="quest" />
+          <Property Type="Int32" Name="KeyItemCategoryID" Nullable="false" />
+          <NavigationProperty Name="key_item_category_domain" Relationship="MZS2DataModel.key_item_domain_ibfk_1" FromRole="key_item_domain" ToRole="key_item_category_domain" />
+          <NavigationProperty Name="player_key_items" Relationship="MZS2DataModel.player_key_items_ibfk_1" FromRole="key_item_domain" ToRole="player_key_items" />
+        </EntityType>
+        <EntityType Name="quest_kill_groups">
+          <Key>
+            <PropertyRef Name="QuestKillGroupID" />
+          </Key>
+          <Property Type="Int32" Name="QuestKillGroupID" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <NavigationProperty Name="quests" Relationship="MZS2DataModel.quests_ibfk_10" FromRole="quest_kill_groups" ToRole="quest" />
+          <NavigationProperty Name="quests1" Relationship="MZS2DataModel.quests_ibfk_11" FromRole="quest_kill_groups" ToRole="quest" />
+          <NavigationProperty Name="quests2" Relationship="MZS2DataModel.quests_ibfk_12" FromRole="quest_kill_groups" ToRole="quest" />
+          <NavigationProperty Name="quests3" Relationship="MZS2DataModel.quests_ibfk_13" FromRole="quest_kill_groups" ToRole="quest" />
+          <NavigationProperty Name="quests4" Relationship="MZS2DataModel.quests_ibfk_9" FromRole="quest_kill_groups" ToRole="quest" />
+        </EntityType>
+        <EntityType Name="quest_type_domain">
+          <Key>
+            <PropertyRef Name="QuestTypeID" />
+          </Key>
+          <Property Type="Int32" Name="QuestTypeID" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+        </EntityType>
+        <EntityType Name="quest">
+          <Key>
+            <PropertyRef Name="QuestID" />
+          </Key>
+          <Property Type="Int32" Name="QuestID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="JournalTag" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="QuestTypeID" Nullable="false" />
+          <Property Type="Int32" Name="FameRegionID" Nullable="false" />
+          <Property Type="Int32" Name="FameRequired" Nullable="false" />
+          <Property Type="Int32" Name="MaxLevel" Nullable="false" />
+          <Property Type="Int32" Name="MinLevel" Nullable="false" />
+          <Property Type="Boolean" Name="AllowRewardSelection" Nullable="false" />
+          <Property Type="Int32" Name="FinishState" Nullable="false" />
+          <Property Type="Boolean" Name="IsRepeatable" Nullable="false" />
+          <Property Type="String" Name="MapNoteTag" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="QuestAcceptedKeyItemID" />
+          <Property Type="Boolean" Name="RemoveTemporaryKeyItem" Nullable="false" />
+          <Property Type="Int32" Name="GoldReward" Nullable="false" />
+          <Property Type="Int32" Name="XPReward" Nullable="false" />
+          <Property Type="Int32" Name="KeyItemIDReward" Nullable="false" />
+          <Property Type="Int32" Name="FameReward" Nullable="false" />
+          <Property Type="String" Name="ItemRewardResref1" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ItemRewardQuantity1" Nullable="false" />
+          <Property Type="String" Name="ItemRewardResref2" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ItemRewardQuantity2" Nullable="false" />
+          <Property Type="String" Name="ItemRewardResref3" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ItemRewardQuantity3" Nullable="false" />
+          <Property Type="String" Name="ItemRewardResref4" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ItemRewardQuantity4" Nullable="false" />
+          <Property Type="String" Name="ItemRewardResref5" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ItemRewardQuantity5" Nullable="false" />
+          <Property Type="Int32" Name="KillGroupID1" Nullable="false" />
+          <Property Type="Int32" Name="KillGroupQuantity1" Nullable="false" />
+          <Property Type="Int32" Name="KillGroupID2" Nullable="false" />
+          <Property Type="Int32" Name="KillGroupQuantity2" Nullable="false" />
+          <Property Type="Int32" Name="KillGroupID3" Nullable="false" />
+          <Property Type="Int32" Name="KillGroupQuantity3" Nullable="false" />
+          <Property Type="Int32" Name="KillGroupID4" Nullable="false" />
+          <Property Type="Int32" Name="KillGroupQuantity4" Nullable="false" />
+          <Property Type="Int32" Name="KillGroupID5" Nullable="false" />
+          <Property Type="Int32" Name="KillGroupQuantity5" Nullable="false" />
+          <Property Type="String" Name="RequiredItem1" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="RequiredItemQuantity1" Nullable="false" />
+          <Property Type="String" Name="RequiredItem2" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="RequiredItemQuantity2" Nullable="false" />
+          <Property Type="String" Name="RequiredItem3" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="RequiredItemQuantity3" Nullable="false" />
+          <Property Type="String" Name="RequiredItem4" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="RequiredItemQuantity4" Nullable="false" />
+          <Property Type="String" Name="RequiredItem5" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="RequiredItemQuantity5" Nullable="false" />
+          <Property Type="Int32" Name="RequiredKeyItem1" Nullable="false" />
+          <Property Type="Int32" Name="RequiredKeyItem2" Nullable="false" />
+          <Property Type="Int32" Name="RequiredKeyItem3" Nullable="false" />
+          <Property Type="Int32" Name="RequiredKeyItem4" Nullable="false" />
+          <Property Type="Int32" Name="RequiredKeyItem5" Nullable="false" />
+          <Property Type="Int32" Name="PrerequisiteQuestID1" Nullable="false" />
+          <Property Type="Int32" Name="PrerequisiteQuestID2" Nullable="false" />
+          <Property Type="Int32" Name="PrerequisiteQuestID3" Nullable="false" />
+          <Property Type="Int32" Name="PrerequisiteQuestID4" Nullable="false" />
+          <Property Type="Int32" Name="PrerequisiteQuestID5" Nullable="false" />
+          <NavigationProperty Name="fame_region_domain" Relationship="MZS2DataModel.quests_ibfk_1" FromRole="quest" ToRole="fame_region_domain" />
+          <NavigationProperty Name="QuestAcceptedKeyItem" Relationship="MZS2DataModel.quests_ibfk_2" FromRole="quest" ToRole="key_item_domain" />
+          <NavigationProperty Name="KeyItemReward" Relationship="MZS2DataModel.quests_ibfk_3" FromRole="quest" ToRole="key_item_domain" />
+          <NavigationProperty Name="RequiredKeyItem_Nav1" Relationship="MZS2DataModel.quests_ibfk_4" FromRole="quest" ToRole="key_item_domain" />
+          <NavigationProperty Name="RequiredKeyItem_Nav2" Relationship="MZS2DataModel.quests_ibfk_5" FromRole="quest" ToRole="key_item_domain" />
+          <NavigationProperty Name="RequiredKeyItem_Nav3" Relationship="MZS2DataModel.quests_ibfk_6" FromRole="quest" ToRole="key_item_domain" />
+          <NavigationProperty Name="RequiredKeyItem_Nav4" Relationship="MZS2DataModel.quests_ibfk_7" FromRole="quest" ToRole="key_item_domain" />
+          <NavigationProperty Name="RequiredKeyItem_Nav5" Relationship="MZS2DataModel.quests_ibfk_8" FromRole="quest" ToRole="key_item_domain" />
+          <NavigationProperty Name="KillGroup2" Relationship="MZS2DataModel.quests_ibfk_10" FromRole="quest" ToRole="quest_kill_groups" />
+          <NavigationProperty Name="KillGroup3" Relationship="MZS2DataModel.quests_ibfk_11" FromRole="quest" ToRole="quest_kill_groups" />
+          <NavigationProperty Name="KillGroup4" Relationship="MZS2DataModel.quests_ibfk_12" FromRole="quest" ToRole="quest_kill_groups" />
+          <NavigationProperty Name="KillGroup5" Relationship="MZS2DataModel.quests_ibfk_13" FromRole="quest" ToRole="quest_kill_groups" />
+          <NavigationProperty Name="KillGroup1" Relationship="MZS2DataModel.quests_ibfk_9" FromRole="quest" ToRole="quest_kill_groups" />
+          <NavigationProperty Name="quests1" Relationship="MZS2DataModel.quests_ibfk_14" FromRole="quest" ToRole="quest1" />
+          <NavigationProperty Name="quest1" Relationship="MZS2DataModel.quests_ibfk_14" FromRole="quest1" ToRole="quest" />
+          <NavigationProperty Name="quests11" Relationship="MZS2DataModel.quests_ibfk_15" FromRole="quest" ToRole="quest1" />
+          <NavigationProperty Name="quest2" Relationship="MZS2DataModel.quests_ibfk_15" FromRole="quest1" ToRole="quest" />
+          <NavigationProperty Name="quests12" Relationship="MZS2DataModel.quests_ibfk_16" FromRole="quest" ToRole="quest1" />
+          <NavigationProperty Name="quest3" Relationship="MZS2DataModel.quests_ibfk_16" FromRole="quest1" ToRole="quest" />
+          <NavigationProperty Name="quests13" Relationship="MZS2DataModel.quests_ibfk_17" FromRole="quest" ToRole="quest1" />
+          <NavigationProperty Name="quest4" Relationship="MZS2DataModel.quests_ibfk_17" FromRole="quest1" ToRole="quest" />
+          <NavigationProperty Name="quests14" Relationship="MZS2DataModel.quests_ibfk_18" FromRole="quest" ToRole="quest1" />
+          <NavigationProperty Name="quest5" Relationship="MZS2DataModel.quests_ibfk_18" FromRole="quest1" ToRole="quest" />
+        </EntityType>
+        <Association Name="authorized_dm_ibfk_1">
+          <End Type="MZS2DataModel.dm_role_domain" Role="dm_role_domain" Multiplicity="1" />
+          <End Type="MZS2DataModel.authorized_dm" Role="authorized_dm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dm_role_domain">
+              <PropertyRef Name="DMRoleDomainID" />
+            </Principal>
+            <Dependent Role="authorized_dm">
+              <PropertyRef Name="DMRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_1">
+          <End Type="MZS2DataModel.fame_region_domain" Role="fame_region_domain" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fame_region_domain">
+              <PropertyRef Name="FameRegionID" />
+            </Principal>
+            <Dependent Role="quest">
+              <PropertyRef Name="FameRegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_2">
+          <End Type="MZS2DataModel.key_item_domain" Role="key_item_domain" Multiplicity="0..1" />
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="quest">
+              <PropertyRef Name="QuestAcceptedKeyItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_3">
+          <End Type="MZS2DataModel.key_item_domain" Role="key_item_domain" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="quest">
+              <PropertyRef Name="KeyItemIDReward" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_4">
+          <End Type="MZS2DataModel.key_item_domain" Role="key_item_domain" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="quest">
+              <PropertyRef Name="RequiredKeyItem1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_5">
+          <End Type="MZS2DataModel.key_item_domain" Role="key_item_domain" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="quest">
+              <PropertyRef Name="RequiredKeyItem2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_6">
+          <End Type="MZS2DataModel.key_item_domain" Role="key_item_domain" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="quest">
+              <PropertyRef Name="RequiredKeyItem3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_7">
+          <End Type="MZS2DataModel.key_item_domain" Role="key_item_domain" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="quest">
+              <PropertyRef Name="RequiredKeyItem4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_8">
+          <End Type="MZS2DataModel.key_item_domain" Role="key_item_domain" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="quest">
+              <PropertyRef Name="RequiredKeyItem5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_10">
+          <End Type="MZS2DataModel.quest_kill_groups" Role="quest_kill_groups" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quest_kill_groups">
+              <PropertyRef Name="QuestKillGroupID" />
+            </Principal>
+            <Dependent Role="quest">
+              <PropertyRef Name="KillGroupID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_11">
+          <End Type="MZS2DataModel.quest_kill_groups" Role="quest_kill_groups" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quest_kill_groups">
+              <PropertyRef Name="QuestKillGroupID" />
+            </Principal>
+            <Dependent Role="quest">
+              <PropertyRef Name="KillGroupID3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_12">
+          <End Type="MZS2DataModel.quest_kill_groups" Role="quest_kill_groups" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quest_kill_groups">
+              <PropertyRef Name="QuestKillGroupID" />
+            </Principal>
+            <Dependent Role="quest">
+              <PropertyRef Name="KillGroupID4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_13">
+          <End Type="MZS2DataModel.quest_kill_groups" Role="quest_kill_groups" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quest_kill_groups">
+              <PropertyRef Name="QuestKillGroupID" />
+            </Principal>
+            <Dependent Role="quest">
+              <PropertyRef Name="KillGroupID5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_9">
+          <End Type="MZS2DataModel.quest_kill_groups" Role="quest_kill_groups" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quest_kill_groups">
+              <PropertyRef Name="QuestKillGroupID" />
+            </Principal>
+            <Dependent Role="quest">
+              <PropertyRef Name="KillGroupID1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_14">
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quest">
+              <PropertyRef Name="QuestID" />
+            </Principal>
+            <Dependent Role="quest1">
+              <PropertyRef Name="PrerequisiteQuestID1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_15">
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quest">
+              <PropertyRef Name="QuestID" />
+            </Principal>
+            <Dependent Role="quest1">
+              <PropertyRef Name="PrerequisiteQuestID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_16">
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quest">
+              <PropertyRef Name="QuestID" />
+            </Principal>
+            <Dependent Role="quest1">
+              <PropertyRef Name="PrerequisiteQuestID3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_17">
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quest">
+              <PropertyRef Name="QuestID" />
+            </Principal>
+            <Dependent Role="quest1">
+              <PropertyRef Name="PrerequisiteQuestID4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="quests_ibfk_18">
+          <End Type="MZS2DataModel.quest" Role="quest" Multiplicity="1" />
+          <End Type="MZS2DataModel.quest" Role="quest1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quest">
+              <PropertyRef Name="QuestID" />
+            </Principal>
+            <Dependent Role="quest1">
+              <PropertyRef Name="PrerequisiteQuestID5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="key_item_domain_ibfk_1">
+          <End Type="MZS2DataModel.key_item_category_domain" Role="key_item_category_domain" Multiplicity="1" />
+          <End Type="MZS2DataModel.key_item_domain" Role="key_item_domain" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_category_domain">
+              <PropertyRef Name="KeyItemCategoryID" />
+            </Principal>
+            <Dependent Role="key_item_domain">
+              <PropertyRef Name="KeyItemCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="player_key_items">
+          <Key>
+            <PropertyRef Name="PlayerKeyItemID" />
+          </Key>
+          <Property Type="Int32" Name="PlayerKeyItemID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PlayerCharacterID" Nullable="false" />
+          <Property Type="Int32" Name="KeyItemID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTimestamp" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="key_item_domain" Relationship="MZS2DataModel.player_key_items_ibfk_1" FromRole="player_key_items" ToRole="key_item_domain" />
+        </EntityType>
+        <Association Name="player_key_items_ibfk_1">
+          <End Type="MZS2DataModel.key_item_domain" Role="key_item_domain" Multiplicity="1" />
+          <End Type="MZS2DataModel.player_key_items" Role="player_key_items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="key_item_domain">
+              <PropertyRef Name="KeyItemID" />
+            </Principal>
+            <Dependent Role="player_key_items">
+              <PropertyRef Name="KeyItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1337,6 +2275,126 @@
               <MappingFragment StoreEntitySet="module_event_type_domain">
                 <ScalarProperty Name="EventName" ColumnName="EventName" />
                 <ScalarProperty Name="ModuleEventTypeID" ColumnName="ModuleEventTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fame_region_domain">
+            <EntityTypeMapping TypeName="MZS2DataModel.fame_region_domain">
+              <MappingFragment StoreEntitySet="fame_region_domain">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FameRegionID" ColumnName="FameRegionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="key_item_category_domain">
+            <EntityTypeMapping TypeName="MZS2DataModel.key_item_category_domain">
+              <MappingFragment StoreEntitySet="key_item_category_domain">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="KeyItemCategoryID" ColumnName="KeyItemCategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="key_item_domain">
+            <EntityTypeMapping TypeName="MZS2DataModel.key_item_domain">
+              <MappingFragment StoreEntitySet="key_item_domain">
+                <ScalarProperty Name="KeyItemCategoryID" ColumnName="KeyItemCategoryID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="KeyItemID" ColumnName="KeyItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="quest_kill_groups">
+            <EntityTypeMapping TypeName="MZS2DataModel.quest_kill_groups">
+              <MappingFragment StoreEntitySet="quest_kill_groups">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="QuestKillGroupID" ColumnName="QuestKillGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="quest_type_domain">
+            <EntityTypeMapping TypeName="MZS2DataModel.quest_type_domain">
+              <MappingFragment StoreEntitySet="quest_type_domain">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="QuestTypeID" ColumnName="QuestTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="quests">
+            <EntityTypeMapping TypeName="MZS2DataModel.quest">
+              <MappingFragment StoreEntitySet="quests">
+                <ScalarProperty Name="PrerequisiteQuestID5" ColumnName="PrerequisiteQuestID5" />
+                <ScalarProperty Name="PrerequisiteQuestID4" ColumnName="PrerequisiteQuestID4" />
+                <ScalarProperty Name="PrerequisiteQuestID3" ColumnName="PrerequisiteQuestID3" />
+                <ScalarProperty Name="PrerequisiteQuestID2" ColumnName="PrerequisiteQuestID2" />
+                <ScalarProperty Name="PrerequisiteQuestID1" ColumnName="PrerequisiteQuestID1" />
+                <ScalarProperty Name="RequiredKeyItem5" ColumnName="RequiredKeyItem5" />
+                <ScalarProperty Name="RequiredKeyItem4" ColumnName="RequiredKeyItem4" />
+                <ScalarProperty Name="RequiredKeyItem3" ColumnName="RequiredKeyItem3" />
+                <ScalarProperty Name="RequiredKeyItem2" ColumnName="RequiredKeyItem2" />
+                <ScalarProperty Name="RequiredKeyItem1" ColumnName="RequiredKeyItem1" />
+                <ScalarProperty Name="RequiredItemQuantity5" ColumnName="RequiredItemQuantity5" />
+                <ScalarProperty Name="RequiredItem5" ColumnName="RequiredItem5" />
+                <ScalarProperty Name="RequiredItemQuantity4" ColumnName="RequiredItemQuantity4" />
+                <ScalarProperty Name="RequiredItem4" ColumnName="RequiredItem4" />
+                <ScalarProperty Name="RequiredItemQuantity3" ColumnName="RequiredItemQuantity3" />
+                <ScalarProperty Name="RequiredItem3" ColumnName="RequiredItem3" />
+                <ScalarProperty Name="RequiredItemQuantity2" ColumnName="RequiredItemQuantity2" />
+                <ScalarProperty Name="RequiredItem2" ColumnName="RequiredItem2" />
+                <ScalarProperty Name="RequiredItemQuantity1" ColumnName="RequiredItemQuantity1" />
+                <ScalarProperty Name="RequiredItem1" ColumnName="RequiredItem1" />
+                <ScalarProperty Name="KillGroupQuantity5" ColumnName="KillGroupQuantity5" />
+                <ScalarProperty Name="KillGroupID5" ColumnName="KillGroupID5" />
+                <ScalarProperty Name="KillGroupQuantity4" ColumnName="KillGroupQuantity4" />
+                <ScalarProperty Name="KillGroupID4" ColumnName="KillGroupID4" />
+                <ScalarProperty Name="KillGroupQuantity3" ColumnName="KillGroupQuantity3" />
+                <ScalarProperty Name="KillGroupID3" ColumnName="KillGroupID3" />
+                <ScalarProperty Name="KillGroupQuantity2" ColumnName="KillGroupQuantity2" />
+                <ScalarProperty Name="KillGroupID2" ColumnName="KillGroupID2" />
+                <ScalarProperty Name="KillGroupQuantity1" ColumnName="KillGroupQuantity1" />
+                <ScalarProperty Name="KillGroupID1" ColumnName="KillGroupID1" />
+                <ScalarProperty Name="ItemRewardQuantity5" ColumnName="ItemRewardQuantity5" />
+                <ScalarProperty Name="ItemRewardResref5" ColumnName="ItemRewardResref5" />
+                <ScalarProperty Name="ItemRewardQuantity4" ColumnName="ItemRewardQuantity4" />
+                <ScalarProperty Name="ItemRewardResref4" ColumnName="ItemRewardResref4" />
+                <ScalarProperty Name="ItemRewardQuantity3" ColumnName="ItemRewardQuantity3" />
+                <ScalarProperty Name="ItemRewardResref3" ColumnName="ItemRewardResref3" />
+                <ScalarProperty Name="ItemRewardQuantity2" ColumnName="ItemRewardQuantity2" />
+                <ScalarProperty Name="ItemRewardResref2" ColumnName="ItemRewardResref2" />
+                <ScalarProperty Name="ItemRewardQuantity1" ColumnName="ItemRewardQuantity1" />
+                <ScalarProperty Name="ItemRewardResref1" ColumnName="ItemRewardResref1" />
+                <ScalarProperty Name="FameReward" ColumnName="FameReward" />
+                <ScalarProperty Name="KeyItemIDReward" ColumnName="KeyItemIDReward" />
+                <ScalarProperty Name="XPReward" ColumnName="XPReward" />
+                <ScalarProperty Name="GoldReward" ColumnName="GoldReward" />
+                <ScalarProperty Name="RemoveTemporaryKeyItem" ColumnName="RemoveTemporaryKeyItem" />
+                <ScalarProperty Name="QuestAcceptedKeyItemID" ColumnName="QuestAcceptedKeyItemID" />
+                <ScalarProperty Name="MapNoteTag" ColumnName="MapNoteTag" />
+                <ScalarProperty Name="IsRepeatable" ColumnName="IsRepeatable" />
+                <ScalarProperty Name="FinishState" ColumnName="FinishState" />
+                <ScalarProperty Name="AllowRewardSelection" ColumnName="AllowRewardSelection" />
+                <ScalarProperty Name="MinLevel" ColumnName="MinLevel" />
+                <ScalarProperty Name="MaxLevel" ColumnName="MaxLevel" />
+                <ScalarProperty Name="FameRequired" ColumnName="FameRequired" />
+                <ScalarProperty Name="FameRegionID" ColumnName="FameRegionID" />
+                <ScalarProperty Name="QuestTypeID" ColumnName="QuestTypeID" />
+                <ScalarProperty Name="JournalTag" ColumnName="JournalTag" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="QuestID" ColumnName="QuestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="player_key_items">
+            <EntityTypeMapping TypeName="MZS2DataModel.player_key_items">
+              <MappingFragment StoreEntitySet="player_key_items">
+                <ScalarProperty Name="PlayerCharacterID" ColumnName="PlayerCharacterID" />
+                <ScalarProperty Name="CreateTimestamp" ColumnName="CreateTimestamp" />
+                <ScalarProperty Name="KeyItemID" ColumnName="KeyItemID" />
+                <ScalarProperty Name="PlayerKeyItemID" ColumnName="PlayerKeyItemID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

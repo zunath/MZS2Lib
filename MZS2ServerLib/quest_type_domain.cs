@@ -12,17 +12,10 @@ namespace MZS2ServerLib
     using System;
     using System.Collections.Generic;
     
-    public partial class dm_role_domain
+    public partial class quest_type_domain
     {
-        public dm_role_domain()
-        {
-            this.authorized_dm1 = new HashSet<authorized_dm>();
-        }
-    
-        public int DMRoleDomainID { get; set; }
+        public int QuestTypeID { get; set; }
         public string Description { get; set; }
-    
-        public virtual authorized_dm authorized_dm { get; set; }
-        public virtual ICollection<authorized_dm> authorized_dm1 { get; set; }
+        public bool IsActive { get; set; }
     }
 }
