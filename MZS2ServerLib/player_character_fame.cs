@@ -12,19 +12,14 @@ namespace MZS2ServerLib
     using System;
     using System.Collections.Generic;
     
-    public partial class fame_region_domain
+    public partial class player_character_fame
     {
-        public fame_region_domain()
-        {
-            this.quests = new HashSet<quest>();
-            this.player_character_fame = new HashSet<player_character_fame>();
-        }
-    
+        public int PlayerCharacterFameID { get; set; }
+        public int PlayerCharacterID { get; set; }
         public int FameRegionID { get; set; }
-        public string Description { get; set; }
-        public bool IsActive { get; set; }
+        public int Amount { get; set; }
     
-        public virtual ICollection<quest> quests { get; set; }
-        public virtual ICollection<player_character_fame> player_character_fame { get; set; }
+        public virtual fame_region_domain fame_region_domain { get; set; }
+        public virtual playercharacter playercharacter { get; set; }
     }
 }

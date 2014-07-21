@@ -46,5 +46,6 @@ namespace MZS2ServerLib
         public DbSet<quest_type_domain> quest_type_domain { get; set; }
         public DbSet<quest> quests { get; set; }
         public DbSet<player_key_items> player_key_items { get; set; }
+        public DbSet<player_character_fame> player_character_fame { get; set; }
     }
 }

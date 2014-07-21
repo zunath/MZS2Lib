@@ -30,6 +30,7 @@ namespace MZS2ServerLib
         public string Name { get; set; }
         public bool IsActive { get; set; }
         public int KeyItemCategoryID { get; set; }
+        public string Description { get; set; }
     
         public virtual ICollection<quest> quests { get; set; }
         public virtual ICollection<quest> quests1 { get; set; }

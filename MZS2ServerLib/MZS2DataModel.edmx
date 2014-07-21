@@ -17,6 +17,7 @@
           <EntitySet Name="loginhistory" EntityType="MZS2DataModel.Store.loginhistory" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="module_event_type_domain" EntityType="MZS2DataModel.Store.module_event_type_domain" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="pc_corpse" EntityType="MZS2DataModel.Store.pc_corpse" store:Type="Tables" Schema="mzs2_dev" />
+          <EntitySet Name="player_character_fame" EntityType="MZS2DataModel.Store.player_character_fame" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="player_info" EntityType="MZS2DataModel.Store.player_info" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="player_key_items" EntityType="MZS2DataModel.Store.player_key_items" store:Type="Tables" Schema="mzs2_dev" />
           <EntitySet Name="playercharacters" EntityType="MZS2DataModel.Store.playercharacters" store:Type="Tables" Schema="mzs2_dev" />
@@ -54,6 +55,14 @@
           <AssociationSet Name="key_item_domain_ibfk_1" Association="MZS2DataModel.Store.key_item_domain_ibfk_1">
             <End Role="key_item_category_domain" EntitySet="key_item_category_domain" />
             <End Role="key_item_domain" EntitySet="key_item_domain" />
+          </AssociationSet>
+          <AssociationSet Name="player_character_fame_ibfk_1" Association="MZS2DataModel.Store.player_character_fame_ibfk_1">
+            <End Role="playercharacters" EntitySet="playercharacters" />
+            <End Role="player_character_fame" EntitySet="player_character_fame" />
+          </AssociationSet>
+          <AssociationSet Name="player_character_fame_ibfk_2" Association="MZS2DataModel.Store.player_character_fame_ibfk_2">
+            <End Role="fame_region_domain" EntitySet="fame_region_domain" />
+            <End Role="player_character_fame" EntitySet="player_character_fame" />
           </AssociationSet>
           <AssociationSet Name="player_key_items_ibfk_1" Association="MZS2DataModel.Store.player_key_items_ibfk_1">
             <End Role="key_item_domain" EntitySet="key_item_domain" />
@@ -218,6 +227,7 @@
           </Key>
           <Property Name="KeyItemID" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="KeyItemCategoryID" Type="int" Nullable="false" />
         </EntityType>
@@ -245,6 +255,15 @@
           <Property Name="CorpseName" Type="text" Nullable="false" />
           <Property Name="Location" Type="text" Nullable="false" />
           <Property Name="StorageNPC" Type="blob" />
+        </EntityType>
+        <EntityType Name="player_character_fame">
+          <Key>
+            <PropertyRef Name="PlayerCharacterFameID" />
+          </Key>
+          <Property Name="PlayerCharacterFameID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PlayerCharacterID" Type="int" Nullable="false" />
+          <Property Name="FameRegionID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="player_info">
           <Key>
@@ -690,6 +709,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="player_character_fame_ibfk_1">
+          <End Role="playercharacters" Type="MZS2DataModel.Store.playercharacters" Multiplicity="1" />
+          <End Role="player_character_fame" Type="MZS2DataModel.Store.player_character_fame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="playercharacters">
+              <PropertyRef Name="PlayerCharacterID" />
+            </Principal>
+            <Dependent Role="player_character_fame">
+              <PropertyRef Name="PlayerCharacterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="player_character_fame_ibfk_2">
+          <End Role="fame_region_domain" Type="MZS2DataModel.Store.fame_region_domain" Multiplicity="1" />
+          <End Role="player_character_fame" Type="MZS2DataModel.Store.player_character_fame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fame_region_domain">
+              <PropertyRef Name="FameRegionID" />
+            </Principal>
+            <Dependent Role="player_character_fame">
+              <PropertyRef Name="FameRegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="player_key_items_ibfk_1">
           <End Role="key_item_domain" Type="MZS2DataModel.Store.key_item_domain" Multiplicity="1" />
           <End Role="player_key_items" Type="MZS2DataModel.Store.player_key_items" Multiplicity="*" />
@@ -1052,6 +1095,15 @@
             <End Role="key_item_domain" EntitySet="key_item_domain" />
             <End Role="player_key_items" EntitySet="player_key_items" />
           </AssociationSet>
+          <EntitySet Name="player_character_fame" EntityType="MZS2DataModel.player_character_fame" />
+          <AssociationSet Name="player_character_fame_ibfk_2" Association="MZS2DataModel.player_character_fame_ibfk_2">
+            <End Role="fame_region_domain" EntitySet="fame_region_domain" />
+            <End Role="player_character_fame" EntitySet="player_character_fame" />
+          </AssociationSet>
+          <AssociationSet Name="player_character_fame_ibfk_1" Association="MZS2DataModel.player_character_fame_ibfk_1">
+            <End Role="playercharacter" EntitySet="playercharacters" />
+            <End Role="player_character_fame" EntitySet="player_character_fame" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="dm_log">
           <Key>
@@ -1355,6 +1407,7 @@
           <NavigationProperty Name="loginhistories" Relationship="MZS2DataModel.fk_player_character_id" FromRole="playercharacter" ToRole="loginhistory" />
           <NavigationProperty Name="item_transfer_audit" Relationship="MZS2DataModel.item_transfer_audit_ibfk_1" FromRole="playercharacter" ToRole="item_transfer_audit" />
           <NavigationProperty Name="item_transfer_audit1" Relationship="MZS2DataModel.item_transfer_audit_ibfk_4" FromRole="playercharacter" ToRole="item_transfer_audit" />
+          <NavigationProperty Name="player_character_fame" Relationship="MZS2DataModel.player_character_fame_ibfk_1" FromRole="playercharacter" ToRole="player_character_fame" />
           </EntityType>
         <EntityType Name="errorlog">
           <Key>
@@ -1508,6 +1561,7 @@
           <Property Type="String" Name="Description" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="IsActive" Nullable="false" />
           <NavigationProperty Name="quests" Relationship="MZS2DataModel.quests_ibfk_1" FromRole="fame_region_domain" ToRole="quest" />
+          <NavigationProperty Name="player_character_fame" Relationship="MZS2DataModel.player_character_fame_ibfk_2" FromRole="fame_region_domain" ToRole="player_character_fame" />
         </EntityType>
         <EntityType Name="key_item_category_domain">
           <Key>
@@ -1535,6 +1589,7 @@
           <Property Type="Int32" Name="KeyItemCategoryID" Nullable="false" />
           <NavigationProperty Name="key_item_category_domain" Relationship="MZS2DataModel.key_item_domain_ibfk_1" FromRole="key_item_domain" ToRole="key_item_category_domain" />
           <NavigationProperty Name="player_key_items" Relationship="MZS2DataModel.player_key_items_ibfk_1" FromRole="key_item_domain" ToRole="player_key_items" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="quest_kill_groups">
           <Key>
@@ -1902,6 +1957,41 @@
             </Principal>
             <Dependent Role="player_key_items">
               <PropertyRef Name="KeyItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="player_character_fame">
+          <Key>
+            <PropertyRef Name="PlayerCharacterFameID" />
+          </Key>
+          <Property Type="Int32" Name="PlayerCharacterFameID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PlayerCharacterID" Nullable="false" />
+          <Property Type="Int32" Name="FameRegionID" Nullable="false" />
+          <Property Type="Int32" Name="Amount" Nullable="false" />
+          <NavigationProperty Name="fame_region_domain" Relationship="MZS2DataModel.player_character_fame_ibfk_2" FromRole="player_character_fame" ToRole="fame_region_domain" />
+          <NavigationProperty Name="playercharacter" Relationship="MZS2DataModel.player_character_fame_ibfk_1" FromRole="player_character_fame" ToRole="playercharacter" />
+        </EntityType>
+        <Association Name="player_character_fame_ibfk_2">
+          <End Type="MZS2DataModel.fame_region_domain" Role="fame_region_domain" Multiplicity="1" />
+          <End Type="MZS2DataModel.player_character_fame" Role="player_character_fame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fame_region_domain">
+              <PropertyRef Name="FameRegionID" />
+            </Principal>
+            <Dependent Role="player_character_fame">
+              <PropertyRef Name="FameRegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="player_character_fame_ibfk_1">
+          <End Type="MZS2DataModel.playercharacter" Role="playercharacter" Multiplicity="1" />
+          <End Type="MZS2DataModel.player_character_fame" Role="player_character_fame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="playercharacter">
+              <PropertyRef Name="PlayerCharacterID" />
+            </Principal>
+            <Dependent Role="player_character_fame">
+              <PropertyRef Name="PlayerCharacterID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2299,6 +2389,7 @@
           <EntitySetMapping Name="key_item_domain">
             <EntityTypeMapping TypeName="MZS2DataModel.key_item_domain">
               <MappingFragment StoreEntitySet="key_item_domain">
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="KeyItemCategoryID" ColumnName="KeyItemCategoryID" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -2395,6 +2486,16 @@
                 <ScalarProperty Name="CreateTimestamp" ColumnName="CreateTimestamp" />
                 <ScalarProperty Name="KeyItemID" ColumnName="KeyItemID" />
                 <ScalarProperty Name="PlayerKeyItemID" ColumnName="PlayerKeyItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="player_character_fame">
+            <EntityTypeMapping TypeName="MZS2DataModel.player_character_fame">
+              <MappingFragment StoreEntitySet="player_character_fame">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="FameRegionID" ColumnName="FameRegionID" />
+                <ScalarProperty Name="PlayerCharacterID" ColumnName="PlayerCharacterID" />
+                <ScalarProperty Name="PlayerCharacterFameID" ColumnName="PlayerCharacterFameID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

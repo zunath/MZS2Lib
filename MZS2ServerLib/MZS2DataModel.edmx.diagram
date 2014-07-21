@@ -53,6 +53,9 @@
         <AssociationConnector Association="MZS2DataModel.key_item_domain_ibfk_1" />
         <EntityTypeShape EntityType="MZS2DataModel.player_key_items" Width="1.5" PointX="8.79539852440143" PointY="6.8193534048364279" />
         <AssociationConnector Association="MZS2DataModel.player_key_items_ibfk_1" />
+        <EntityTypeShape EntityType="MZS2DataModel.player_character_fame" Width="1.5" PointX="10.776758282807077" PointY="27.518705306350583" />
+        <AssociationConnector Association="MZS2DataModel.player_character_fame_ibfk_2" />
+        <AssociationConnector Association="MZS2DataModel.player_character_fame_ibfk_1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

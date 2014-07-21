@@ -19,6 +19,7 @@ namespace MZS2ServerLib
             this.loginhistories = new HashSet<loginhistory>();
             this.item_transfer_audit = new HashSet<item_transfer_audit>();
             this.item_transfer_audit1 = new HashSet<item_transfer_audit>();
+            this.player_character_fame = new HashSet<player_character_fame>();
         }
     
         public int PlayerCharacterID { get; set; }
@@ -36,5 +37,6 @@ namespace MZS2ServerLib
         public virtual ICollection<loginhistory> loginhistories { get; set; }
         public virtual ICollection<item_transfer_audit> item_transfer_audit { get; set; }
         public virtual ICollection<item_transfer_audit> item_transfer_audit1 { get; set; }
+        public virtual ICollection<player_character_fame> player_character_fame { get; set; }
     }
 }
